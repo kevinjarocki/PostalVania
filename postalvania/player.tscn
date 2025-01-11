@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://drcg3w6rfh6p2"]
+[gd_scene load_steps=14 format=3 uid="uid://drcg3w6rfh6p2"]
 
 [ext_resource type="Texture2D" uid="uid://u85fg130k1ga" path="res://Assets/Squirrel/idle/spritesheet.png" id="1_oq6uf"]
 [ext_resource type="Script" path="res://player.gd" id="1_y5ota"]
+[ext_resource type="PackedScene" uid="uid://ctrunma5d1map" path="res://rope.tscn" id="3_cdwam"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y0nj"]
 atlas = ExtResource("1_oq6uf")
@@ -95,3 +96,7 @@ rotation = 3.14159
 position = Vector2(0, -6)
 target_position = Vector2(500, 0)
 collision_mask = 7
+
+[node name="Rope" parent="." instance=ExtResource("3_cdwam")]
+position = Vector2(-1.915, 4.245)
+centered = false
