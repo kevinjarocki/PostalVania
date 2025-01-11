@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7i1ysofjxfwp"
-path="res://.godot/imported/tileset_magic_cliffs.png-84c00d83314411443ef29027cc8a1fee.ctex"
+uid="uid://xycccs31qkp3"
+path="res://.godot/imported/Terrain_and_Props.png-b3fb4feb7d806d92f049211ca4d729a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/tileset_magic_cliffs.png"
-dest_files=["res://.godot/imported/tileset_magic_cliffs.png-84c00d83314411443ef29027cc8a1fee.ctex"]
+source_file="res://Assets/Tilesets/Terrain_and_Props.png"
+dest_files=["res://.godot/imported/Terrain_and_Props.png-b3fb4feb7d806d92f049211ca4d729a9.ctex"]
 
 [params]
 
