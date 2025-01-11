@@ -87,3 +87,9 @@ shape = SubResource("CapsuleShape2D_kji3o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-5, 8)
+
+[node name="Raycast" type="Node2D" parent="."]
+position = Vector2(-1.345, 7.435)
+rotation = 3.14159
+
+[node name="RayCast01" type="RayCast2D" parent="Raycast"]
