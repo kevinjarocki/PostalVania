@@ -1,3 +1,9 @@
+
+[gd_scene load_steps=3 format=3 uid="uid://eun7wq37viyo"]
+
+[ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
+[ext_resource type="PackedScene" uid="uid://cwjb2i47xc5p1" path="res://world.tscn" id="2_3q67k"]
+
 [gd_scene load_steps=8 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
@@ -265,6 +271,7 @@ sources/0 = SubResource("TileSetAtlasSource_m5wjg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ahli"]
 size = Vector2(125.156, 125.388)
+
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a7pk4")
