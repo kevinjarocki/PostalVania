@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctrunma5d1map"]
+
+[ext_resource type="Texture2D" uid="uid://lcou3mpkiloq" path="res://icon.svg" id="1_jgleq"]
+
+[node name="Rope" type="Sprite2D"]
+texture_repeat = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_jgleq")
+region_enabled = true
+region_rect = Rect2(0, 0, 125, 125)

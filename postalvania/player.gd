@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 200.0
+const JUMP_VELOCITY = -200.0
 const gravityConstant = 1000
 var mousePosition = Vector2(0,0)
 
@@ -9,6 +9,8 @@ var hookActive = false
 var hookPos
 var maxRopeLength = 500
 var currentRopeLength = 0
+var rad_vel
+var radius
 
 func inputManagement():
 	mousePosition = get_global_mouse_position()
@@ -28,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	gravity(delta)
 	if hookActive:
 		gravity(delta)
+	#velocity decay on swing. must be near 1 or swinging feels artificially damped
 	velocity *= 0.99
 	move_and_slide()
 
@@ -39,61 +42,53 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		if hookActive:
+			if direction > 0:
+				velocity += radius.normalized().rotated(-PI/2) * -rad_vel/1000 * SPEED
+			elif direction < 0:
+				velocity += radius.normalized().rotated(PI/2) * -rad_vel/1000 * SPEED
+			velocity += (hookPos - global_position).normalized() * 10000 * delta
+		else:
+			velocity.x = direction * SPEED
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	else:
 		velocity.x = move_toward(velocity.x, 0, 1)
+		
 
 	move_and_slide()
-	
-func draw():
-	var pos = global_position
-	
-	if hookActive:
-		print("draw me")
-		draw_line(Vector2(0,-6), to_local(hookPos), Color(0.3,0.3,0.1),10, false)
-	else:
-		return
-		
-		var colliding = $Raycast/RayCast01.is_colliding()
-		var collisionPoint = $Raycast/RayCast01.get_collision_point()
-		if colliding and pos.distance_to(collisionPoint) < maxRopeLength:
-			draw_line(Vector2(0,-6), to_local(collisionPoint), Color(1,1,1,0.25),0.5,true)
 	
 func hookUpdate(delta):
 	$Raycast/RayCast01.look_at(mousePosition)
 	if Input.is_action_just_pressed("left_click"):
 		hookPos = getHookPos()
-		print("click")
 		if hookPos:
-			print("hookPos is real")
 			hookActive = true
 			currentRopeLength = global_position.distance_to(hookPos)
 		if $Raycast/RayCast01.is_colliding():
-			print("Commence Hook")
+			pass
 	if Input.is_action_just_released("left_click"):
 		hookActive = false
+		$Rope.visible = false
 	if hookActive:
-		draw()
-		print("Hook is active")
-		#know where the hook is
-
-
 		#apply velocity based on grapple physics
 		if hookPos:
-			print("hookPos does exist")
-			var radius = global_position - hookPos
+			radius = global_position - hookPos
 			if velocity.length() < 0.01 or radius.length() < 10: return
 			var angle = acos((radius.dot(velocity) / (radius.length() * velocity.length())))
-			var rad_vel = cos(angle) * velocity.length()
+			rad_vel = cos(angle) * velocity.length()
 			velocity += radius.normalized() * -rad_vel
 				
 			if global_position.distance_to(hookPos) > currentRopeLength:
 				global_position = hookPos + radius.normalized() * currentRopeLength
-				
+			#when the line below had a typo, (+- instead of +=) we swung loose, no grappling in
 			velocity +- (hookPos - global_position).normalized() * 10000 * delta
 		#draw the hook
+		$Rope.visible = true
+		$Rope.look_at(hookPos)
+		$Rope.rotate(-PI/2)
+		$Rope.region_rect = Rect2(Vector2(0,0),Vector2(125,radius.length()/$Rope.scale.y))
+		#$Rope.position.y = radius.length()/2
 
 	else:
 		return
