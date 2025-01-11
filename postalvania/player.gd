@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 200.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -300.0
 const gravityConstant = 1000
 var mousePosition = Vector2(0,0)
 
@@ -49,10 +49,14 @@ func _physics_process(delta: float) -> void:
 				velocity += radius.normalized().rotated(PI/2) * -rad_vel/1000 * SPEED
 			velocity += (hookPos - global_position).normalized() * 10000 * delta
 		else:
-			velocity.x = direction * SPEED
+			if is_on_floor():
+				velocity.x = move_toward(velocity.x, SPEED*direction, 200)
+			else:
+				velocity.x = move_toward(velocity.x, SPEED*direction, 50)
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	else:
+		#move towards velocity of 0 at a rate of 1. giga slow decay. AKA keep your momentum when not toucing keyboard or on ground
 		velocity.x = move_toward(velocity.x, 0, 1)
 		
 
