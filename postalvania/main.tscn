@@ -284,17 +284,17 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 shape = SubResource("RectangleShape2D_4ahli")
 
-[node name="Player2" parent="." instance=ExtResource("1_hritv")]
+[node name="Player" parent="." instance=ExtResource("1_hritv")]
 collision_layer = 255
 collision_mask = 255
 
-[node name="Control" type="Control" parent="Player2"]
+[node name="Control" type="Control" parent="Player"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Timer" type="Label" parent="Player2/Control"]
+[node name="Timer" type="Label" parent="Player/Control"]
 layout_mode = 0
 offset_left = 511.0
 offset_top = -301.0
