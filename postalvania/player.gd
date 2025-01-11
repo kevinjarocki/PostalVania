@@ -41,35 +41,48 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
+	if Input.is_action_just_pressed("ui_left"):
+		$AnimatedSprite2D.scale.x = -abs($AnimatedSprite2D.scale.x)
+	elif Input.is_action_just_pressed("ui_right"):
+		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 	if direction:
 		if hookActive:
+			$AnimatedSprite2D.look_at(hookPos)
+			$AnimatedSprite2D.rotate(PI/2)
 			if direction > 0:
 				velocity += radius.normalized().rotated(-PI/2) * -rad_vel/1000 * SPEED
+				
 			elif direction < 0:
 				velocity += radius.normalized().rotated(PI/2) * -rad_vel/1000 * SPEED
 			velocity += (hookPos - global_position).normalized() * 10000 * delta
 		else:
+			$AnimatedSprite2D.rotation = 0
 			if is_on_floor():
 				velocity.x = move_toward(velocity.x, SPEED*direction, 200)
 			else:
 				velocity.x = move_toward(velocity.x, SPEED*direction, 50)
 	elif is_on_floor():
+		$AnimatedSprite2D.rotation = 0
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	elif hookActive:
+		$AnimatedSprite2D.look_at(hookPos)
+		$AnimatedSprite2D.rotate(PI/2)
 	else:
 		#move towards velocity of 0 at a rate of 1. giga slow decay. AKA keep your momentum when not toucing keyboard or on ground
 		velocity.x = move_toward(velocity.x, 0, 1)
+
 		
 
 	move_and_slide()
 	
 func hookUpdate(delta):
-	$Raycast/RayCast01.look_at(mousePosition)
+	$RayCast01.look_at(mousePosition)
 	if Input.is_action_just_pressed("left_click"):
 		hookPos = getHookPos()
 		if hookPos:
 			hookActive = true
 			currentRopeLength = global_position.distance_to(hookPos)
-		if $Raycast/RayCast01.is_colliding():
+		if $RayCast01.is_colliding():
 			pass
 	if Input.is_action_just_released("left_click"):
 		hookActive = false
@@ -98,7 +111,7 @@ func hookUpdate(delta):
 		return
 		#destroy hook
 func getHookPos():
-	if $Raycast/RayCast01.is_colliding():
-		return $Raycast/RayCast01.get_collision_point()
+	if $RayCast01.is_colliding():
+		return $RayCast01.get_collision_point()
 	else:
 		print("couldnt find raycast collision")
