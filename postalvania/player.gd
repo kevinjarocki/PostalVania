@@ -3,7 +3,7 @@ extends CharacterBody2D
 # all global variable declarations
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const gravityConstant = 900
+const gravityConstant = 700
 
 #state Variables
 var isGrounded = false
@@ -108,9 +108,37 @@ func _physics_process(delta: float) -> void:
 			isGrounded = true
 		pass
 		
+	if isGliding:
+		var glideAngle
+		if velocity.x > 0:
+			$AnimatedSprite2D.scale.x = 1
+		if velocity.x < 0:
+			$AnimatedSprite2D.scale.x = -1
+		if $AnimatedSprite2D.scale.x > 0:
+			glideAngle = move_toward(0,velocity.angle(),1)
+			$AnimatedSprite2D.rotation = glideAngle + (PI/2)
+		if $AnimatedSprite2D.scale.x < 0:
+			glideAngle = move_toward(0,-velocity.angle(),1)
+			$AnimatedSprite2D.rotation = glideAngle + (-PI/2)
+		if velocity.y > 0 && abs(velocity.x) < maxGlideSpeed:
+			if velocity.x != 0:
+				velocity.x += abs(velocity.y/2)*velocity.x/abs(velocity.x)
+				print("add glide speed")
+			elif velocity.y > stallSpeed:
+				velocity.x = $AnimatedSprite2D.scale.x * move_toward(0,SPEED,10)
+			else:
+				isGliding = false
+				isInAir = true
+		if spaceJustReleased:
+			isGliding = false
+			isInAir = true
+		if clickJustPressed:
+			isGliding = false
+			isSwinging = true
+		pass
+		
 	if isSwinging:
 		#Hook Update to check if i can swing
-		
 		if Input.is_action_just_pressed("left_click"):
 			hookPos = getHookPos()
 			if hookPos:
@@ -144,12 +172,12 @@ func _physics_process(delta: float) -> void:
 				#when the line below had a typo, (+- instead of +=) we swung loose, no grappling in
 				velocity += (hookPos - global_position).normalized() * 10000 * delta
 			if direction > 0:
-				velocity += radius.normalized().rotated(-PI/2) * -rad_vel/1000 * SPEED
+				velocity += radius.normalized().rotated(-PI/2) * -rad_vel/(9000+500) * SPEED
 				
 			elif direction < 0:
-				velocity += radius.normalized().rotated(PI/2) * -rad_vel/1000 * SPEED
+				velocity += radius.normalized().rotated(PI/2) * -rad_vel/(9000+500) * SPEED
 			
-			velocity +- (hookPos - global_position).normalized() * 10000 * delta
+			#velocity += (hookPos - global_position).normalized() * 1000 * delta
 			
 			#draw the hook
 			$Rope.visible = true
@@ -160,31 +188,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.look_at(hookPos)
 			$AnimatedSprite2D.rotate(PI/2)
 
-	if isGliding:
-		var glideAngle
-		if velocity.x > 0:
-			$AnimatedSprite2D.scale.x = 1
-		if velocity.x < 0:
-			$AnimatedSprite2D.scale.x = -1
-		if $AnimatedSprite2D.scale.x > 0:
-			glideAngle = move_toward(0,velocity.angle(),1)
-			$AnimatedSprite2D.rotation = glideAngle + (PI/2)
-		if $AnimatedSprite2D.scale.x < 0:
-			glideAngle = move_toward(0,-velocity.angle(),1)
-			$AnimatedSprite2D.rotation = glideAngle + (-PI/2)
-		if velocity.y > 0 && abs(velocity.x) < maxGlideSpeed:
-			if velocity.x != 0:
-				velocity.x += abs(velocity.y/2)*velocity.x/abs(velocity.x)
-				print("add glide speed")
-			elif velocity.y > stallSpeed:
-				velocity.x = $AnimatedSprite2D.scale.x * move_toward(0,SPEED,10)
-			else:
-				isGliding = false
-				isInAir = true
-		if spaceJustReleased:
-			isGliding = false
-			isInAir = true
-		pass
+	
 	move_and_slide()
 	Gravity(delta)
 	
@@ -208,7 +212,7 @@ func Gravity(delta):
 		velocity.y += gravityConstant*delta
 		pass
 	if isJumping:
-		velocity.y += gravityConstant*delta*0.5
+		velocity.y += gravityConstant*delta*0.8
 		pass
 	if isInAir:
 		velocity.y += gravityConstant*delta
