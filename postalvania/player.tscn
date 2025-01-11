@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7qqmxdotp8h2"]
+
+[ext_resource type="Texture2D" uid="uid://u85fg130k1ga" path="res://Assets/Squirrel/idle/spritesheet.png" id="1_oq6uf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y0nj"]
+atlas = ExtResource("1_oq6uf")
+region = Rect2(0, 0, 90, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6a0t"]
+atlas = ExtResource("1_oq6uf")
+region = Rect2(90, 0, 90, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwr6t"]
+atlas = ExtResource("1_oq6uf")
+region = Rect2(180, 0, 90, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ibc2"]
+atlas = ExtResource("1_oq6uf")
+region = Rect2(270, 0, 90, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2femh"]
+atlas = ExtResource("1_oq6uf")
+region = Rect2(360, 0, 90, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10y8h"]
+atlas = ExtResource("1_oq6uf")
+region = Rect2(450, 0, 90, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0nkb"]
+atlas = ExtResource("1_oq6uf")
+region = Rect2(540, 0, 90, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sypr5"]
+atlas = ExtResource("1_oq6uf")
+region = Rect2(630, 0, 90, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sos26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y0nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6a0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwr6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ibc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2femh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10y8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0nkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sypr5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sos26")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
