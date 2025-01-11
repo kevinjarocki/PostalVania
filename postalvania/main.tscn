@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=3 format=3 uid="uid://dgb2e7w53id7v"]
 
-[ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="1_hritv"]
+[ext_resource type="PackedScene" uid="uid://cwjb2i47xc5p1" path="res://world.tscn" id="2_3q67k"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_hritv")]
-position = Vector2(642, 332)
+
+[node name="World" parent="." instance=ExtResource("2_3q67k")]
