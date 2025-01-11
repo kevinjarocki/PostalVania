@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://drcg3w6rfh6p2"]
 
-[ext_resource type="Texture2D" path="res://Assets/Squirrel/idle/spritesheet.png" id="1_oq6uf"]
+[gd_scene load_steps=11 format=3 uid="uid://c7qqmxdotp8h2"]
+
+[ext_resource type="Texture2D" uid="uid://u85fg130k1ga" path="res://Assets/Squirrel/idle/spritesheet.png" id="1_oq6uf"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y0nj"]
 atlas = ExtResource("1_oq6uf")
@@ -66,6 +68,7 @@ animations = [{
 "speed": 5.0
 }]
 
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kji3o"]
 radius = 7.0
 height = 24.0
@@ -77,8 +80,10 @@ sprite_frames = SubResource("SpriteFrames_sos26")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 position = Vector2(-2, 7)
 shape = SubResource("CapsuleShape2D_kji3o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-5, 8)
+
