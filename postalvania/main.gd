@@ -12,6 +12,10 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			$Player.position = Vector2(0,0)
+		if event.pressed and event.keycode == KEY_P:
+			$Player.position = Vector2(0,0)
+			time = 0
+			complete = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	complete = true
