@@ -20,3 +20,9 @@ func _unhandled_input(event):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	complete = true
 	pass # Replace with function body.
+
+
+func _on_character_character_touched(first_touch: Variant) -> void:
+	if first_touch:
+		print ("deliver this package")
+	pass # Replace with function body.
