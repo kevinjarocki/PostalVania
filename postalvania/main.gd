@@ -19,12 +19,12 @@ func _process (delta):
 		
 	$Player/Control/Timer.text = ("%.2f" %time[0] + " sec")
 	
-	if cur_stage != stage:
+	if cur_stage != stage and stage < 7:
 		cur_stage = stage
 		time.append(time[0])
 		nodeTLArray[stage-1].visible = true
 	
-	if stage > 0:
+	if stage > 0 and stage < 7:
 		nodeTLTimerArray[stage-1].text = ("%.2f" %(time[0]-time[stage]) + " sec")
 
 func _unhandled_input(event):
@@ -32,13 +32,17 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			$Player.position = Vector2(0,0)
+			$Player.isGrounded = false
+			$Player.isJumping = false
+			$Player.isInAir = true
+			$Player.isSwinging = false
+			$Player.isGliding = false
 
-		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible:
+		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible and stage != 7:
 			$Player/Control/NinePatchRect.visible = false
 			await get_tree().create_timer(.01).timeout
 			$Player.process_mode = Node.PROCESS_MODE_PAUSABLE
 			timerPause = false
-			time[1] = 0
 			$Player/Control/Container/TL1.visible = true
 
 func completeTime():
@@ -68,4 +72,7 @@ func _on_character_6_character_touched(first_touch: Variant) -> void:
 	pass # Replace with function body.
 
 func _on_character_7_character_touched(first_touch: Variant) -> void:
+	$Player/Control/NinePatchRect/DialogueText.text = "Thanks for the delivery! I love that chicken! You win!!. Your final total time is: " + ("%.2f" %time[0] + " sec")
+	$Player/Control/NinePatchRect/DialogueSprite.visible = false
+	$Player/Control/NinePatchRect/Received.visible = false
 	pass # Replace with function body.

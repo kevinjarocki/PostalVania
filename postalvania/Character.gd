@@ -15,7 +15,8 @@ func character_touch ():
 	$"..".stage += 1
 	$"..".timerPause = true
 	$"../Player/Control/NinePatchRect".visible = true
-	$"../Player/Control/NinePatchRect/DialogueSprite".frame = $"..".stage
+	$"../Player/Control/NinePatchRect/DialogueSprite".frame = $"..".stage-1
+	$"..".nodeTLArray[$"..".stage-1].frame = $"..".stage-1
 	$"../Player".process_mode = Node.PROCESS_MODE_DISABLED
 	
 	if $"..".stage > 1:
