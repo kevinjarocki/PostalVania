@@ -11,6 +11,7 @@ var isJumping = false
 var isInAir = true
 var isSwinging = false
 var isGliding = false
+var isDashing = false
 
 #Input Variables
 var mousePosition = Vector2(0,0)
@@ -21,6 +22,9 @@ var spaceJustReleased = false
 var clickJustPressed = false
 var clickJustReleased = false
 var clickHeld = false
+var shiftJustPressed = false
+var shiftJustReleased = false
+var shiftHeld = false
 
 #swinging variables
 var hookEnabled = true
@@ -35,6 +39,10 @@ var radius
 var glideEnabled = true
 var maxGlideSpeed = 300
 var stallSpeed = 200
+
+#dash variables
+var dashEnabled = true
+var dashVelocity = 800
 
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
@@ -55,6 +63,9 @@ func _physics_process(delta: float) -> void:
 		if spaceJustPressed:
 			isGrounded = false
 			isJumping = true
+		if shiftJustPressed:
+			isDashing = true
+			isGrounded = false
 		if is_on_floor() == false:
 			isGrounded = false
 			isInAir = true
@@ -103,6 +114,9 @@ func _physics_process(delta: float) -> void:
 		if spaceJustPressed:
 			isInAir = false
 			isGliding = true
+		if shiftJustPressed:
+			isDashing = true
+			isGrounded = false
 		if is_on_floor():
 			isInAir = false
 			isGrounded = true
@@ -137,6 +151,19 @@ func _physics_process(delta: float) -> void:
 			isSwinging = true
 		pass
 		
+	if isDashing:
+		if !dashEnabled:
+			return
+		velocity.x += $AnimatedSprite2D.scale.x * dashVelocity
+		
+		isDashing = false
+		if is_on_floor():
+			isGrounded = true
+		elif clickJustPressed:
+			isSwinging = true
+		else:
+			isInAir = true
+			
 	if isSwinging:
 		#Hook Update to check if i can swing
 		if Input.is_action_just_pressed("left_click"):
@@ -188,6 +215,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.look_at(hookPos)
 			$AnimatedSprite2D.rotate(PI/2)
 
+
 	
 	move_and_slide()
 	Gravity(delta)
@@ -201,6 +229,9 @@ func QueryInputs():
 	clickJustPressed = Input.is_action_just_pressed("left_click")
 	clickJustReleased = Input.is_action_just_released("left_click")
 	clickHeld = Input.is_action_pressed("left_click")
+	shiftJustPressed = Input.is_action_just_pressed("shift")
+	shiftJustReleased = Input.is_action_just_released("shift")
+	shiftHeld = Input.is_action_pressed("shift") 
 #check direction
 #check space
 #check mousepos
