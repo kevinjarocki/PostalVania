@@ -3,7 +3,7 @@ extends CharacterBody2D
 # all global variable declarations
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const gravityConstant = 700
+const gravityConstant = 900
 
 #state Variables
 var isGrounded = false
@@ -30,6 +30,11 @@ var maxRopeLength = 500
 var currentRopeLength = 0
 var rad_vel
 var radius
+
+#gliding Variables
+var glideEnabled = true
+var maxGlideSpeed = 300
+var stallSpeed = 200
 
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
@@ -68,9 +73,26 @@ func _physics_process(delta: float) -> void:
 		if velocity.y > 0:
 			isJumping = false
 			isInAir = true
+		if spaceJustReleased:
+			isJumping = false
+			isInAir = true
 		
 	if isInAir:
 		#animation control
+		if velocity.x > 0:
+			$AnimatedSprite2D.scale.x = 1
+		if velocity.x < 0:
+			$AnimatedSprite2D.scale.x = -1
+		if velocity.y > stallSpeed:
+			var fallAngle
+			if $AnimatedSprite2D.scale.x > 0:
+				fallAngle = move_toward(0,PI,1)
+				$AnimatedSprite2D.rotation = fallAngle + (PI/2)
+			if $AnimatedSprite2D.scale.x < 0:
+				fallAngle = move_toward(0,-PI,1)
+				$AnimatedSprite2D.rotation = fallAngle + (-PI/2)
+		else:
+			$AnimatedSprite2D.rotation = 0
 		if direction != 0:
 			$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
 		velocity.x = move_toward(velocity.x, SPEED*direction, 50)
@@ -78,7 +100,7 @@ func _physics_process(delta: float) -> void:
 		if clickJustPressed:
 			isInAir = false
 			isSwinging = true
-		if spaceJustPressed && !isJumping:
+		if spaceJustPressed:
 			isInAir = false
 			isGliding = true
 		if is_on_floor():
@@ -139,6 +161,29 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.rotate(PI/2)
 
 	if isGliding:
+		var glideAngle
+		if velocity.x > 0:
+			$AnimatedSprite2D.scale.x = 1
+		if velocity.x < 0:
+			$AnimatedSprite2D.scale.x = -1
+		if $AnimatedSprite2D.scale.x > 0:
+			glideAngle = move_toward(0,velocity.angle(),1)
+			$AnimatedSprite2D.rotation = glideAngle + (PI/2)
+		if $AnimatedSprite2D.scale.x < 0:
+			glideAngle = move_toward(0,-velocity.angle(),1)
+			$AnimatedSprite2D.rotation = glideAngle + (-PI)
+		if velocity.y > 0 && abs(velocity.x) < maxGlideSpeed:
+			if velocity.x != 0:
+				velocity.x += abs(velocity.y/2)*velocity.x/abs(velocity.x)
+				print("add glide speed")
+			elif velocity.y > stallSpeed:
+				velocity.x = $AnimatedSprite2D.scale.x * move_toward(0,SPEED,10)
+			else:
+				isGliding = false
+				isInAir = true
+		if spaceJustReleased:
+			isGliding = false
+			isInAir = true
 		pass
 	move_and_slide()
 	Gravity(delta)
@@ -166,13 +211,13 @@ func Gravity(delta):
 		velocity.y += gravityConstant*delta*0.5
 		pass
 	if isInAir:
-		velocity.y += gravityConstant*delta*0.5
+		velocity.y += gravityConstant*delta
 		pass
 	if isSwinging:
 		velocity.y += gravityConstant*delta
 		pass
 	if isGliding:
-		velocity.y += gravityConstant*delta*0.1
+		velocity.y = move_toward(velocity.y, gravityConstant*0.1,10)
 		pass
 		
 func getHookPos():
