@@ -89,14 +89,12 @@ one_way_collision = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Raycast" type="Node2D" parent="."]
-rotation = 3.14159
-
-[node name="RayCast01" type="RayCast2D" parent="Raycast"]
-position = Vector2(0, -6)
-target_position = Vector2(500, 0)
-collision_mask = 7
-
 [node name="Rope" parent="." instance=ExtResource("3_cdwam")]
 position = Vector2(-1.915, 4.245)
 centered = false
+
+[node name="RayCast01" type="RayCast2D" parent="."]
+position = Vector2(1.52111e-05, 6)
+rotation = 3.14159
+target_position = Vector2(500, 0)
+collision_mask = 7
