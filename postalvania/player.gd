@@ -291,7 +291,8 @@ func _physics_process(delta: float) -> void:
 			
 		
 	if isYeeting:
-		velocity = -radius.normalized() * yeetSpeed
+		velocity.x = move_toward(velocity.x,-radius.normalized().x * yeetSpeed,100)
+		velocity.y = move_toward(velocity.y,-radius.normalized().y * yeetSpeed,100)
 		
 		#updating radius
 		radius = global_position - hookPos
