@@ -1,16 +1,19 @@
-[gd_scene load_steps=93 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=101 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
 [ext_resource type="Texture2D" uid="uid://bhh4ehkxrm0sg" path="res://Assets/BG/BG_3.png" id="4_l77g2"]
 [ext_resource type="Texture2D" uid="uid://bpejw5eibl3ff" path="res://Assets/BG/BG_2.png" id="5_fmeoi"]
 [ext_resource type="Texture2D" uid="uid://dkv1jyxtagbt4" path="res://Assets/BG/BG_1.png" id="6_wkjxa"]
+[ext_resource type="Texture2D" uid="uid://ctkyywdfldtmw" path="res://Assets/Characters/Free Cow Sprites.png" id="7_i42bq"]
 [ext_resource type="Texture2D" uid="uid://xycccs31qkp3" path="res://Assets/Tilesets/Terrain_and_Props.png" id="7_tqpnm"]
 [ext_resource type="Texture2D" uid="uid://dopufd88dl2a4" path="res://Assets/Characters/Free Chicken Sprites.png" id="8_frunv"]
 [ext_resource type="Script" path="res://Character.gd" id="9_xagyh"]
 [ext_resource type="Texture2D" uid="uid://dtg54j5ef17qo" path="res://Assets/GUI/cryo.png" id="10_n0836"]
 [ext_resource type="FontFile" uid="uid://b6nas1lanoebc" path="res://Assets/Daydream.ttf" id="11_wjavr"]
 [ext_resource type="Texture2D" uid="uid://cw35sbw1jtuss" path="res://Assets/Food.png" id="12_70epx"]
+[ext_resource type="Script" path="res://obj_marker.gd" id="12_dvoah"]
+[ext_resource type="Texture2D" uid="uid://cu155iil8032e" path="res://Assets/GUI/buttons_1x.png" id="12_eu0e3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hy6fm"]
 texture = ExtResource("7_tqpnm")
@@ -572,6 +575,26 @@ region = Rect2(32, 16, 16, 16)
 atlas = ExtResource("8_frunv")
 region = Rect2(48, 16, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bnn6"]
+atlas = ExtResource("7_i42bq")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8df6"]
+atlas = ExtResource("7_i42bq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51kjm"]
+atlas = ExtResource("7_i42bq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ectoc"]
+atlas = ExtResource("7_i42bq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3smj"]
+atlas = ExtResource("7_i42bq")
+region = Rect2(64, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2u4v5"]
 animations = [{
 "frames": [{
@@ -595,6 +618,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"chicken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bnn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8df6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51kjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ectoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3smj")
+}],
+"loop": true,
+"name": &"cow",
 "speed": 5.0
 }]
 
@@ -1085,28 +1128,31 @@ script = ExtResource("1_a7pk4")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -128
-offset = Vector2(-800, -7000)
-transform = Transform2D(1, 0, 0, 1, -800, -7000)
+offset = Vector2(-1200, -5000)
+transform = Transform2D(1, 0, 0, 1, -1200, -5000)
 follow_viewport_scale = 1.34
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-scale = Vector2(20, 20)
+scale = Vector2(15, 15)
 texture = ExtResource("4_l77g2")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(20, 20)
+scale = Vector2(15, 15)
 texture = ExtResource("5_fmeoi")
 centered = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(20, 20)
+scale = Vector2(15, 15)
 texture = ExtResource("6_wkjxa")
 centered = false
 
@@ -1136,8 +1182,6 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
 autoplay = "chicken"
-frame = 3
-frame_progress = 0.216514
 script = ExtResource("9_xagyh")
 
 [node name="Area2D" type="Area2D" parent="Character2"]
@@ -1214,10 +1258,8 @@ shape = SubResource("RectangleShape2D_58dkn")
 position = Vector2(5701, 116)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
-animation = &"chicken"
-autoplay = "chicken"
-frame = 3
-frame_progress = 0.216514
+animation = &"cow"
+autoplay = "cow"
 script = ExtResource("9_xagyh")
 
 [node name="Area2D" type="Area2D" parent="Character7"]
@@ -1417,6 +1459,15 @@ offset_right = 74.5
 offset_bottom = 15.5
 text = "blep"
 label_settings = SubResource("LabelSettings_m5b67")
+
+[node name="ObjMarker" type="Node2D" parent="."]
+script = ExtResource("12_dvoah")
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjMarker"]
+scale = Vector2(4, 4)
+texture = ExtResource("12_eu0e3")
+region_enabled = true
+region_rect = Rect2(104, 0, 8, 8)
 
 [connection signal="character_touched" from="Character" to="." method="_on_character_character_touched"]
 [connection signal="body_entered" from="Character/Area2D" to="Character" method="_on_area_2d_body_entered"]
