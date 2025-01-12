@@ -26,7 +26,7 @@ func _process (delta):
 		cur_stage = stage
 		time.append(time[0])
 		nodeTLArray[stage-1].visible = true
-		$ObjMarker.sprite.position = nodeCharArray[stage].position
+		$ObjMarker.spriteLoc = nodeCharArray[stage].position+ Vector2(0,-28)
 	
 	#Updates current lap time
 	if stage > 0 and stage < 7:
