@@ -8,10 +8,12 @@ var completedTime = [0]
 
 var nodeTLArray = []
 var nodeTLTimerArray = []
+var nodeNPCArray = []
 
 func _ready():
 	nodeTLArray = get_tree().get_nodes_in_group("TL")
 	nodeTLTimerArray = get_tree().get_nodes_in_group("TLTimer")
+	nodeNPCArray = get_tree().get_nodes_in_group("NPC")
 	
 func _process (delta):
 	if !timerPause:
@@ -26,6 +28,7 @@ func _process (delta):
 	
 	if stage > 0 and stage < 7:
 		nodeTLTimerArray[stage-1].text = ("%.2f" %(time[0]-time[stage]) + " sec")
+		$ObjMarker.spriteLoc = nodeNPCArray[stage].global_position + Vector2(0,-25)
 
 func _unhandled_input(event):
 	
