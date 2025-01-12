@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=96 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dtg54j5ef17qo" path="res://Assets/GUI/cryo.png" id="10_n0836"]
 [ext_resource type="FontFile" uid="uid://b6nas1lanoebc" path="res://Assets/Daydream.ttf" id="11_wjavr"]
 [ext_resource type="Texture2D" uid="uid://cw35sbw1jtuss" path="res://Assets/Food.png" id="12_70epx"]
+[ext_resource type="Script" path="res://obj_marker.gd" id="13_hvlaw"]
+[ext_resource type="Texture2D" uid="uid://cu155iil8032e" path="res://Assets/GUI/buttons_1x.png" id="14_exqkm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hy6fm"]
 texture = ExtResource("7_tqpnm")
@@ -610,6 +612,7 @@ Panel/styles/panel = SubResource("StyleBoxTexture_lugyo")
 [sub_resource type="LabelSettings" id="LabelSettings_rt3j8"]
 font = ExtResource("11_wjavr")
 font_color = Color(0, 0, 0, 1)
+outline_size = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_co4dv"]
 font = ExtResource("11_wjavr")
@@ -1082,7 +1085,6 @@ font_size = 10
 font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
-position = Vector2(-235, -21)
 script = ExtResource("1_a7pk4")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -1124,7 +1126,7 @@ tile_map_data = PackedByteArray("AAAxANz+AAAHAAEAAAAxAN3+AAAFAAUAAAAxAN7+AAAFAAM
 tile_set = SubResource("TileSet_k4xy5")
 
 [node name="Character" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(4507, -3833)
+position = Vector2(1517, -4928)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1140,7 +1142,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character2" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(4955, -4062)
+position = Vector2(1965, -5157)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1156,7 +1158,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character3" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(5453, -3920)
+position = Vector2(2463, -5015)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1172,7 +1174,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character4" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(6693, -3855)
+position = Vector2(3703, -4950)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1188,7 +1190,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character5" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(7860, -3992)
+position = Vector2(4870, -5087)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1204,7 +1206,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character6" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(8869, -3814)
+position = Vector2(5879, -4909)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1220,7 +1222,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character7" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(10143, -3728)
+position = Vector2(6760, -4997)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1427,6 +1429,15 @@ offset_right = 74.5
 offset_bottom = 15.5
 text = "blep"
 label_settings = SubResource("LabelSettings_m5b67")
+
+[node name="ObjMarker" type="Node2D" parent="."]
+script = ExtResource("13_hvlaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjMarker"]
+scale = Vector2(3, 3)
+texture = ExtResource("14_exqkm")
+region_enabled = true
+region_rect = Rect2(104, 0, 8, 8)
 
 [connection signal="character_touched" from="Character" to="." method="_on_character_character_touched"]
 [connection signal="body_entered" from="Character/Area2D" to="Character" method="_on_area_2d_body_entered"]
