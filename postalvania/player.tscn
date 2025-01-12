@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://drcg3w6rfh6p2"]
+[gd_scene load_steps=18 format=3 uid="uid://drcg3w6rfh6p2"]
 
 [ext_resource type="Texture2D" uid="uid://u85fg130k1ga" path="res://Assets/Squirrel/idle/spritesheet.png" id="1_oq6uf"]
 [ext_resource type="Script" path="res://player.gd" id="1_y5ota"]
 [ext_resource type="PackedScene" uid="uid://ctrunma5d1map" path="res://rope.tscn" id="3_cdwam"]
+[ext_resource type="Texture2D" uid="uid://cw35sbw1jtuss" path="res://Assets/Food.png" id="4_k1cno"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y0nj"]
 atlas = ExtResource("1_oq6uf")
@@ -68,6 +69,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylsjt"]
+atlas = ExtResource("4_k1cno")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4b57"]
+atlas = ExtResource("4_k1cno")
+region = Rect2(96, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_308a8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylsjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4b57")
+}],
+"loop": true,
+"name": &"flap",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kji3o"]
 radius = 7.0
 height = 24.0
@@ -82,6 +105,15 @@ animation = &"Idle"
 autoplay = "Idle"
 frame = 4
 frame_progress = 0.286085
+
+[node name="glider" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+visible = false
+position = Vector2(-13, 7)
+rotation = -1.25338
+sprite_frames = SubResource("SpriteFrames_308a8")
+animation = &"flap"
+frame = 1
+frame_progress = 0.669762
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 7)
@@ -99,5 +131,5 @@ offset = Vector2(0, 18.19)
 
 [node name="RayCast01" type="RayCast2D" parent="."]
 rotation = 3.14159
-target_position = Vector2(500, 0)
+target_position = Vector2(600, 0)
 collision_mask = 7

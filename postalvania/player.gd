@@ -164,6 +164,8 @@ func _physics_process(delta: float) -> void:
 	
 	if isGliding:
 		var glideAngle
+		$AnimatedSprite2D/glider.visible = true 
+		$AnimatedSprite2D/glider.play("flap")
 		if velocity.x > 0:
 			$AnimatedSprite2D.scale.x = 1
 		if velocity.x < 0:
@@ -189,6 +191,9 @@ func _physics_process(delta: float) -> void:
 		if clickJustPressed:
 			isGliding = false
 			isSwinging = true
+		if isGliding == false:
+			$AnimatedSprite2D/glider.stop()
+			$AnimatedSprite2D/glider.visible = false
 		pass
 		
 	if isDashing:
