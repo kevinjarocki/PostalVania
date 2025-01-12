@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 # all global variable declarations
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-const gravityConstant = 700
+const JUMP_VELOCITY = -700.0
+const gravityConstant = 650
 
 #state Variables
 var isGrounded = false
