@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://u85fg130k1ga" path="res://Assets/Squirrel/idle/spritesheet.png" id="1_oq6uf"]
 [ext_resource type="Script" path="res://player.gd" id="1_y5ota"]
-[ext_resource type="PackedScene" uid="uid://ctrunma5d1map" path="res://rope.tscn" id="3_cdwam"]
+[ext_resource type="PackedScene" path="res://rope.tscn" id="3_cdwam"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y0nj"]
 atlas = ExtResource("1_oq6uf")

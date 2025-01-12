@@ -8,22 +8,27 @@ var completedTime = [0]
 
 var nodeTLArray = []
 var nodeTLTimerArray = []
+var nodeCharArray = []
 
 func _ready():
 	nodeTLArray = get_tree().get_nodes_in_group("TL")
 	nodeTLTimerArray = get_tree().get_nodes_in_group("TLTimer")
+	nodeCharArray = get_tree().get_nodes_in_group("NPC")
+	print (nodeCharArray)
 	
 func _process (delta):
 	if !timerPause:
 		time[0] += delta
-		
 	$Player/Control/Timer.text = ("%.2f" %time[0] + " sec")
 	
+	#Add next lap time
 	if cur_stage != stage and stage < 7:
 		cur_stage = stage
 		time.append(time[0])
 		nodeTLArray[stage-1].visible = true
+		$ObjMarker.spriteLoc = nodeCharArray[stage].position+ Vector2(0,-28)
 	
+	#Updates current lap time
 	if stage > 0 and stage < 7:
 		nodeTLTimerArray[stage-1].text = ("%.2f" %(time[0]-time[stage]) + " sec")
 
