@@ -117,7 +117,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.rotation = 0
 		if direction != 0:
 			$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
-		velocity.x = move_toward(velocity.x, SPEED*direction, 50)
+		velocity.x = move_toward(velocity.x, SPEED*direction, 20)
 		#state transitions
 		if clickJustPressed:
 			isInAir = false
