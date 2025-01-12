@@ -34,7 +34,7 @@ func _unhandled_input(event):
 	
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
-			$Player.position = Vector2(0,0)
+			$Player.position = $"Respawn Point".position
 			$Player.isGrounded = false
 			$Player.isJumping = false
 			$Player.isInAir = true
