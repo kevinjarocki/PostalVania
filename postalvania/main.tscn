@@ -1082,6 +1082,7 @@ font_size = 10
 font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
+position = Vector2(-235, -21)
 script = ExtResource("1_a7pk4")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -1123,7 +1124,7 @@ tile_map_data = PackedByteArray("AAAxANz+AAAHAAEAAAAxAN3+AAAFAAUAAAAxAN7+AAAFAAM
 tile_set = SubResource("TileSet_k4xy5")
 
 [node name="Character" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(65, 11)
+position = Vector2(4507, -3833)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1139,7 +1140,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character2" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(513, -218)
+position = Vector2(4955, -4062)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1155,7 +1156,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character3" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(1011, -76)
+position = Vector2(5453, -3920)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1171,7 +1172,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character4" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(2251, -11)
+position = Vector2(6693, -3855)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1187,7 +1188,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character5" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(3418, -148)
+position = Vector2(7860, -3992)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1203,7 +1204,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character6" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(4427, 30)
+position = Vector2(8869, -3814)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1219,7 +1220,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Character7" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(5701, 116)
+position = Vector2(10143, -3728)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
