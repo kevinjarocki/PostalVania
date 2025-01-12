@@ -47,7 +47,7 @@ var radius
 
 #gliding Variables
 var glideEnabled = true
-var maxGlideSpeed = 300
+var maxGlideSpeed = 600
 var stallSpeed = 200
 
 #dash variables
@@ -58,7 +58,7 @@ var dashVelocity = 1200
 var slideSpeed = 0
 
 #
-var yeetSpeed = 700
+var yeetSpeed = 1200
 
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
@@ -125,7 +125,14 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.rotation = 0
 		if direction != 0:
 			$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
-		velocity.x = move_toward(velocity.x, SPEED*direction, 20)
+			#keep your lateral movion if youre not pressing inputs. adds to flow of game. no air brakes
+			if abs(velocity.x) > SPEED:
+				if direction * sign(velocity.x) < 1:
+					velocity.x = move_toward(velocity.x, SPEED*direction, 20)
+			else:
+				velocity.x = move_toward(velocity.x, SPEED*direction, 20)
+		
+			
 		#state transitions
 		if clickJustPressed:
 			isInAir = false
@@ -148,6 +155,7 @@ func _physics_process(delta: float) -> void:
 			slideSpeed = velocity.x*2
 			print("boost")
 		if cntrlHeld:
+			$AnimatedSprite2D.scale.y = 0.5
 			velocity.x = slideSpeed
 			print("still sliding")
 			print(isGrounded)
@@ -155,19 +163,24 @@ func _physics_process(delta: float) -> void:
 		if !is_on_floor():
 			isInAir = true
 			isSliding = false
+			$AnimatedSprite2D.scale.y = 1
 		if spaceJustPressed:
 			isSliding = false
 			isJumping = true
+			$AnimatedSprite2D.scale.y = 1
 		elif clickJustPressed:
 			isSliding = false
 			isSwinging = true
+			$AnimatedSprite2D.scale.y = 1
 		elif cntrlJustReleased:
 			isSliding = false
+			$AnimatedSprite2D.scale.y = 1
 			if is_on_floor():
 				isGrounded = true
 			else:isInAir = true
 		else:
 			isInAir = true
+			$AnimatedSprite2D.scale.y = 1
 		pass
 	
 	if isGliding:
@@ -207,6 +220,7 @@ func _physics_process(delta: float) -> void:
 	if isDashing:
 		if !dashEnabled:
 			return
+		
 		velocity.x += $AnimatedSprite2D.scale.x * dashVelocity
 		velocity.y = 0
 		
@@ -277,7 +291,26 @@ func _physics_process(delta: float) -> void:
 			
 		
 	if isYeeting:
-		velocity = radius * yeetSpeed
+		velocity = -radius.normalized() * yeetSpeed
+		
+		#updating radius
+		radius = global_position - hookPos
+		
+		#Updating Hook Drawing
+		$Rope.look_at(hookPos)
+		$Rope.rotate(-PI/2)
+		$Rope.region_rect = Rect2(Vector2(0,0),Vector2(125,radius.length()/$Rope.scale.y))
+			
+			
+		var proximity = global_position - hookPos
+		if proximity.length() < 30 || rightClickJustReleased:
+			isYeeting = false
+			$Rope.visible = false
+			if is_on_floor():
+				isGrounded = true
+			else:
+				isInAir = true
+			
 
 	oldIsSliding = isSliding
 	move_and_slide()
@@ -292,6 +325,9 @@ func QueryInputs():
 	clickJustPressed = Input.is_action_just_pressed("left_click")
 	clickJustReleased = Input.is_action_just_released("left_click")
 	clickHeld = Input.is_action_pressed("left_click")
+	rightClickJustPressed = Input.is_action_just_pressed("right_click")
+	rightClickJustReleased = Input.is_action_just_released("right_click")
+	rightClickHeld = Input.is_action_pressed("right_click")
 	shiftJustPressed = Input.is_action_just_pressed("shift")
 	shiftJustReleased = Input.is_action_just_released("shift")
 	shiftHeld = Input.is_action_pressed("shift") 
