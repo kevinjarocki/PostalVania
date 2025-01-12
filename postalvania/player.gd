@@ -12,6 +12,8 @@ var isInAir = true
 var isSwinging = false
 var isGliding = false
 var isDashing = false
+var isSliding = false
+var oldIsSliding = false
 
 #Input Variables
 var mousePosition = Vector2(0,0)
@@ -25,6 +27,9 @@ var clickHeld = false
 var shiftJustPressed = false
 var shiftJustReleased = false
 var shiftHeld = false
+var cntrlJustPressed = false
+var cntrlJustReleased = false
+var cntrlHeld = false
 
 #swinging variables
 var hookEnabled = true
@@ -42,7 +47,10 @@ var stallSpeed = 200
 
 #dash variables
 var dashEnabled = true
-var dashVelocity = 800
+var dashVelocity = 1200
+
+#slide variables
+var slideSpeed = 0
 
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
@@ -66,6 +74,9 @@ func _physics_process(delta: float) -> void:
 		if shiftJustPressed:
 			isDashing = true
 			isGrounded = false
+		if cntrlJustPressed:
+			isGrounded = false
+			isSliding = true
 		if is_on_floor() == false:
 			isGrounded = false
 			isInAir = true
@@ -118,10 +129,39 @@ func _physics_process(delta: float) -> void:
 			isDashing = true
 			isGrounded = false
 		if is_on_floor():
-			isInAir = false
-			isGrounded = true
+			if cntrlHeld:
+				isSliding = true
+			else:
+				isInAir = false
+				isGrounded = true
 		pass
+	if isSliding:
+		if !oldIsSliding:
+			slideSpeed = velocity.x*2
+			print("boost")
+		if cntrlHeld:
+			velocity.x = slideSpeed
+			print("still sliding")
+			print(isGrounded)
 		
+		if !is_on_floor():
+			isInAir = true
+			isSliding = false
+		if spaceJustPressed:
+			isSliding = false
+			isJumping = true
+		elif clickJustPressed:
+			isSliding = false
+			isSwinging = true
+		elif cntrlJustReleased:
+			isSliding = false
+			if is_on_floor():
+				isGrounded = true
+			else:isInAir = true
+		else:
+			isInAir = true
+		pass
+	
 	if isGliding:
 		var glideAngle
 		if velocity.x > 0:
@@ -216,7 +256,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.rotate(PI/2)
 
 
-	
+	oldIsSliding = isSliding
 	move_and_slide()
 	Gravity(delta)
 	
@@ -232,6 +272,9 @@ func QueryInputs():
 	shiftJustPressed = Input.is_action_just_pressed("shift")
 	shiftJustReleased = Input.is_action_just_released("shift")
 	shiftHeld = Input.is_action_pressed("shift") 
+	cntrlJustPressed = Input.is_action_just_pressed("control")
+	cntrlJustReleased = Input.is_action_just_released("control")
+	cntrlHeld = Input.is_action_pressed("control") 
 #check direction
 #check space
 #check mousepos
