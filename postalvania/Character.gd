@@ -19,7 +19,5 @@ func character_touch ():
 	$"..".nodeTLArray[$"..".stage-1].frame = $"..".stage-1
 	$"../Player".process_mode = Node.PROCESS_MODE_DISABLED
 	
-	$"../HiScoreNode".position = position
-	
 	if $"..".stage > 1:
 		$"..".completeTime()
