@@ -110,7 +110,6 @@ frame_progress = 0.286085
 visible = false
 position = Vector2(-13, 7)
 rotation = -1.25338
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_308a8")
 animation = &"flap"
 frame = 1
