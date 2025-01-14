@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 # all global variable declarations
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-const gravityConstant = 650
+const SPEED = 400.0
+const JUMP_VELOCITY = -550.0
+const gravityConstant = 750
 var terminalVelocity = 600
 
 #state Variables
@@ -136,12 +136,18 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
 		if spaceJustPressed:
 			velocity.y = JUMP_VELOCITY
-		velocity.x = move_toward(velocity.x, SPEED*direction, 50)
+		#maintaining air control on ascent
+		if abs(velocity.x) > SPEED/2:
+			if direction * sign(velocity.x) < 1:
+				velocity.x = move_toward(velocity.x, SPEED*direction/2, 60)
+		else:
+			velocity.x = move_toward(velocity.x, SPEED*direction/2, 30)
 		#transitions out of state
 		if velocity.y > 0:
 			isJumping = false
 			isInAir = true
 		if spaceJustReleased:
+			velocity.y = move_toward(velocity.y,0,200)
 			isJumping = false
 			isInAir = true
 		################################################## IN AIR IN AIR
@@ -164,11 +170,11 @@ func _physics_process(delta: float) -> void:
 		if direction != 0:
 			$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
 			#keep your lateral movion if youre not pressing inputs. adds to flow of game. no air brakes
-			if abs(velocity.x) > SPEED:
+			if abs(velocity.x) > SPEED/2:
 				if direction * sign(velocity.x) < 1:
-					velocity.x = move_toward(velocity.x, SPEED*direction, 50)
+					velocity.x = move_toward(velocity.x, SPEED*direction/2, 60)
 			else:
-				velocity.x = move_toward(velocity.x, SPEED*direction, 50)
+				velocity.x = move_toward(velocity.x, SPEED*direction/2, 30)
 			
 		#state transitions
 		if clickJustPressed && hookEnabled:
@@ -368,7 +374,7 @@ func Gravity(delta):
 			#do gravity
 			velocity.y += gravityConstant*delta
 		if isJumping:
-			velocity.y += gravityConstant*delta*0.8
+			velocity.y += gravityConstant*delta*1.2
 		if isSwinging:
 			velocity.y += gravityConstant*delta   
 		if isGliding:
