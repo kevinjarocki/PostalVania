@@ -1888,7 +1888,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("15_gbex4")
 
 [node name="hook" parent="." instance=ExtResource("16_brnb8")]
-position = Vector2(3503, -3171)
+position = Vector2(1720, -3194)
 
 [node name="glide" parent="." instance=ExtResource("16_brnb8")]
 position = Vector2(10216, -5034)

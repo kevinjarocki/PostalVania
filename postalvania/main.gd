@@ -78,4 +78,7 @@ func _on_character_7_character_touched(first_touch: Variant) -> void:
 	$Player/Control/NinePatchRect/DialogueText.text = "Thanks for the delivery! I love that chicken! You win!!. Your final total time is: " + ("%.2f" %time[0] + " sec")
 	$Player/Control/NinePatchRect/DialogueSprite.visible = false
 	$Player/Control/NinePatchRect/Received.visible = false
+	
+	$HiScoreNode.position = $Character7.position
+	
 	pass # Replace with function body.
