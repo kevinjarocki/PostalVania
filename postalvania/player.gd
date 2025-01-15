@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 		slideEnabled = true
 		dashEnabled = true
 		yeetEnabled = true
-
+	print(isInAir)
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
 	QueryInputs()
@@ -93,7 +93,7 @@ func _physics_process(delta: float) -> void:
 		#physics
 		velocity.x = move_toward(velocity.x, SPEED*direction, 200)
 		#transitions out of state
-		if spaceJustPressed:
+		if spaceHeld:
 			isGrounded = false
 			isJumping = true
 		elif shiftJustPressed && dashEnabled && dashIsReady:
@@ -104,6 +104,7 @@ func _physics_process(delta: float) -> void:
 			isSliding = true
 		elif is_on_floor() == false:
 			isGrounded = false
+			#ruled out
 			isInAir = true
 			
 		######################   SLIDING SLIDING
@@ -120,7 +121,7 @@ func _physics_process(delta: float) -> void:
 
 		
 		if !is_on_floor():
-			isInAir = true
+			#isInAir = true
 			isSliding = false
 			$AnimatedSprite2D.scale.y = 1
 		if spaceJustPressed:
@@ -393,16 +394,19 @@ func QueryInputs():
 #check click
 
 func Gravity(delta):
-	if velocity.y < terminalVelocity:
+	if velocity.y < (terminalVelocity+30):
 		if isGrounded||isInAir:
 			#do gravity
 			velocity.y += gravityConstant*delta
-		if isJumping:
+		elif isJumping:
 			velocity.y += gravityConstant*delta*1.2
-		if isSwinging:
-			velocity.y += gravityConstant*delta   
-		if isGliding:
-			velocity.y = move_toward(velocity.y, (maxGlideSpeed/abs(velocity.x)+100)-2 ,100)
+		elif isSwinging:
+			velocity.y += gravityConstant*delta 
+	if isGliding:
+		#gravity problems do not have anything to do with this line
+		velocity.y = move_toward(velocity.y,maxGlideSpeed/abs(velocity.x+100)-15, 30)
+		print("glide god damn it")
+		# <- second term
 		
 func getHookPos():
 	if $RayCast01.is_colliding():
