@@ -68,6 +68,10 @@ var yeetEnabled = false
 var yeetIsReady = false
 var yeetSpeed = 300
 
+#coyote variables
+var coyoteTime = false
+
+
 
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
@@ -78,6 +82,8 @@ func _process(delta: float) -> void:
 		slideEnabled = true
 		dashEnabled = true
 		yeetEnabled = true
+		
+	print(isSliding)
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
 	QueryInputs()
@@ -101,24 +107,23 @@ func _physics_process(delta: float) -> void:
 		elif cntrlJustPressed && slideEnabled && slideIsReady:
 			isGrounded = false
 			isSliding = true
-		elif is_on_floor() == false:
-			isGrounded = false
-			#ruled out
-			isInAir = true
+		elif is_on_floor() == false && coyoteTime == false:
+			coyoteTime = true
+			$coyoteTime.start()
 			
 		######################   SLIDING SLIDING
 	if isSliding:
 		$slideTimer.start()
 		slideIsReady = false
 		if oldIsSliding == false:
-			slideSpeed = velocity.x*2
+			slideSpeed = velocity.x*1.5 + SPEED*sign(velocity.x)
 		if cntrlHeld:
 			$AnimatedSprite2D.scale.y = 0.5
 			velocity.x = slideSpeed
 
 		
 		if !is_on_floor():
-			#isInAir = true
+			isInAir = true
 			isSliding = false
 			$AnimatedSprite2D.scale.y = 1
 		if spaceJustPressed:
@@ -445,3 +450,9 @@ func _on_slide_timer_timeout() -> void:
 
 func _on_yeet_timer_timeout() -> void:
 	yeetIsReady = true
+
+
+func _on_coyote_time_timeout() -> void:
+	coyoteTime = false
+	isGrounded = false
+	isInAir = true
