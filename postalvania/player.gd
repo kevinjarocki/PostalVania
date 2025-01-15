@@ -39,6 +39,7 @@ var cntrlHeld = false
 
 #swinging variables
 var hookEnabled = false
+var hookIsReady = false
 var hookActive = false
 var hookPos
 var maxRopeLength = 500
@@ -48,25 +49,28 @@ var radius
 
 #gliding Variables
 var glideEnabled = false
+var glideIsReady = false
 var maxGlideSpeed = 600
 var stallSpeed = 200
 
 #dash variables
 var dashEnabled = false
+var dashIsReady = false
 var dashVelocity = 400
 
 #slide variables
 var slideEnabled = false
+var slideIsReady = false
 var slideSpeed = 0
 
 #yeet variables
 var yeetEnabled = false
+var yeetIsReady = false
 var yeetSpeed = 300
 
 
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
-	
 	if Input.is_action_pressed("1"):
 		#CHEAT MODE
 		hookEnabled = true
@@ -92,10 +96,10 @@ func _physics_process(delta: float) -> void:
 		if spaceJustPressed:
 			isGrounded = false
 			isJumping = true
-		elif shiftJustPressed && dashEnabled:
+		elif shiftJustPressed && dashEnabled && dashIsReady:
 			isDashing = true
 			isGrounded = false
-		elif cntrlJustPressed && slideEnabled:
+		elif cntrlJustPressed && slideEnabled && slideIsReady:
 			isGrounded = false
 			isSliding = true
 		elif is_on_floor() == false:
@@ -104,6 +108,8 @@ func _physics_process(delta: float) -> void:
 			
 		######################   SLIDING SLIDING
 	if isSliding:
+		$slideTimer.start()
+		slideIsReady = false
 		if oldIsSliding == false:
 			slideSpeed = velocity.x*2
 			print("boost")
@@ -121,7 +127,7 @@ func _physics_process(delta: float) -> void:
 			isSliding = false
 			isJumping = true
 			$AnimatedSprite2D.scale.y = 1
-		elif clickJustPressed && hookEnabled:
+		elif clickJustPressed && hookEnabled && hookIsReady:
 			isSliding = false
 			isSwinging = true
 			$AnimatedSprite2D.scale.y = 1
@@ -186,18 +192,18 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, SPEED*direction/2, 30)
 			
 		#state transitions
-		if clickJustPressed && hookEnabled:
+		if clickJustPressed && hookEnabled && hookIsReady:
 			isInAir = false
 			isSwinging = true
-		elif spaceJustPressed && glideEnabled:
+		elif spaceJustPressed && glideEnabled && glideIsReady:
 			isInAir = false
 			isGliding = true
-		elif shiftJustPressed && dashEnabled:
+		elif shiftJustPressed && dashEnabled && dashIsReady:
 			isDashing = true
 			isInAir = false
 		elif is_on_floor():
 			isInAir = false
-			if cntrlHeld && slideEnabled:
+			if cntrlHeld && slideEnabled && slideIsReady:
 				isSliding = true
 			else:
 				isGrounded = true
@@ -205,6 +211,8 @@ func _physics_process(delta: float) -> void:
 				
 		################################## GLIDING GLIDING
 	if isGliding:
+		$glideTimer.start()
+		glideIsReady = false
 		var glideAngle
 		$AnimatedSprite2D/glider.visible = true 
 		$AnimatedSprite2D/glider.play("flap")
@@ -232,7 +240,7 @@ func _physics_process(delta: float) -> void:
 		if spaceJustReleased:
 			isGliding = false
 			isInAir = true
-		if clickJustPressed && hookEnabled:
+		if clickJustPressed && hookEnabled && hookIsReady:
 			isGliding = false
 			isSwinging = true
 		if is_on_floor():
@@ -245,6 +253,7 @@ func _physics_process(delta: float) -> void:
 		################################################## DASHING DASHING
 		
 	if isDashing:
+		dashIsReady = false
 		if !dashEnabled:
 			return
 		
@@ -254,7 +263,7 @@ func _physics_process(delta: float) -> void:
 		isDashing = false
 		if is_on_floor():
 			isGrounded = true
-		elif clickJustPressed && hookEnabled:
+		elif clickJustPressed && hookEnabled && hookIsReady:
 			isSwinging = true
 		else:
 			isInAir = true
@@ -262,6 +271,8 @@ func _physics_process(delta: float) -> void:
 			############################################# SWINGING SWINGING
 			
 	if isSwinging:
+		$hookTimer.start()
+		hookIsReady = false
 		#Hook Update to check if i can swing
 		if clickJustPressed:
 			hookPos = getHookPos()
@@ -315,7 +326,7 @@ func _physics_process(delta: float) -> void:
 			isSwinging = false
 			isInAir = true
 			
-		if rightClickJustPressed && yeetEnabled:
+		if rightClickJustPressed && yeetEnabled && yeetIsReady:
 			hookActive = false
 			isSwinging = false
 			isYeeting = true
@@ -324,6 +335,8 @@ func _physics_process(delta: float) -> void:
 		##########################################  YEETING YEETING
 		
 	if isYeeting:
+		$yeetTimer.start()
+		yeetIsReady = false
 		var existingVel
 #something weird happened here but it seems to be fine? causes huge exponential accel when yeeting but its fun at least. Used to use oldIsYeet to get speed at time of yeet and assign that as a variable and use the new var so speed doesnt go exponential but it was craching
 		existingVel = velocity
@@ -411,3 +424,23 @@ func enableAbility(abilityName):
 		glideEnabled = true
 	else:
 		print("no ability name match found")
+
+
+func _on_hook_timer_timeout() -> void:
+	hookIsReady = true
+
+
+func _on_glide_timer_timeout() -> void:
+	glideIsReady = true
+
+
+func _on_dash_timer_timeout() -> void:
+	dashIsReady = true
+
+
+func _on_slide_timer_timeout() -> void:
+	slideIsReady = true
+
+
+func _on_yeet_timer_timeout() -> void:
+	yeetIsReady = true
