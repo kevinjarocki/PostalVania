@@ -78,7 +78,6 @@ func _process(delta: float) -> void:
 		slideEnabled = true
 		dashEnabled = true
 		yeetEnabled = true
-	print(isInAir)
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
 	QueryInputs()
@@ -113,11 +112,9 @@ func _physics_process(delta: float) -> void:
 		slideIsReady = false
 		if oldIsSliding == false:
 			slideSpeed = velocity.x*2
-			print("boost")
 		if cntrlHeld:
 			$AnimatedSprite2D.scale.y = 0.5
 			velocity.x = slideSpeed
-			print("still sliding")
 
 		
 		if !is_on_floor():
@@ -174,12 +171,12 @@ func _physics_process(delta: float) -> void:
 		if velocity.x < 0:
 			$AnimatedSprite2D.scale.x = -1
 		if velocity.y > stallSpeed:
-			var fallAngle
+			var fallAngle = 0
 			if $AnimatedSprite2D.scale.x > 0:
 				fallAngle = move_toward(0,PI,1)
 				$AnimatedSprite2D.rotation = fallAngle + (PI/2)
 			if $AnimatedSprite2D.scale.x < 0:
-				fallAngle = move_toward(0,-PI,1)
+				fallAngle = move_toward(0,180-PI,1)
 				$AnimatedSprite2D.rotation = fallAngle + (-PI/2)
 		else:
 			$AnimatedSprite2D.rotation = 0
@@ -214,7 +211,7 @@ func _physics_process(delta: float) -> void:
 	if isGliding:
 		$glideTimer.start()
 		glideIsReady = false
-		var glideAngle
+		var glideAngle = 0
 		$AnimatedSprite2D/glider.visible = true 
 		$AnimatedSprite2D/glider.play("flap")
 		if velocity.x > 0:
@@ -225,7 +222,7 @@ func _physics_process(delta: float) -> void:
 			glideAngle = move_toward(0,velocity.angle(),1)
 			$AnimatedSprite2D.rotation = glideAngle + (PI/2)
 		if $AnimatedSprite2D.scale.x < 0:
-			glideAngle = move_toward(0,-velocity.angle(),1)
+			glideAngle = move_toward(0,PI/2 - velocity.angle(),1)
 			$AnimatedSprite2D.rotation = glideAngle + (-PI/2)
 		if velocity.y > 0 && abs(velocity.x) < maxGlideSpeed:
 			if abs(velocity.x) != 0:
@@ -404,8 +401,8 @@ func Gravity(delta):
 			velocity.y += gravityConstant*delta 
 	if isGliding:
 		#gravity problems do not have anything to do with this line
-		velocity.y = move_toward(velocity.y,maxGlideSpeed/abs(velocity.x+100)-15, 30)
-		print("glide god damn it")
+		velocity.y = move_toward(velocity.y,(maxGlideSpeed/velocity.x) + 5000*delta , 30)
+		print("glide gravity", (maxGlideSpeed/velocity.x) + 200*delta)
 		# <- second term
 		
 func getHookPos():
