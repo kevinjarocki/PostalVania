@@ -63,8 +63,17 @@ var slideSpeed = 0
 var yeetEnabled = false
 var yeetSpeed = 300
 
+
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
+	
+	if Input.is_action_pressed("1"):
+		#CHEAT MODE
+		hookEnabled = true
+		glideEnabled = true
+		slideEnabled = true
+		dashEnabled = true
+		yeetEnabled = true
 
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
@@ -288,6 +297,8 @@ func _physics_process(delta: float) -> void:
 				velocity += radius.normalized().rotated(PI/2) * -rad_vel/(9000+500) * SPEED
 			
 			#velocity += (hookPos - global_position).normalized() * 1000 * delta
+			#the next line can be used to limit/remove massive reel
+			#velocity += radius.normalized() * 40
 			
 			#draw the hook
 			$Rope.visible = true
