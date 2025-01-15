@@ -156,8 +156,13 @@ autostart = true
 wait_time = 7.0
 autostart = true
 
+[node name="coyoteTime" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
 [connection signal="timeout" from="hookTimer" to="." method="_on_hook_timer_timeout"]
 [connection signal="timeout" from="glideTimer" to="." method="_on_glide_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="slideTimer" to="." method="_on_slide_timer_timeout"]
 [connection signal="timeout" from="yeetTimer" to="." method="_on_yeet_timer_timeout"]
+[connection signal="timeout" from="coyoteTime" to="." method="_on_coyote_time_timeout"]
