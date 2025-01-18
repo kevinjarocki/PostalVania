@@ -154,11 +154,13 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D/glider.play("Walk")
 			$AnimatedSprite2D/hook.play("Walk")
 			$AnimatedSprite2D/slide.play("Walk")
+			$AnimatedSprite2D/dash.play("Walk")
 		else:
 			$AnimatedSprite2D.play("Idle")
 			$AnimatedSprite2D/glider.play("Idle")
 			$AnimatedSprite2D/hook.play("Idle")
 			$AnimatedSprite2D/slide.play("Idle")
+			$AnimatedSprite2D/dash.play("Idle")
 		#physics
 		velocity.x = move_toward(velocity.x, SPEED*direction, 200)
 		#transitions out of state
@@ -321,6 +323,8 @@ func _physics_process(delta: float) -> void:
 	if isDashing:
 		print("dash")
 		$dashTimer.start()
+		$AnimatedSprite2D/dash.play("Dash")
+		$AnimatedSprite2D.play("Dash")
 		dashIsReady = false
 		if !dashEnabled:
 			return
