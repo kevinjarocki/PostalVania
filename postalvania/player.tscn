@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://drcg3w6rfh6p2"]
+[gd_scene load_steps=68 format=3 uid="uid://drcg3w6rfh6p2"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_y5ota"]
 [ext_resource type="Texture2D" uid="uid://cm436otkrrp42" path="res://Assets/Shareef Art/WormWalk.png" id="3_3da3u"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://blfldrelohswm" path="res://Assets/Shareef Art/WingSwing.png" id="5_17jts"]
 [ext_resource type="Texture2D" uid="uid://0wugpswbksjw" path="res://Assets/Shareef Art/SlugWalk.png" id="8_45ufy"]
 [ext_resource type="Texture2D" uid="uid://ded2obswvq7ar" path="res://Assets/Shareef Art/SlugSwing.png" id="9_ah82r"]
+[ext_resource type="Texture2D" uid="uid://6vrjh4qkqytc" path="res://Assets/Shareef Art/WormSlide.png" id="9_ubk8t"]
+[ext_resource type="Texture2D" uid="uid://d2e5aae08qb1k" path="res://Assets/Shareef Art/SlugSlide.png" id="10_rdnkq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hx54"]
 atlas = ExtResource("3_3da3u")
@@ -18,6 +20,22 @@ region = Rect2(0, 0, 630, 500)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hraty"]
 atlas = ExtResource("3_3da3u")
 region = Rect2(630, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jegm3"]
+atlas = ExtResource("9_ubk8t")
+region = Rect2(0, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1npf0"]
+atlas = ExtResource("9_ubk8t")
+region = Rect2(630, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_773yp"]
+atlas = ExtResource("9_ubk8t")
+region = Rect2(0, 500, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_766a1"]
+atlas = ExtResource("9_ubk8t")
+region = Rect2(630, 500, 630, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3icm"]
 atlas = ExtResource("3_8r3e2")
@@ -62,6 +80,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jegm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1npf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_773yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_766a1")
+}],
+"loop": false,
+"name": &"Slide",
 "speed": 5.0
 }, {
 "frames": [{
@@ -302,6 +337,22 @@ region = Rect2(0, 0, 630, 500)
 atlas = ExtResource("8_45ufy")
 region = Rect2(630, 0, 630, 500)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_chg22"]
+atlas = ExtResource("10_rdnkq")
+region = Rect2(0, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7olqw"]
+atlas = ExtResource("10_rdnkq")
+region = Rect2(630, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcnsc"]
+atlas = ExtResource("10_rdnkq")
+region = Rect2(0, 500, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8n7d"]
+atlas = ExtResource("10_rdnkq")
+region = Rect2(630, 500, 630, 500)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnwp8"]
 atlas = ExtResource("9_ah82r")
 region = Rect2(0, 0, 630, 500)
@@ -347,8 +398,20 @@ animations = [{
 "name": &"Idle",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chg22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7olqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcnsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8n7d")
+}],
+"loop": false,
 "name": &"Slide",
 "speed": 5.0
 }, {
@@ -398,7 +461,7 @@ script = ExtResource("1_y5ota")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.11175, 0.11175)
 sprite_frames = SubResource("SpriteFrames_sos26")
-animation = &"Walk"
+animation = &"Slide"
 autoplay = "Idle"
 
 [node name="glider" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
@@ -415,7 +478,7 @@ animation = &"Walk"
 [node name="slide" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_i2ccv")
-animation = &"Swing"
+animation = &"Slide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -445,7 +508,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="dashTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="slideTimer" type="Timer" parent="."]
