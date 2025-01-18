@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=138 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bw7sec2n3ip5y" path="res://abilityCow.tscn" id="16_brnb8"]
 [ext_resource type="PackedScene" uid="uid://cgqg2sbamegk1" path="res://Assets/Theresa Art/spiderAnimation.tscn" id="16_hydth"]
 [ext_resource type="Script" path="res://hi_score.gd" id="16_mtk24"]
+[ext_resource type="Script" path="res://Wisp.gd" id="18_yby3r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lugyo"]
 
@@ -1587,6 +1588,24 @@ corner_radius_bottom_left = 3
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Curve2D" id="Curve2D_orxon"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7946, -5693, -233.736, 89.8984, 233.736, -89.8984, 8998, -6236, 0, 0, 0, 0, 9615, -6479, -538.103, 67.7083, 538.103, -67.7083, 11597, -7464, 0, 0, 0, 0, 12616, -7440, -245.888, -138.98, 245.888, 138.98, 13425, -7104, 0, 0, 0, 0, 13970, -6745, 192.434, -481.085, -192.434, 481.085, 14372, -6055, 0, 0, 0, 0, 13371, -5510, 320.724, -110.471, -320.724, 110.471, 12413, -5132, 331.414, -28.5088, -331.414, 28.5088, 11699, -4797, 288.651, 39.1995, -288.651, -39.1995, 10802, -5132, 837.445, 374.177, -837.445, -374.177, 9170, -4821, 302.906, 114.035, -302.906, -114.035, 7785, -5378, 0, 0, 0, 0, 7947, -5696)
+}
+point_count = 15
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghtis"]
+radius = 70.7098
+
+[sub_resource type="Gradient" id="Gradient_u2y7e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_op5kd"]
+gradient = SubResource("Gradient_u2y7e")
+fill = 1
+fill_from = Vector2(0.490826, 0.490826)
+fill_to = Vector2(0.165138, 0.12844)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a7pk4")
 
@@ -1931,39 +1950,6 @@ text = "SLIDE"
 label_settings = SubResource("LabelSettings_sxqs0")
 horizontal_alignment = 2
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = -128
-offset = Vector2(-800, -7000)
-transform = Transform2D(1, 0, 0, 1, -800, -7000)
-follow_viewport_scale = 1.34
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(1.1, 1.1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(-2660, -889)
-scale = Vector2(15.83, 15.83)
-texture = ExtResource("4_l77g2")
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.7, 0.7)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(-2661, -947)
-scale = Vector2(17.8663, 15.88)
-texture = ExtResource("5_fmeoi")
-centered = false
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-2661, -887)
-scale = Vector2(16.7652, 15.68)
-texture = ExtResource("6_wkjxa")
-centered = false
-
 [node name="map outline" type="Sprite2D" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0.427451)
@@ -2260,7 +2246,6 @@ collision_layer = 255
 collision_mask = 255
 
 [node name="Lighting" type="Node2D" parent="."]
-visible = false
 position = Vector2(-6518, 3359)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighting"]
@@ -2275,10 +2260,9 @@ texture = SubResource("GradientTexture2D_vvs6g")
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
 position = Vector2(11473, -6695)
 color = Color(0.749856, 0.679318, 0.598889, 1)
-energy = 0.8
+energy = 0.4
 blend_mode = 1
 range_layer_min = -140
-shadow_enabled = true
 shadow_item_cull_mask = 3
 
 [node name="PointLight2D2" type="PointLight2D" parent="Lighting"]
@@ -2431,6 +2415,76 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Score"
 label_settings = SubResource("LabelSettings_odmwe")
+
+[node name="WispPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_orxon")
+
+[node name="Wisp" type="PathFollow2D" parent="WispPath"]
+position = Vector2(7946, -5693)
+rotation = -0.476492
+script = ExtResource("18_yby3r")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="WispPath/Wisp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WispPath/Wisp/CharacterBody2D"]
+shape = SubResource("CircleShape2D_ghtis")
+
+[node name="PointLight2D2" type="PointLight2D" parent="WispPath/Wisp"]
+position = Vector2(-54.4342, -44.9773)
+scale = Vector2(2.98023, 4.53872)
+color = Color(1, 0.516203, 0.999883, 1)
+energy = 0.2
+range_layer_min = -128
+texture = SubResource("GradientTexture2D_op5kd")
+
+[node name="PointLight2D3" type="PointLight2D" parent="WispPath/Wisp"]
+position = Vector2(68.2809, -23.2744)
+scale = Vector2(3.64345, 3.33667)
+color = Color(0.218535, 0.81749, 0.908127, 1)
+energy = 0.2
+range_layer_min = -128
+texture = SubResource("GradientTexture2D_op5kd")
+
+[node name="PointLight2D" type="PointLight2D" parent="WispPath/Wisp"]
+position = Vector2(0.399527, 73.3543)
+scale = Vector2(3.13451, 3.60631)
+color = Color(0.811765, 0.831373, 0, 1)
+energy = 0.2
+range_layer_min = -128
+texture = SubResource("GradientTexture2D_op5kd")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -128
+offset = Vector2(-800, -7000)
+transform = Transform2D(1, 0, 0, 1, -800, -7000)
+follow_viewport_scale = 1.34
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.1, 1.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(-2660, -889)
+scale = Vector2(15.83, 15.83)
+texture = ExtResource("4_l77g2")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-2661, -947)
+scale = Vector2(17.8663, 15.88)
+texture = ExtResource("5_fmeoi")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-2661, -887)
+scale = Vector2(16.7652, 15.68)
+texture = ExtResource("6_wkjxa")
+centered = false
 
 [connection signal="character_touched" from="CharPair/QuestGiver" to="." method="_on_quest_giver_character_touched"]
 [connection signal="body_entered" from="CharPair/QuestGiver/Area2D" to="CharPair/QuestGiver" method="_on_area_2d_body_entered"]
