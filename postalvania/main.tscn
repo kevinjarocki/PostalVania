@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=138 format=4 uid="uid://eun7wq37viyo"]
-
+[gd_scene load_steps=142 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -19,11 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://bw7sec2n3ip5y" path="res://abilityCow.tscn" id="16_brnb8"]
 [ext_resource type="PackedScene" uid="uid://cgqg2sbamegk1" path="res://Assets/Theresa Art/spiderAnimation.tscn" id="16_hydth"]
 [ext_resource type="Script" path="res://hi_score.gd" id="16_mtk24"]
-[ext_resource type="Script" path="res://Wisp.gd" id="18_yby3r"]
 [ext_resource type="AudioStream" uid="uid://8pdx24csnu81" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 02 A New Day's Hurry (General Background Music).mp3" id="17_gv42l"]
+[ext_resource type="Script" path="res://Wisp.gd" id="18_yby3r"]
 [ext_resource type="Script" path="res://job_board.gd" id="18_yxf6o"]
 [ext_resource type="AudioStream" uid="uid://drdhogvtl0vqo" path="res://Assets/sounds/effects/Horror SFX Free/Monsters & Ghosts/Gore_Ripping_4.wav" id="19_5p51k"]
-
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lugyo"]
 
@@ -1611,9 +1608,9 @@ gradient = SubResource("Gradient_u2y7e")
 fill = 1
 fill_from = Vector2(0.490826, 0.490826)
 fill_to = Vector2(0.165138, 0.12844)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2st"]
 size = Vector2(130, 132)
-
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a7pk4")
@@ -2508,16 +2505,72 @@ volume_db = 8.667
 pitch_scale = 0.39
 
 [node name="JobBoard" type="Node2D" parent="."]
+position = Vector2(-139, -3859)
 script = ExtResource("18_yxf6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="JobBoard"]
-position = Vector2(-138, -3860)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_gbex4")
 
 [node name="Area2D" type="Area2D" parent="JobBoard/Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard/Sprite2D/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_xb2st")
+
+[node name="JobBoard2" type="Node2D" parent="."]
+position = Vector2(11882, -4357)
+script = ExtResource("18_yxf6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="JobBoard2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_gbex4")
+
+[node name="Area2D" type="Area2D" parent="JobBoard2/Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard2/Sprite2D/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_xb2st")
+
+[node name="JobBoard3" type="Node2D" parent="."]
+position = Vector2(8392, -4755)
+script = ExtResource("18_yxf6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="JobBoard3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_gbex4")
+
+[node name="Area2D" type="Area2D" parent="JobBoard3/Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard3/Sprite2D/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_xb2st")
+
+[node name="JobBoard4" type="Node2D" parent="."]
+position = Vector2(11621, -195)
+script = ExtResource("18_yxf6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="JobBoard4"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_gbex4")
+
+[node name="Area2D" type="Area2D" parent="JobBoard4/Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard4/Sprite2D/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_xb2st")
+
+[node name="JobBoard5" type="Node2D" parent="."]
+position = Vector2(23563, -3779)
+script = ExtResource("18_yxf6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="JobBoard5"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_gbex4")
+
+[node name="Area2D" type="Area2D" parent="JobBoard5/Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard5/Sprite2D/Area2D"]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_xb2st")
 
@@ -2556,3 +2609,11 @@ shape = SubResource("RectangleShape2D_xb2st")
 [connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="JobBoard4/Sprite2D/Area2D" to="JobBoard4" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="JobBoard4/Sprite2D/Area2D" to="JobBoard4" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="JobBoard5/Sprite2D/Area2D" to="JobBoard5" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="JobBoard5/Sprite2D/Area2D" to="JobBoard5" method="_on_area_2d_body_exited"]

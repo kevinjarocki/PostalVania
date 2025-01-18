@@ -16,6 +16,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			instance.add_to_group("Temp")
 			instance.spriteLoc = mainNode.giverNPCArray[x].position + Vector2(0, -50)
 			instance.itemSpriteFrame = x
+			instance.modulate = Color.RED
 		
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	for x in get_tree().get_nodes_in_group("Temp"):

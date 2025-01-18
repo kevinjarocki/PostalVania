@@ -12,7 +12,7 @@ const url_data = "https://opensheet.elk.sh/1ZZUQk2zmmpON93tmDhA1aX9c222ltbPysiMa
 
 func start():
 	$".".visible = true
-	$VBoxContainer/HBoxContainer/Panel/Label.text = $"..".totalTime
+	$VBoxContainer/HBoxContainer/Panel/Label.text = "%.1f" %$"..".totalTime + " sec"
 	update_data()
 
 func update_data():
