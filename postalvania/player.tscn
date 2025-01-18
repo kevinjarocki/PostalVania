@@ -179,23 +179,23 @@ collision_mask = 7
 
 [node name="hookTimer" type="Timer" parent="."]
 wait_time = 0.1
-autostart = true
+one_shot = true
 
 [node name="glideTimer" type="Timer" parent="."]
 wait_time = 0.25
-autostart = true
+one_shot = true
 
 [node name="dashTimer" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
+one_shot = true
 
 [node name="slideTimer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
+one_shot = true
 
 [node name="yeetTimer" type="Timer" parent="."]
 wait_time = 7.0
-autostart = true
+one_shot = true
 
 [node name="coyoteTime" type="Timer" parent="."]
 wait_time = 0.15

@@ -71,8 +71,24 @@ var yeetSpeed = 300
 #coyote variables
 var coyoteTime = false
 
-#freeze variables
+#main.gd variables
 var frozen = false
+var main
+var hookProgBar
+var dashProgBar
+var slideProgBar
+var yeetProgBar
+var glideProgBar
+
+func _ready() -> void:
+	main = $".."
+	hookProgBar = $"../Player/Control/HBoxContainer/hook"
+	dashProgBar = $"../Player/Control/HBoxContainer/dash"
+	slideProgBar = $"../Player/Control/HBoxContainer/slide"
+	yeetProgBar = $"../Player/Control/HBoxContainer/yeet"
+	glideProgBar = $"../Player/Control/HBoxContainer/glide"
+	
+	#hookProgBar.color = Color.DARK_RED
 
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
@@ -84,6 +100,11 @@ func _process(delta: float) -> void:
 		dashEnabled = true
 		yeetEnabled = true
 		
+	hookProgBar.value = 100 - ($hookTimer.time_left / $hookTimer.wait_time) * 100
+	dashProgBar.value = 100 - ($dashTimer.time_left / $dashTimer.wait_time) * 100
+	slideProgBar.value = 100 - ($slideTimer.time_left / $slideTimer.wait_time) * 100
+	yeetProgBar.value = 100 - ($yeetTimer.time_left / $yeetTimer.wait_time) * 100
+	glideProgBar.value = 100 - ($glideTimer.time_left / $glideTimer.wait_time) * 100
 	
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
@@ -414,7 +435,7 @@ func Gravity(delta):
 	if isGliding:
 		#gravity problems do not have anything to do with this line
 		velocity.y = move_toward(velocity.y,(maxGlideSpeed/velocity.x) + 5000*delta , 30)
-		print("glide gravity", (maxGlideSpeed/velocity.x) + 200*delta)
+		#print("glide gravity", (maxGlideSpeed/velocity.x) + 200*delta)
 		# <- second term
 		
 func getHookPos():
@@ -426,16 +447,31 @@ func getHookPos():
 		########################## Signals and Enable Methods #######################################
 func enableAbility(abilityName):
 	if abilityName == "hook":
+		hookIsReady = true
+		hookProgBar.visible = true
 		hookEnabled = true
+		main._dBox("You just got the HOOK ability! Point and click to swing on a terrain while in the air!")
 	elif abilityName == "yeet":
 		yeetEnabled = true
+		yeetIsReady = true
+		yeetProgBar.visible = true
+		main._dBox("You just got the YEET ability! While swinging right click!")
 	elif abilityName == "dash":
 		dashEnabled = true
+		dashIsReady = true
+		dashProgBar.visible = true
+		main._dBox("You just got the DASH ability! Press Shift for a quick speed boost!")
 	elif abilityName == "slide":
 		slideEnabled = true
+		slideIsReady = true
+		slideProgBar.visible = true
+		main._dBox("You just got the SLIDE ability! Press ctrl just before landing to keep up your speed!")
 	elif abilityName == "glide":
 		glideEnabled = true
+		glideIsReady = true
+		glideProgBar.visible = true
 		$AnimatedSprite2D/glider.visible = true
+		main._dBox("You just got the GLIDE ability! Hold space while in the air to traverse horizontally!")
 	else:
 		print("no ability name match found")
 
