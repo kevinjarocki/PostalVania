@@ -100,6 +100,9 @@ func _process(delta: float) -> void:
 		enableAbility("slide")
 		enableAbility("glide")
 		
+	print($AnimatedSprite2D/slide.animation)
+	print(isSliding)
+		
 	hookProgBar.value = 100 - ($hookTimer.time_left / $hookTimer.wait_time) * 100
 	dashProgBar.value = 100 - ($dashTimer.time_left / $dashTimer.wait_time) * 100
 	slideProgBar.value = 100 - ($slideTimer.time_left / $slideTimer.wait_time) * 100
@@ -146,14 +149,15 @@ func _physics_process(delta: float) -> void:
 	if isSliding:
 		$slideTimer.start()
 		slideIsReady = false
-		if oldIsSliding == false:
+		if oldIsSliding != isSliding:
 			slideSpeed = velocity.x*1.5 + SPEED*sign(velocity.x)
 			$AnimatedSprite2D/slide.play("Slide")
 			$AnimatedSprite2D.play("Slide")
+			print($AnimatedSprite2D.animation)
+			print("animate pls")
 		if cntrlHeld:
 			velocity.x = slideSpeed
 
-		
 		if !is_on_floor():
 			isInAir = true
 			isSliding = false
@@ -169,8 +173,6 @@ func _physics_process(delta: float) -> void:
 				isGrounded = true
 			else:
 				isInAir = true
-		else:
-			isInAir = true
 			
 	oldIsSliding = isSliding
 	####################################JUMPING JUMPING
@@ -198,10 +200,10 @@ func _physics_process(delta: float) -> void:
 		################################################## IN AIR IN AIR
 	if isInAir:
 		#animation control
-		$AnimatedSprite2D.play("Idle")
-		$AnimatedSprite2D/glider.play("Idle")
-		$AnimatedSprite2D/hook.play("Idle")
-		$AnimatedSprite2D/slide.play("Idle")
+		#$AnimatedSprite2D.play("Idle")
+		#$AnimatedSprite2D/glider.play("Idle")
+		#$AnimatedSprite2D/hook.play("Idle")
+		#$AnimatedSprite2D/slide.play("Idle")
 		if velocity.x > 0:
 			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 		if velocity.x < 0:
@@ -237,7 +239,7 @@ func _physics_process(delta: float) -> void:
 			isInAir = false
 		elif is_on_floor():
 			isInAir = false
-			if cntrlHeld && slideEnabled && slideIsReady:
+			if cntrlHeld && slideEnabled:
 				isSliding = true
 			else:
 				isGrounded = true
@@ -528,8 +530,9 @@ func _on_coyote_time_timeout() -> void:
 
 
 func _on_cacoon_animation_finished() -> void:
-		$CPUParticles2D.emitting = true
+		$cacoonParticles.emitting = true
 		$Cacoon.visible = false
+		position.y += 50
 
 
 func _on_cacoon_frame_changed() -> void:
