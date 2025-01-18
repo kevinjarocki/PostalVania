@@ -1849,14 +1849,23 @@ grow_vertical = 2
 theme = SubResource("Theme_o0vr6")
 script = ExtResource("10_1vfgw")
 
-[node name="Timer" type="Label" parent="Player/Control"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Player/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -29.0
-offset_bottom = 22.0
+offset_left = -216.0
+offset_bottom = 149.0
 grow_horizontal = 0
+
+[node name="Timer" type="Label" parent="Player/Control/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_rt3j8")
+horizontal_alignment = 2
+
+[node name="Velocity" type="Label" parent="Player/Control/VBoxContainer2"]
+layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_rt3j8")
 horizontal_alignment = 2
