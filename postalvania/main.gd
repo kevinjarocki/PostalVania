@@ -9,6 +9,8 @@ var stageStep = [0,0,0,0,0,0,0,0]
 
 var velocity = 0
 
+var giverObjExist = false
+
 var nodePanelTLArray = []
 var nodeTLArray = []
 var nodeTLTimerArray = []
@@ -129,7 +131,13 @@ func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
 		stageStartTime[char_id] = totalTime
 		$Control/VBoxContainer.move_child(nodePanelTLArray[char_id], 0)
 		nodePanelTLArray[char_id].visible = true
-		nodeTLArray[char_id].set_frame(char_id) 
+		nodeTLArray[char_id].set_frame(char_id)
+		
+		if (get_tree().get_nodes_in_group("GiverObj")):
+			if char_id == giverObjExist:
+				giverObjExist = false
+				var temp = get_tree().get_nodes_in_group("GiverObj")
+				temp[0].queue_free()
 	
 	else:
 		_dBox(giverNextTouchDBox[char_id])
@@ -150,7 +158,17 @@ func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 	elif stageStep[char_id] == 0:
 		_dBox(receiverPreQuestDBox[char_id])
 		
+func _job_board(char_id):
+	
+	var instance = ObjMarker.instantiate()
+	add_child(instance)
+	instance.add_to_group("GiverObj")
+	instance.spriteLoc = giverNPCArray[char_id].position + Vector2(0, -50)
+	instance.itemSpriteFrame = char_id
+	instance.modulate = Color.RED
+	instance.modulate.a = .8
+	giverObjExist = char_id
+	
 func _complete_game():
 	$HiScore.position = $HiScore.position + $Player.position
 	$HiScore.start()
-	pass

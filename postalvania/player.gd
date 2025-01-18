@@ -474,7 +474,7 @@ func QueryInputs():
 #check click
 
 func Gravity(delta):
-	if velocity.y < (terminalVelocity+30):
+	if velocity.y < (terminalVelocity+30) and !frozen:
 		if isGrounded||isInAir:
 			#do gravity
 			velocity.y += gravityConstant*delta
@@ -482,7 +482,7 @@ func Gravity(delta):
 			velocity.y += gravityConstant*delta*1.2
 		elif isSwinging:
 			velocity.y += gravityConstant*delta 
-	if isGliding:
+	if isGliding and !frozen:
 		#gravity problems do not have anything to do with this line
 		velocity.y = move_toward(velocity.y,(maxGlideSpeed/velocity.x) + 5000*delta , 30)
 		#print("glide gravity", (maxGlideSpeed/velocity.x) + 200*delta)

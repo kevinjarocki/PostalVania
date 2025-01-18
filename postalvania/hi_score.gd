@@ -39,7 +39,6 @@ func http_done(_result, _response_code, _headers, _body, http):
 
 func http_submit(_result, _response_code, _headers, _body, http):
 	http.queue_free()
-	await get_tree().create_timer(3).timeout
 	update_data()
 	pass
 
