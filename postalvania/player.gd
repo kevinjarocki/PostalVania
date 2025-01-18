@@ -85,11 +85,11 @@ var glideProgBar
 
 func _ready() -> void:
 	main = $".."
-	hookProgBar = $"../Player/Control/HBoxContainer/hook"
-	dashProgBar = $"../Player/Control/HBoxContainer/dash"
-	slideProgBar = $"../Player/Control/HBoxContainer/slide"
-	yeetProgBar = $"../Player/Control/HBoxContainer/yeet"
-	glideProgBar = $"../Player/Control/HBoxContainer/glide"
+	hookProgBar = $"../Control/HBoxContainer/hook"
+	dashProgBar = $"../Control/HBoxContainer/dash"
+	slideProgBar = $"../Control/HBoxContainer/slide"
+	yeetProgBar = $"../Control/HBoxContainer/yeet"
+	glideProgBar = $"../Control/HBoxContainer/glide"
 	#$Camera2D.position_smoothing_enabled = true
 	#$Camera2D.position_smoothing_speed = 12
 	
