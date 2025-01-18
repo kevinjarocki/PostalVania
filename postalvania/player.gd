@@ -97,9 +97,13 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
 			$AnimatedSprite2D.play("Walk")
 			$AnimatedSprite2D/glider.play("Walk")
+			$AnimatedSprite2D/hook.play("Walk")
+			$AnimatedSprite2D/slide.play("Walk")
 		else:
 			$AnimatedSprite2D.play("Idle")
 			$AnimatedSprite2D/glider.play("Idle")
+			$AnimatedSprite2D/hook.play("Idle")
+			$AnimatedSprite2D/slide.play("Idle")
 		#physics
 		velocity.x = move_toward(velocity.x, SPEED*direction, 200)
 		#transitions out of state
@@ -177,6 +181,10 @@ func _physics_process(delta: float) -> void:
 		################################################## IN AIR IN AIR
 	if isInAir:
 		#animation control
+		$AnimatedSprite2D.play("Idle")
+		$AnimatedSprite2D/glider.play("Idle")
+		$AnimatedSprite2D/hook.play("Idle")
+		$AnimatedSprite2D/slide.play("Idle")
 		if velocity.x > 0:
 			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 		if velocity.x < 0:
@@ -281,6 +289,11 @@ func _physics_process(delta: float) -> void:
 	if isSwinging:
 		$hookTimer.start()
 		hookIsReady = false
+		if clickJustPressed:
+			$AnimatedSprite2D.play("Swing")
+			$AnimatedSprite2D/hook.play("Swing")
+			$AnimatedSprite2D/glider.play("Swing")
+			$AnimatedSprite2D/slide.play("Swing")
 		#Hook Update to check if i can swing
 		if clickJustPressed:
 			hookPos = getHookPos()
@@ -323,7 +336,7 @@ func _physics_process(delta: float) -> void:
 			$Rope.visible = true
 			$Rope.look_at(hookPos)
 			$Rope.rotate(-PI/2)
-			$Rope.region_rect = Rect2(Vector2(0,0),Vector2(125,radius.length()/$Rope.scale.y))
+			$Rope.region_rect = Rect2(Vector2(0,-100),Vector2(125,radius.length()/$Rope.scale.y))
 
 			$AnimatedSprite2D.look_at(hookPos)
 			$AnimatedSprite2D.rotate(PI/2)
@@ -427,12 +440,14 @@ func getHookPos():
 func enableAbility(abilityName):
 	if abilityName == "hook":
 		hookEnabled = true
+		$AnimatedSprite2D/hook.visible = true
 	elif abilityName == "yeet":
 		yeetEnabled = true
 	elif abilityName == "dash":
 		dashEnabled = true
 	elif abilityName == "slide":
 		slideEnabled = true
+		$AnimatedSprite2D/slide.visible = true
 	elif abilityName == "glide":
 		glideEnabled = true
 		$AnimatedSprite2D/glider.visible = true
