@@ -12,6 +12,7 @@ const url_data = "https://opensheet.elk.sh/1ZZUQk2zmmpON93tmDhA1aX9c222ltbPysiMa
 
 func start():
 	$".".visible = true
+	$VBoxContainer/HBoxContainer/Panel/Label.text = $"..".totalTime
 	update_data()
 
 func update_data():
@@ -29,14 +30,16 @@ func http_done(_result, _response_code, _headers, _body, http):
 		var data = JSON.parse_string(_body.get_string_from_utf8())
 		
 		for x in data:
-			var user = user_panel.instantiate()
-			user._name = x["Name"]
-			var temp = float(x["Time"])
-			user._time = "%.1f" %temp + " sec"
-			$VBoxContainer/ScrollContainer/VBoxContainer.add_child(user)
+			if x["Name"]:
+				var user = user_panel.instantiate()
+				user._name = x["Name"]
+				var temp = float(x["Time"])
+				user._time = "%.1f" %temp + " sec"
+				$VBoxContainer/ScrollContainer/VBoxContainer.add_child(user)
 
 func http_submit(_result, _response_code, _headers, _body, http):
 	http.queue_free()
+	await get_tree().create_timer(3).timeout
 	update_data()
 	pass
 

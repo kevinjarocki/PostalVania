@@ -13,7 +13,7 @@ func _ready() -> void:
 	sprite = $Sprite2D
 
 func _process(delta):
-	camera_size = get_viewport().get_visible_rect().size * (1/.6) * .98
+	camera_size = get_viewport().get_visible_rect().size * (1/camera.zoom.x) * .95
 	camera_rect = Rect2(camera.get_screen_center_position() - (camera_size / 2), camera_size)
 	
 	set_marker_position(camera_rect)
