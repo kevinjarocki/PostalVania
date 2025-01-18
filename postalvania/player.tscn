@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://drcg3w6rfh6p2"]
+[gd_scene load_steps=131 format=3 uid="uid://drcg3w6rfh6p2"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_y5ota"]
 [ext_resource type="Texture2D" uid="uid://uielx0nm8tbw" path="res://Assets/Shareef Art/wormDash.png" id="2_oobd5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://d10xnx8ifwa8a" path="res://Assets/Shareef Art/deerDash.png" id="12_7rvl1"]
 [ext_resource type="Texture2D" uid="uid://cd0itp2xcaffg" path="res://Assets/Shareef Art/deerWalk.png" id="13_5oh7y"]
 [ext_resource type="Texture2D" uid="uid://chu7b7npjfbs4" path="res://Assets/Shareef Art/metamorph.png" id="13_g1qw2"]
+[ext_resource type="Texture2D" uid="uid://xsabckkdd8yw" path="res://Assets/Shareef Art/deerSwing.png" id="15_7oj5r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0psj"]
 atlas = ExtResource("2_oobd5")
@@ -566,6 +567,22 @@ region = Rect2(0, 0, 700, 500)
 atlas = ExtResource("13_5oh7y")
 region = Rect2(700, 0, 700, 500)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_68qkl"]
+atlas = ExtResource("15_7oj5r")
+region = Rect2(0, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2wuy"]
+atlas = ExtResource("15_7oj5r")
+region = Rect2(630, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsn6i"]
+atlas = ExtResource("15_7oj5r")
+region = Rect2(0, 500, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_402m3"]
+atlas = ExtResource("15_7oj5r")
+region = Rect2(630, 500, 630, 500)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxrfa"]
 atlas = ExtResource("13_5oh7y")
 region = Rect2(0, 0, 700, 500)
@@ -627,10 +644,22 @@ animations = [{
 "name": &"Idle",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68qkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2wuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsn6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_402m3")
+}],
+"loop": false,
 "name": &"Swing",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -867,22 +896,22 @@ autoplay = "Idle"
 visible = false
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_308a8")
-animation = &"Walk"
+animation = &"Swing"
 
 [node name="hook" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_ca5yv")
-animation = &"Walk"
+animation = &"Swing"
 
 [node name="slide" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_i2ccv")
-animation = &"Slide"
-frame = 1
+animation = &"Swing"
 
 [node name="dash" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_4cre5")
-animation = &"Dash"
+animation = &"Swing"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -959,6 +988,7 @@ scale_amount_curve = SubResource("Curve_kb6d4")
 color = Color(1, 0.968627, 0, 1)
 color_ramp = SubResource("Gradient_rc76v")
 
+[connection signal="animation_finished" from="AnimatedSprite2D/dash" to="." method="_on_dash_animation_finished"]
 [connection signal="timeout" from="hookTimer" to="." method="_on_hook_timer_timeout"]
 [connection signal="timeout" from="glideTimer" to="." method="_on_glide_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
