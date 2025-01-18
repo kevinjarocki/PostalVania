@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://drcg3w6rfh6p2"]
+[gd_scene load_steps=22 format=3 uid="uid://drcg3w6rfh6p2"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_y5ota"]
 [ext_resource type="Texture2D" uid="uid://cm436otkrrp42" path="res://Assets/Shareef Art/WormWalk.png" id="3_3da3u"]
+[ext_resource type="Texture2D" uid="uid://dwi6btaeon34c" path="res://Assets/Shareef Art/WingWalk.png" id="3_7ecea"]
 [ext_resource type="PackedScene" uid="uid://ctrunma5d1map" path="res://rope.tscn" id="3_cdwam"]
-[ext_resource type="Texture2D" uid="uid://cw35sbw1jtuss" path="res://Assets/Food.png" id="4_k1cno"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hx54"]
 atlas = ExtResource("3_3da3u")
@@ -60,25 +60,77 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ylsjt"]
-atlas = ExtResource("4_k1cno")
-region = Rect2(112, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4xfa"]
+atlas = ExtResource("3_7ecea")
+region = Rect2(1260, 0, 630, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4b57"]
-atlas = ExtResource("4_k1cno")
-region = Rect2(96, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub1ch"]
+atlas = ExtResource("3_7ecea")
+region = Rect2(0, 500, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m06i1"]
+atlas = ExtResource("3_7ecea")
+region = Rect2(0, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be13v"]
+atlas = ExtResource("3_7ecea")
+region = Rect2(630, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxc2f"]
+atlas = ExtResource("3_7ecea")
+region = Rect2(0, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgkcr"]
+atlas = ExtResource("3_7ecea")
+region = Rect2(630, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqfnk"]
+atlas = ExtResource("3_7ecea")
+region = Rect2(1260, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ewbi"]
+atlas = ExtResource("3_7ecea")
+region = Rect2(0, 500, 630, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_308a8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ylsjt")
+"texture": SubResource("AtlasTexture_l4xfa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h4b57")
+"texture": SubResource("AtlasTexture_ub1ch")
 }],
 "loop": true,
-"name": &"flap",
+"name": &"Flap",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m06i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be13v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxc2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgkcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqfnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ewbi")
+}],
+"loop": true,
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -95,17 +147,15 @@ scale = Vector2(0.11175, 0.11175)
 sprite_frames = SubResource("SpriteFrames_sos26")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.799359
+frame_progress = 0.270302
 
 [node name="glider" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
-position = Vector2(-13, 7)
-rotation = -1.25338
-scale = Vector2(1.5, 1.5)
+show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_308a8")
-animation = &"flap"
+animation = &"Idle"
 frame = 1
-frame_progress = 0.669762
+frame_progress = 0.248994
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
