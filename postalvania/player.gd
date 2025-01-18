@@ -5,6 +5,7 @@ const SPEED = 400.0
 const JUMP_VELOCITY = -550.0
 const gravityConstant = 750
 var terminalVelocity = 600
+var lastFrameSpeed = 0.0
 
 #state Variables
 var isGrounded = false
@@ -89,6 +90,8 @@ func _ready() -> void:
 	slideProgBar = $"../Player/Control/HBoxContainer/slide"
 	yeetProgBar = $"../Player/Control/HBoxContainer/yeet"
 	glideProgBar = $"../Player/Control/HBoxContainer/glide"
+	#$Camera2D.position_smoothing_enabled = true
+	#$Camera2D.position_smoothing_speed = 12
 	
 	#hookProgBar.color = Color.DARK_RED
 
@@ -102,14 +105,35 @@ func _process(delta: float) -> void:
 		enableAbility("slide")
 		enableAbility("glide")
 		
-	print($AnimatedSprite2D/slide.animation)
-	print(isSliding)
+	$Camera2D.zoom.x = lerp($Camera2D.zoom.x,clamp(SPEED/(abs(velocity.x)+1),0,0.3)+0.4,5*delta)
+	$Camera2D.zoom.y = lerp($Camera2D.zoom.y,clamp(SPEED/(abs(velocity.x)+1),0,0.3)+0.4,5*delta)
+	
+	if abs(velocity.x) < SPEED+100:
+		$Camera2D.offset.x = lerp($Camera2D.offset.x,0.0,delta)
+	else:
+		if abs(velocity.length()) > lastFrameSpeed:
+			$Camera2D.offset.x = lerp($Camera2D.offset.x,clamp(velocity.x/5,-3000,3000.0),delta/3)
+		else:
+			$Camera2D.offset.x = lerp($Camera2D.offset.x,clamp(velocity.x/5,-3000,3000.0),delta)
+	
+	if abs(velocity.y) < abs(JUMP_VELOCITY):
+		$Camera2D.offset.y = lerp($Camera2D.offset.y,0.0,1*delta)
+	else:
+		if abs(velocity.length()) > lastFrameSpeed:
+			$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta/3)
+		else:
+			$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta)
+	#$Camera2D.zoom = $Camera2D.zoom.lerp(SPEED/abs(velocity.x)+1,0,1.2)+0.4,0.1)
+
+
 		
 	hookProgBar.value = 100 - ($hookTimer.time_left / $hookTimer.wait_time) * 100
 	dashProgBar.value = 100 - ($dashTimer.time_left / $dashTimer.wait_time) * 100
 	slideProgBar.value = 100 - ($slideTimer.time_left / $slideTimer.wait_time) * 100
 	yeetProgBar.value = 100 - ($yeetTimer.time_left / $yeetTimer.wait_time) * 100
 	glideProgBar.value = 100 - ($glideTimer.time_left / $glideTimer.wait_time) * 100
+	
+	lastFrameSpeed = abs(velocity.length())
 	
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
