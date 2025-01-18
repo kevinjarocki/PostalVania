@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://drcg3w6rfh6p2"]
+[gd_scene load_steps=23 format=3 uid="uid://drcg3w6rfh6p2"]
 
 [ext_resource type="Texture2D" uid="uid://u85fg130k1ga" path="res://Assets/Squirrel/idle/spritesheet.png" id="1_oq6uf"]
 [ext_resource type="Script" path="res://player.gd" id="1_y5ota"]
+[ext_resource type="Texture2D" uid="uid://cm436otkrrp42" path="res://Assets/Shareef Art/WormWalk.png" id="3_3da3u"]
 [ext_resource type="PackedScene" uid="uid://ctrunma5d1map" path="res://rope.tscn" id="3_cdwam"]
 [ext_resource type="Texture2D" uid="uid://cw35sbw1jtuss" path="res://Assets/Food.png" id="4_k1cno"]
 
@@ -37,6 +38,22 @@ region = Rect2(540, 0, 90, 58)
 atlas = ExtResource("1_oq6uf")
 region = Rect2(630, 0, 90, 58)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dcog"]
+atlas = ExtResource("3_3da3u")
+region = Rect2(0, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_octiw"]
+atlas = ExtResource("3_3da3u")
+region = Rect2(630, 0, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbg6i"]
+atlas = ExtResource("3_3da3u")
+region = Rect2(0, 500, 630, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44hid"]
+atlas = ExtResource("3_3da3u")
+region = Rect2(630, 500, 630, 500)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_sos26"]
 animations = [{
 "frames": [{
@@ -66,6 +83,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dcog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_octiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbg6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44hid")
+}],
+"loop": true,
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -100,11 +134,13 @@ floor_max_angle = 0.959931
 script = ExtResource("1_y5ota")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 6)
+scale = Vector2(0.087, 0.087)
 sprite_frames = SubResource("SpriteFrames_sos26")
-animation = &"Idle"
+animation = &"Walk"
 autoplay = "Idle"
-frame = 4
-frame_progress = 0.286085
+frame = 3
+frame_progress = 0.463894
 
 [node name="glider" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
