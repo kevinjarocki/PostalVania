@@ -414,7 +414,7 @@ func Gravity(delta):
 	if isGliding:
 		#gravity problems do not have anything to do with this line
 		velocity.y = move_toward(velocity.y,(maxGlideSpeed/velocity.x) + 5000*delta , 30)
-		print("glide gravity", (maxGlideSpeed/velocity.x) + 200*delta)
+		#print("glide gravity", (maxGlideSpeed/velocity.x) + 200*delta)
 		# <- second term
 		
 func getHookPos():

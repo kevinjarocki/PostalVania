@@ -7,6 +7,7 @@ var totalTime = 0
 var stageStartTime = [0,0,0,0,0,0,0,0]
 var stageStep = [0,0,0,0,0,0,0,0]
 
+var nodePanelTLArray = []
 var nodeTLArray = []
 var nodeTLTimerArray = []
 var giverNPCArray = []
@@ -57,6 +58,7 @@ func _ready():
 	nodeTLTimerArray = get_tree().get_nodes_in_group("TLTimer")
 	giverNPCArray = get_tree().get_nodes_in_group("Giver")
 	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
+	nodePanelTLArray = $Player/Control/VBoxContainer.get_children()
 	
 	var counter = 0
 	for x in giverNPCArray:
@@ -112,14 +114,16 @@ func _dBox (text, text2 = "", sprite = false):
 func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
 	
 	if first_touch:
-		_dBox(giverFirstTouchDBox[char_id])
+		_dBox(giverFirstTouchDBox[char_id], "Received: ", char_id)
 		var instance = ObjMarker.instantiate()
 		add_child(instance)
 		markerArray[char_id] = instance
 		instance.spriteLoc = charPosition
 		stageStep[char_id] = 1
 		stageStartTime[char_id] = totalTime
-		nodeTLArray[char_id].visible = true
+		$Player/Control/VBoxContainer.move_child(nodePanelTLArray[char_id], 0)
+		nodePanelTLArray[char_id].visible = true
+		nodeTLArray[char_id].frame = char_id 
 	
 	else:
 		_dBox(giverNextTouchDBox[char_id])
@@ -134,8 +138,12 @@ func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 		stageStep[char_id] = 2
 		markerArray[char_id].queue_free()
 		
+		if stageStep.count(2) == 8:
+			_complete_game()
+		
 	elif stageStep[char_id] == 0:
 		_dBox(receiverPreQuestDBox[char_id])
 		
-		
-		
+func _complete_game():
+	
+	pass
