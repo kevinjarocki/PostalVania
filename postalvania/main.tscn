@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=118 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dtg54j5ef17qo" path="res://Assets/GUI/cryo.png" id="10_n0836"]
 [ext_resource type="FontFile" uid="uid://b6nas1lanoebc" path="res://Assets/Daydream.ttf" id="11_wjavr"]
 [ext_resource type="Texture2D" uid="uid://cw35sbw1jtuss" path="res://Assets/Food.png" id="12_70epx"]
-[ext_resource type="PackedScene" uid="uid://bfl46nms86upe" path="res://obj_marker.tscn" id="14_my2bd"]
 [ext_resource type="Texture2D" uid="uid://lcou3mpkiloq" path="res://icon.svg" id="15_gbex4"]
 [ext_resource type="PackedScene" uid="uid://bw7sec2n3ip5y" path="res://abilityCow.tscn" id="16_brnb8"]
 
@@ -999,6 +998,7 @@ Panel/styles/panel = SubResource("StyleBoxTexture_lugyo")
 
 [sub_resource type="LabelSettings" id="LabelSettings_rt3j8"]
 font = ExtResource("11_wjavr")
+font_size = 24
 font_color = Color(0, 0, 0, 1)
 outline_size = 12
 
@@ -1469,7 +1469,6 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_m5b67"]
 line_spacing = 1.0
 font = ExtResource("11_wjavr")
-font_size = 10
 font_color = Color(0, 0, 0, 1)
 outline_size = 8
 
@@ -1543,7 +1542,7 @@ tile_set = SubResource("TileSet_k4xy5")
 
 [node name="CharPair" type="Node2D" parent="."]
 
-[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair" groups=["NPC"]]
+[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair" groups=["Giver", "NPC"]]
 position = Vector2(760, -3784)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
@@ -1559,8 +1558,8 @@ script = ExtResource("9_xagyh")
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
-[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair" groups=["NPC"]]
-position = Vector2(2131, -3833)
+[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair" groups=["NPC", "Receiver"]]
+position = Vector2(2087, -3793)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1575,8 +1574,10 @@ script = ExtResource("9_xagyh")
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
-[node name="Character3" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(11921, -4425)
+[node name="CharPair2" type="Node2D" parent="."]
+
+[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair2" groups=["Giver", "NPC"]]
+position = Vector2(3779, -4524)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1585,14 +1586,14 @@ frame = 3
 frame_progress = 0.216514
 script = ExtResource("9_xagyh")
 
-[node name="Area2D" type="Area2D" parent="Character3"]
+[node name="Area2D" type="Area2D" parent="CharPair2/QuestGiver"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair2/QuestGiver/Area2D"]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
-[node name="Character4" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(12039, -9469)
+[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair2" groups=["NPC", "Receiver"]]
+position = Vector2(9214, -3655)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1601,14 +1602,16 @@ frame = 3
 frame_progress = 0.216514
 script = ExtResource("9_xagyh")
 
-[node name="Area2D" type="Area2D" parent="Character4"]
+[node name="Area2D" type="Area2D" parent="CharPair2/QuestDelivery"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character4/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair2/QuestDelivery/Area2D"]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
-[node name="Character5" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(24138, -4251)
+[node name="CharPair3" type="Node2D" parent="."]
+
+[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair3" groups=["Giver", "NPC"]]
+position = Vector2(11361, -4372)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1617,14 +1620,14 @@ frame = 3
 frame_progress = 0.216514
 script = ExtResource("9_xagyh")
 
-[node name="Area2D" type="Area2D" parent="Character5"]
+[node name="Area2D" type="Area2D" parent="CharPair3/QuestGiver"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character5/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair3/QuestGiver/Area2D"]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
-[node name="Character6" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(11876, -264)
+[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair3" groups=["NPC", "Receiver"]]
+position = Vector2(11889, -249)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1633,14 +1636,16 @@ frame = 3
 frame_progress = 0.216514
 script = ExtResource("9_xagyh")
 
-[node name="Area2D" type="Area2D" parent="Character6"]
+[node name="Area2D" type="Area2D" parent="CharPair3/QuestDelivery"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character6/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair3/QuestDelivery/Area2D"]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
-[node name="Character7" type="AnimatedSprite2D" parent="." groups=["NPC"]]
-position = Vector2(9266, -6332)
+[node name="CharPair4" type="Node2D" parent="."]
+
+[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair4" groups=["Giver", "NPC"]]
+position = Vector2(10144, -5361)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2u4v5")
 animation = &"chicken"
@@ -1649,9 +1654,161 @@ frame = 3
 frame_progress = 0.216514
 script = ExtResource("9_xagyh")
 
-[node name="Area2D" type="Area2D" parent="Character7"]
+[node name="Area2D" type="Area2D" parent="CharPair4/QuestGiver"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character7/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair4/QuestGiver/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair4" groups=["NPC", "Receiver"]]
+position = Vector2(11991, -9482)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair4/QuestDelivery"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair4/QuestDelivery/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="CharPair5" type="Node2D" parent="."]
+
+[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair5" groups=["Giver", "NPC"]]
+position = Vector2(14091, -3434)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair5/QuestGiver"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair5/QuestGiver/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair5" groups=["NPC", "Receiver"]]
+position = Vector2(8573, -5813)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair5/QuestDelivery"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair5/QuestDelivery/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="CharPair6" type="Node2D" parent="."]
+
+[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair6" groups=["Giver", "NPC"]]
+position = Vector2(15140, -4551)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair6/QuestGiver"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair6/QuestGiver/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair6" groups=["NPC", "Receiver"]]
+position = Vector2(24428, -4107)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair6/QuestDelivery"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair6/QuestDelivery/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="CharPair7" type="Node2D" parent="."]
+
+[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair7" groups=["Giver", "NPC"]]
+position = Vector2(17904, -5057)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair7/QuestGiver"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair7/QuestGiver/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair7" groups=["NPC", "Receiver"]]
+position = Vector2(245, -4095)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair7/QuestDelivery"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair7/QuestDelivery/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="CharPair8" type="Node2D" parent="."]
+
+[node name="QuestGiver" type="AnimatedSprite2D" parent="CharPair8" groups=["Giver", "NPC"]]
+position = Vector2(11410, -9445)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair8/QuestGiver"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair8/QuestGiver/Area2D"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_58dkn")
+
+[node name="QuestDelivery" type="AnimatedSprite2D" parent="CharPair8" groups=["NPC", "Receiver"]]
+position = Vector2(12179, -258)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2u4v5")
+animation = &"chicken"
+autoplay = "chicken"
+frame = 3
+frame_progress = 0.216514
+script = ExtResource("9_xagyh")
+
+[node name="Area2D" type="Area2D" parent="CharPair8/QuestDelivery"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharPair8/QuestDelivery/Area2D"]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
@@ -1856,7 +2013,20 @@ offset_bottom = 15.5
 text = "blep"
 label_settings = SubResource("LabelSettings_m5b67")
 
-[node name="ObjMarker" parent="." instance=ExtResource("14_my2bd")]
+[node name="TL8" type="AnimatedSprite2D" parent="Player/Control/Container" groups=["TL"]]
+visible = false
+position = Vector2(15, 203)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_tk6pr")
+frame = 2
+
+[node name="Timer" type="Label" parent="Player/Control/Container/TL8" groups=["TLTimer"]]
+offset_left = 11.5
+offset_top = -7.5
+offset_right = 74.5
+offset_bottom = 15.5
+text = "blep"
+label_settings = SubResource("LabelSettings_m5b67")
 
 [node name="Lighting" type="Node2D" parent="."]
 position = Vector2(-6518, 3359)
@@ -1917,13 +2087,31 @@ position = Vector2(16999, -5523)
 [connection signal="body_entered" from="CharPair/QuestGiver/Area2D" to="CharPair/QuestGiver" method="_on_area_2d_body_entered"]
 [connection signal="character_touched" from="CharPair/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
 [connection signal="body_entered" from="CharPair/QuestDelivery/Area2D" to="CharPair/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Character3" to="." method="_on_character_3_character_touched"]
-[connection signal="body_entered" from="Character3/Area2D" to="Character3" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Character4" to="." method="_on_character_4_character_touched"]
-[connection signal="body_entered" from="Character4/Area2D" to="Character4" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Character5" to="." method="_on_character_5_character_touched"]
-[connection signal="body_entered" from="Character5/Area2D" to="Character5" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Character6" to="." method="_on_character_6_character_touched"]
-[connection signal="body_entered" from="Character6/Area2D" to="Character6" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Character7" to="." method="_on_character_7_character_touched"]
-[connection signal="body_entered" from="Character7/Area2D" to="Character7" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair2/QuestGiver" to="." method="_on_quest_giver_character_touched"]
+[connection signal="body_entered" from="CharPair2/QuestGiver/Area2D" to="CharPair2/QuestGiver" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair2/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
+[connection signal="body_entered" from="CharPair2/QuestDelivery/Area2D" to="CharPair2/QuestDelivery" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair3/QuestGiver" to="." method="_on_quest_giver_character_touched"]
+[connection signal="body_entered" from="CharPair3/QuestGiver/Area2D" to="CharPair3/QuestGiver" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair3/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
+[connection signal="body_entered" from="CharPair3/QuestDelivery/Area2D" to="CharPair3/QuestDelivery" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair4/QuestGiver" to="." method="_on_quest_giver_character_touched"]
+[connection signal="body_entered" from="CharPair4/QuestGiver/Area2D" to="CharPair4/QuestGiver" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair4/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
+[connection signal="body_entered" from="CharPair4/QuestDelivery/Area2D" to="CharPair4/QuestDelivery" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair5/QuestGiver" to="." method="_on_quest_giver_character_touched"]
+[connection signal="body_entered" from="CharPair5/QuestGiver/Area2D" to="CharPair5/QuestGiver" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair5/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
+[connection signal="body_entered" from="CharPair5/QuestDelivery/Area2D" to="CharPair5/QuestDelivery" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair6/QuestGiver" to="." method="_on_quest_giver_character_touched"]
+[connection signal="body_entered" from="CharPair6/QuestGiver/Area2D" to="CharPair6/QuestGiver" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair6/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
+[connection signal="body_entered" from="CharPair6/QuestDelivery/Area2D" to="CharPair6/QuestDelivery" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair7/QuestGiver" to="." method="_on_quest_giver_character_touched"]
+[connection signal="body_entered" from="CharPair7/QuestGiver/Area2D" to="CharPair7/QuestGiver" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair7/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
+[connection signal="body_entered" from="CharPair7/QuestDelivery/Area2D" to="CharPair7/QuestDelivery" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair8/QuestGiver" to="." method="_on_quest_giver_character_touched"]
+[connection signal="body_entered" from="CharPair8/QuestGiver/Area2D" to="CharPair8/QuestGiver" method="_on_area_2d_body_entered"]
+[connection signal="character_touched" from="CharPair8/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
+[connection signal="body_entered" from="CharPair8/QuestDelivery/Area2D" to="CharPair8/QuestDelivery" method="_on_area_2d_body_entered"]
