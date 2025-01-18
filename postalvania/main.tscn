@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=143 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Wisp.gd" id="18_yby3r"]
 [ext_resource type="Script" path="res://job_board.gd" id="18_yxf6o"]
 [ext_resource type="AudioStream" uid="uid://drdhogvtl0vqo" path="res://Assets/sounds/effects/Horror SFX Free/Monsters & Ghosts/Gore_Ripping_4.wav" id="19_5p51k"]
+[ext_resource type="AudioStream" uid="uid://decl8exp2yftq" path="res://Assets/sounds/effects/woosh_5.wav" id="22_o3up8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lugyo"]
 
@@ -2432,9 +2433,9 @@ position = Vector2(7946, -5693)
 rotation = -0.476492
 script = ExtResource("18_yby3r")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="WispPath/Wisp"]
+[node name="WispBody" type="CharacterBody2D" parent="WispPath/Wisp"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WispPath/Wisp/CharacterBody2D"]
+[node name="WispBox" type="CollisionShape2D" parent="WispPath/Wisp/WispBody"]
 shape = SubResource("CircleShape2D_ghtis")
 
 [node name="PointLight2D2" type="PointLight2D" parent="WispPath/Wisp"]
@@ -2573,6 +2574,11 @@ texture = ExtResource("15_gbex4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard5/Sprite2D/Area2D"]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_xb2st")
+
+[node name="RopeWoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_o3up8")
+volume_db = 2.029
+pitch_scale = 0.67
 
 [connection signal="character_touched" from="Pairs/CharPair/QuestGiver" to="." method="_on_quest_giver_character_touched"]
 [connection signal="body_entered" from="Pairs/CharPair/QuestGiver/Area2D" to="Pairs/CharPair/QuestGiver" method="_on_area_2d_body_entered"]

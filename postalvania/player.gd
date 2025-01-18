@@ -49,6 +49,8 @@ var maxRopeLength = 500
 var currentRopeLength = 0
 var rad_vel
 var radius
+var movingTarget = false
+var movingBody: CharacterBody2D
 
 #gliding Variables
 var glideEnabled = false
@@ -346,16 +348,16 @@ func _physics_process(delta: float) -> void:
 	if isSwinging:
 		$hookTimer.start()
 		hookIsReady = false
-		if clickJustPressed:
-			$AnimatedSprite2D.play("Swing")
-			$AnimatedSprite2D/hook.play("Swing")
-			$AnimatedSprite2D/glider.play("Swing")
-			$AnimatedSprite2D/slide.play("Swing")
-			$AnimatedSprite2D/dash.play("Swing")
 		#Hook Update to check if i can swing
 		if clickJustPressed:
 			hookPos = getHookPos()
 			if hookPos:
+				$"../RopeWoosh".play()
+				$AnimatedSprite2D.play("Swing")
+				$AnimatedSprite2D/hook.play("Swing")
+				$AnimatedSprite2D/glider.play("Swing")
+				$AnimatedSprite2D/slide.play("Swing")
+				$AnimatedSprite2D/dash.play("Swing")
 				hookActive = true
 				currentRopeLength = global_position.distance_to(hookPos)
 			else:
@@ -365,6 +367,9 @@ func _physics_process(delta: float) -> void:
 		Gravity(delta)
 		if hookActive:
 			Gravity(delta)
+			
+			if movingTarget == true:
+				MovingHookPos(movingBody)
 			#apply velocity based on grapple physics
 			if hookPos:
 				radius = global_position - hookPos
@@ -398,19 +403,21 @@ func _physics_process(delta: float) -> void:
 
 			$AnimatedSprite2D.look_at(hookPos)
 			$AnimatedSprite2D.rotate(PI/2)
-			
+		else:
+			movingTarget = false	
 		if clickJustReleased:
 			hookActive = false
 			$Rope.visible = false
 			isSwinging = false
 			isInAir = true
+			movingTarget = false	
 			
 		if rightClickJustPressed && yeetEnabled && yeetIsReady:
 			hookActive = false
 			isSwinging = false
 			isYeeting = true
+			movingTarget = false	
 			
-		
 		##########################################  YEETING YEETING
 		
 	if isYeeting:
@@ -490,6 +497,9 @@ func Gravity(delta):
 		
 func getHookPos():
 	if $RayCast01.is_colliding():
+		if $RayCast01.get_collider().name == "WispBody":
+			movingBody = $RayCast01.get_collider()
+			movingTarget = true
 		return $RayCast01.get_collision_point()
 	else:
 		print("couldnt find raycast collision")
@@ -540,6 +550,9 @@ func morph():
 		$"../EvolveAudio".play()
 		$Cacoon.play("morph")
 
+func MovingHookPos(Body:CharacterBody2D):	
+	hookPos = Body.global_position
+	print(Body.global_position)
 
 func _on_hook_timer_timeout() -> void:
 	hookIsReady = true
