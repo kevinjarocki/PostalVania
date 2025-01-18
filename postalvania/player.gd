@@ -96,9 +96,10 @@ func _physics_process(delta: float) -> void:
 		if direction != 0:
 			$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
 			$AnimatedSprite2D.play("Walk")
+			$AnimatedSprite2D/glider.play("Walk")
 		else:
 			$AnimatedSprite2D.play("Idle")
-		
+			$AnimatedSprite2D/glider.play("Idle")
 		#physics
 		velocity.x = move_toward(velocity.x, SPEED*direction, 200)
 		#transitions out of state
@@ -177,9 +178,9 @@ func _physics_process(delta: float) -> void:
 	if isInAir:
 		#animation control
 		if velocity.x > 0:
-			$AnimatedSprite2D.scale.x = 1
+			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 		if velocity.x < 0:
-			$AnimatedSprite2D.scale.x = -1
+			$AnimatedSprite2D.scale.x = -abs($AnimatedSprite2D.scale.x)
 		if velocity.y > stallSpeed:
 			var fallAngle = 0
 			if $AnimatedSprite2D.scale.x > 0:
@@ -223,17 +224,17 @@ func _physics_process(delta: float) -> void:
 		glideIsReady = false
 		var glideAngle = 0
 		$AnimatedSprite2D/glider.visible = true 
-		$AnimatedSprite2D/glider.play("flap")
+		$AnimatedSprite2D/glider.play("Flap")
 		if velocity.x > 0:
-			$AnimatedSprite2D.scale.x = 1
+			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 		if velocity.x < 0:
-			$AnimatedSprite2D.scale.x = -1
+			$AnimatedSprite2D.scale.x = -abs($AnimatedSprite2D.scale.x)
 		if $AnimatedSprite2D.scale.x > 0:
 			glideAngle = move_toward(0,velocity.angle(),1)
-			$AnimatedSprite2D.rotation = glideAngle + (PI/2)
+			$AnimatedSprite2D.rotation = glideAngle
 		if $AnimatedSprite2D.scale.x < 0:
 			glideAngle = move_toward(0,PI/2 - velocity.angle(),1)
-			$AnimatedSprite2D.rotation = glideAngle + (-PI/2)
+			$AnimatedSprite2D.rotation = glideAngle
 		if velocity.y > 0 && abs(velocity.x) < maxGlideSpeed:
 			if abs(velocity.x) != 0:
 				velocity.x += abs(velocity.y/2)*velocity.x/abs(velocity.x)
@@ -256,7 +257,6 @@ func _physics_process(delta: float) -> void:
 			isGliding = false
 		if isGliding == false:
 			$AnimatedSprite2D/glider.stop()
-			$AnimatedSprite2D/glider.visible = false
 		
 		################################################## DASHING DASHING
 		
@@ -435,6 +435,7 @@ func enableAbility(abilityName):
 		slideEnabled = true
 	elif abilityName == "glide":
 		glideEnabled = true
+		$AnimatedSprite2D/glider.visible = true
 	else:
 		print("no ability name match found")
 
