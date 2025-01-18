@@ -2250,7 +2250,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="Player" parent="." instance=ExtResource("1_hritv")]
-position = Vector2(-56, -3838)
+position = Vector2(-3, -3812)
 collision_layer = 255
 collision_mask = 255
 
@@ -2433,9 +2433,9 @@ position = Vector2(7946, -5693)
 rotation = -0.476492
 script = ExtResource("18_yby3r")
 
-[node name="WispBody" type="CharacterBody2D" parent="WispPath/Wisp"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="WispPath/Wisp"]
 
-[node name="WispBox" type="CollisionShape2D" parent="WispPath/Wisp/WispBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WispPath/Wisp/CharacterBody2D"]
 shape = SubResource("CircleShape2D_ghtis")
 
 [node name="PointLight2D2" type="PointLight2D" parent="WispPath/Wisp"]
@@ -2520,7 +2520,7 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="JobBoard2" type="Node2D" parent="."]
-position = Vector2(11882, -4357)
+position = Vector2(6858, -4682)
 script = ExtResource("18_yxf6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="JobBoard2"]
@@ -2534,7 +2534,7 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="JobBoard3" type="Node2D" parent="."]
-position = Vector2(8392, -4755)
+position = Vector2(11906, -8150)
 script = ExtResource("18_yxf6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="JobBoard3"]
@@ -2548,7 +2548,7 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="JobBoard4" type="Node2D" parent="."]
-position = Vector2(11621, -195)
+position = Vector2(12112, -4365)
 script = ExtResource("18_yxf6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="JobBoard4"]
@@ -2562,7 +2562,7 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="JobBoard5" type="Node2D" parent="."]
-position = Vector2(23563, -3779)
+position = Vector2(18965, -4488)
 script = ExtResource("18_yxf6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="JobBoard5"]
@@ -2614,12 +2614,7 @@ pitch_scale = 0.67
 [connection signal="body_entered" from="Pairs/CharPair8/QuestDelivery/Area2D" to="Pairs/CharPair8/QuestDelivery" method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="JobBoard4/Sprite2D/Area2D" to="JobBoard4" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard4/Sprite2D/Area2D" to="JobBoard4" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="JobBoard5/Sprite2D/Area2D" to="JobBoard5" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard5/Sprite2D/Area2D" to="JobBoard5" method="_on_area_2d_body_exited"]
