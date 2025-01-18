@@ -881,6 +881,7 @@ animation = &"Slide"
 frame = 1
 
 [node name="dash" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_4cre5")
 animation = &"Dash"
 
