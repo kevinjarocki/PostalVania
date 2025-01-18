@@ -2432,9 +2432,9 @@ position = Vector2(7946, -5693)
 rotation = -0.476492
 script = ExtResource("18_yby3r")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="WispPath/Wisp"]
+[node name="WispBody" type="CharacterBody2D" parent="WispPath/Wisp"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WispPath/Wisp/CharacterBody2D"]
+[node name="WispBox" type="CollisionShape2D" parent="WispPath/Wisp/WispBody"]
 shape = SubResource("CircleShape2D_ghtis")
 
 [node name="PointLight2D2" type="PointLight2D" parent="WispPath/Wisp"]
