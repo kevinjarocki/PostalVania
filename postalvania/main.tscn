@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=135 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bw7sec2n3ip5y" path="res://abilityCow.tscn" id="16_brnb8"]
 [ext_resource type="PackedScene" uid="uid://cgqg2sbamegk1" path="res://Assets/Theresa Art/spiderAnimation.tscn" id="16_hydth"]
 [ext_resource type="Script" path="res://hi_score.gd" id="16_mtk24"]
+[ext_resource type="AudioStream" uid="uid://8pdx24csnu81" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 02 A New Day's Hurry (General Background Music).mp3" id="17_gv42l"]
+[ext_resource type="AudioStream" uid="uid://drdhogvtl0vqo" path="res://Assets/sounds/effects/Horror SFX Free/Monsters & Ghosts/Gore_Ripping_4.wav" id="19_5p51k"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lugyo"]
 
@@ -2431,6 +2433,16 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Score"
 label_settings = SubResource("LabelSettings_odmwe")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_gv42l")
+volume_db = -13.619
+autoplay = true
+
+[node name="EvolveAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_5p51k")
+volume_db = 8.667
+pitch_scale = 0.39
 
 [connection signal="character_touched" from="CharPair/QuestGiver" to="." method="_on_quest_giver_character_touched"]
 [connection signal="body_entered" from="CharPair/QuestGiver/Area2D" to="CharPair/QuestGiver" method="_on_area_2d_body_entered"]
