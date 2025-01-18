@@ -292,7 +292,7 @@ func _physics_process(delta: float) -> void:
 		if !dashEnabled:
 			return
 		
-		velocity.x += $AnimatedSprite2D.scale.x * dashVelocity + velocity.x
+		velocity.x += sign($AnimatedSprite2D.scale.x) * dashVelocity + velocity.x
 		velocity.y = 0
 		
 		isDashing = false
