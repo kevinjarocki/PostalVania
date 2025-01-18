@@ -95,10 +95,14 @@ func _physics_process(delta: float) -> void:
 		#animation control
 		if direction != 0:
 			$AnimatedSprite2D.scale.x = direction * abs($AnimatedSprite2D.scale.x)
+			$AnimatedSprite2D.play("Walk")
+		else:
+			$AnimatedSprite2D.play("Idle")
 		
 		#physics
 		velocity.x = move_toward(velocity.x, SPEED*direction, 200)
 		#transitions out of state
+
 		if spaceHeld:
 			isGrounded = false
 			isJumping = true
