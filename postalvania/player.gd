@@ -457,36 +457,47 @@ func getHookPos():
 		
 		########################## Signals and Enable Methods #######################################
 func enableAbility(abilityName):
-	if abilityName == "hook":
-		hookIsReady = true
-		hookProgBar.visible = true
-		hookEnabled = true
-		main._dBox("You just got the HOOK ability! Point and click to swing on a terrain while in the air!")
-		$AnimatedSprite2D/hook.visible = true
-	elif abilityName == "yeet":
-		yeetEnabled = true
-		yeetIsReady = true
-		yeetProgBar.visible = true
-		main._dBox("You just got the YEET ability! While swinging right click!")
-	elif abilityName == "dash":
-		dashEnabled = true
-		dashIsReady = true
-		dashProgBar.visible = true
-		main._dBox("You just got the DASH ability! Press Shift for a quick speed boost!")
-	elif abilityName == "slide":
-		slideEnabled = true
-		slideIsReady = true
-		slideProgBar.visible = true
-		main._dBox("You just got the SLIDE ability! Press ctrl just before landing to keep up your speed!")
-		$AnimatedSprite2D/slide.visible = true
-	elif abilityName == "glide":
-		glideEnabled = true
-		glideIsReady = true
-		glideProgBar.visible = true
-		$AnimatedSprite2D/glider.visible = true
-		main._dBox("You just got the GLIDE ability! Hold space while in the air to traverse horizontally!")
-	else:
-		print("no ability name match found")
+	
+		if abilityName == "hook" && !hookEnabled:
+			morph()
+			hookIsReady = true
+			hookProgBar.visible = true
+			hookEnabled = true
+			main._dBox("You just got the HOOK ability! Point and click to swing on a terrain while in the air!")
+			$AnimatedSprite2D/hook.visible = true
+		elif abilityName == "yeet" && !yeetEnabled:
+			morph()
+			yeetEnabled = true
+			yeetIsReady = true
+			yeetProgBar.visible = true
+			main._dBox("You just got the YEET ability! While swinging right click!")
+		elif abilityName == "dash" && !dashEnabled:
+			morph()
+			dashEnabled = true
+			dashIsReady = true
+			dashProgBar.visible = true
+			main._dBox("You just got the DASH ability! Press Shift for a quick speed boost!")
+		elif abilityName == "slide" && !slideEnabled:
+			morph()
+			slideEnabled = true
+			slideIsReady = true
+			slideProgBar.visible = true
+			main._dBox("You just got the SLIDE ability! Press ctrl just before landing to keep up your speed!")
+			$AnimatedSprite2D/slide.visible = true
+		elif abilityName == "glide" && !glideEnabled:
+			morph()
+			glideEnabled = true
+			glideIsReady = true
+			glideProgBar.visible = true
+			$AnimatedSprite2D/glider.visible = true
+			main._dBox("You just got the GLIDE ability! Hold space while in the air to traverse horizontally!")
+		else:
+			print("no ability name match found")
+			
+func morph():
+	if !$Cacoon.is_playing():
+		$Cacoon.visible = true
+		$Cacoon.play("morph")
 
 
 func _on_hook_timer_timeout() -> void:
@@ -514,3 +525,12 @@ func _on_coyote_time_timeout() -> void:
 	coyoteTime = false
 	isGrounded = false
 	isInAir = true
+
+
+func _on_cacoon_animation_finished() -> void:
+		$CPUParticles2D.emitting = true
+		$Cacoon.visible = false
+
+
+func _on_cacoon_frame_changed() -> void:
+	position .y += -2
