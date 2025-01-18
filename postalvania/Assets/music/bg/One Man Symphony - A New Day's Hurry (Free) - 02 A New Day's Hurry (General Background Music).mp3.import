@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8pdx24csnu81"
+path="res://.godot/imported/One Man Symphony - A New Day's Hurry (Free) - 02 A New Day's Hurry (General Background Music).mp3-b5a5cffa40e4951176c42a4ea9f60357.mp3str"
+
+[deps]
+
+source_file="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 02 A New Day's Hurry (General Background Music).mp3"
+dest_files=["res://.godot/imported/One Man Symphony - A New Day's Hurry (Free) - 02 A New Day's Hurry (General Background Music).mp3-b5a5cffa40e4951176c42a4ea9f60357.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
