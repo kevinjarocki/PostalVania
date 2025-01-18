@@ -346,16 +346,15 @@ func _physics_process(delta: float) -> void:
 	if isSwinging:
 		$hookTimer.start()
 		hookIsReady = false
-		if clickJustPressed:
-			$AnimatedSprite2D.play("Swing")
-			$AnimatedSprite2D/hook.play("Swing")
-			$AnimatedSprite2D/glider.play("Swing")
-			$AnimatedSprite2D/slide.play("Swing")
-			$AnimatedSprite2D/dash.play("Swing")
 		#Hook Update to check if i can swing
 		if clickJustPressed:
 			hookPos = getHookPos()
 			if hookPos:
+				$AnimatedSprite2D.play("Swing")
+				$AnimatedSprite2D/hook.play("Swing")
+				$AnimatedSprite2D/glider.play("Swing")
+				$AnimatedSprite2D/slide.play("Swing")
+				$AnimatedSprite2D/dash.play("Swing")
 				hookActive = true
 				currentRopeLength = global_position.distance_to(hookPos)
 			else:
