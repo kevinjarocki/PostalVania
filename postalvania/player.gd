@@ -128,32 +128,26 @@ func _physics_process(delta: float) -> void:
 		if oldIsSliding == false:
 			slideSpeed = velocity.x*1.5 + SPEED*sign(velocity.x)
 		if cntrlHeld:
-			$AnimatedSprite2D.scale.y = 0.5
 			velocity.x = slideSpeed
 
 		
 		if !is_on_floor():
 			isInAir = true
 			isSliding = false
-			$AnimatedSprite2D.scale.y = 1
 		if spaceJustPressed:
 			isSliding = false
 			isJumping = true
-			$AnimatedSprite2D.scale.y = 1
 		elif clickJustPressed && hookEnabled && hookIsReady:
 			isSliding = false
 			isSwinging = true
-			$AnimatedSprite2D.scale.y = 1
 		elif cntrlJustReleased:
 			isSliding = false
-			$AnimatedSprite2D.scale.y = 1
 			if is_on_floor():
 				isGrounded = true
 			else:
 				isInAir = true
 		else:
 			isInAir = true
-			$AnimatedSprite2D.scale.y = 1
 			
 	oldIsSliding = isSliding
 	####################################JUMPING JUMPING
