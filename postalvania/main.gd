@@ -94,18 +94,20 @@ func _unhandled_input(event):
 			$Player.isSwinging = false
 			$Player.isGliding = false
 
-		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible:
+		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible and $Timer.is_stopped():
 			$Player/Control/NinePatchRect.visible = false
 			await get_tree().create_timer(.01).timeout
 			$Player.frozen = false
 			timerPause = false
 	
 func _dBox (text, text2 = "", sprite = false):
+	$Timer.start()
 	$Player/Control/NinePatchRect/DialogueText.text = text
 	timerPause = true
 	$Player/Control/NinePatchRect.visible = true
 	$Player.frozen = true
 	$Player/Control/NinePatchRect/Received.text = text2
+	
 	
 	if sprite:
 		$Player/Control/NinePatchRect/DialogueSprite.visible = true
@@ -147,5 +149,5 @@ func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 		_dBox(receiverPreQuestDBox[char_id])
 		
 func _complete_game():
-	
+	$HiScore.start()
 	pass
