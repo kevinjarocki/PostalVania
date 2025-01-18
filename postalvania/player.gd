@@ -94,11 +94,11 @@ func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
 	if Input.is_action_pressed("1"):
 		#CHEAT MODE
-		hookEnabled = true
-		glideEnabled = true
-		slideEnabled = true
-		dashEnabled = true
-		yeetEnabled = true
+		enableAbility("hook")
+		enableAbility("yeet")
+		enableAbility("dash")
+		enableAbility("slide")
+		enableAbility("glide")
 		
 	hookProgBar.value = 100 - ($hookTimer.time_left / $hookTimer.wait_time) * 100
 	dashProgBar.value = 100 - ($dashTimer.time_left / $dashTimer.wait_time) * 100
@@ -148,6 +148,8 @@ func _physics_process(delta: float) -> void:
 		slideIsReady = false
 		if oldIsSliding == false:
 			slideSpeed = velocity.x*1.5 + SPEED*sign(velocity.x)
+			$AnimatedSprite2D/slide.play("Slide")
+			$AnimatedSprite2D.play("Slide")
 		if cntrlHeld:
 			velocity.x = slideSpeed
 
@@ -284,6 +286,8 @@ func _physics_process(delta: float) -> void:
 		################################################## DASHING DASHING
 		
 	if isDashing:
+		print("dash")
+		$dashTimer.start()
 		dashIsReady = false
 		if !dashEnabled:
 			return
@@ -495,6 +499,7 @@ func _on_glide_timer_timeout() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	dashIsReady = true
+	print("dash ready again")
 
 
 func _on_slide_timer_timeout() -> void:
