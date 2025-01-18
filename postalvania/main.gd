@@ -10,10 +10,19 @@ var nodeTLArray = []
 var nodeTLTimerArray = []
 var nodeNPCArray = []
 
+#Text to display in dbox from chickens
+var firstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist chickens by delivering parcels they give you. You can also touch cows to unlock great abilities",
+"Here is the second text box for the second chicken"]
+
+@onready var ObjMarker = preload("res://obj_marker.tscn")
+
 func _ready():
 	nodeTLArray = get_tree().get_nodes_in_group("TL")
 	nodeTLTimerArray = get_tree().get_nodes_in_group("TLTimer")
-	nodeNPCArray = get_tree().get_nodes_in_group("NPC")
+	nodeNPCArray = get_tree().get_nodes_in_group("NPC")	
+	
+	$CharPair/QuestGiver.char_id = 0
+	$CharPair/QuestDelivery.char_id = 1
 	
 func _process (delta):
 	if !timerPause:
@@ -44,7 +53,7 @@ func _unhandled_input(event):
 		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible and stage != 7:
 			$Player/Control/NinePatchRect.visible = false
 			await get_tree().create_timer(.01).timeout
-			$Player.process_mode = Node.PROCESS_MODE_PAUSABLE
+			$Player.frozen = false
 			timerPause = false
 			$Player/Control/Container/TL1.visible = true
 
@@ -52,30 +61,26 @@ func completeTime():
 	completedTime.append(time[0]-time[stage-1])
 	nodeTLTimerArray[stage-2].text = "%.2f" %completedTime[stage-1] + " sec"
 	
-func _on_character_character_touched(first_touch: Variant) -> void:
+func _dBox (text, text2 = "", sprite = false):
+	$Player/Control/NinePatchRect/DialogueText.text = text
+	timerPause = true
+	$Player/Control/NinePatchRect.visible = true
+	$Player.frozen = true
+	$Player/Control/NinePatchRect/Received.text = text2
+	
+	if sprite:
+		$Player/Control/NinePatchRect/DialogueSprite.visible = true
+		$Player/Control/NinePatchRect/DialogueSprite.frame = sprite
+	else:
+		$Player/Control/NinePatchRect/DialogueSprite.visible = false
+	
+func _on_quest_giver_character_touched(first_touch, char_id):
 	if first_touch:
-		$Player/Control/NinePatchRect/DialogueText.text = "Thank you for getting to me! Please deliver this package to the right! My friend the cat is waiting."
-	pass # Replace with function body.
-
-func _on_character_2_character_touched(first_touch: Variant) -> void:
+		_dBox(firstTouchDBox[char_id])
+		
+		
+		
+	
+func _on_quest_delivery_character_touched(first_touch, char_id):
 	if first_touch:
-		$Player/Control/NinePatchRect/DialogueText.text = "Thanks for the delivery! I love that chicken! Please deliver this to the other chicken to my immediate right."
-	pass # Replace with function body.
-
-func _on_character_3_character_touched(first_touch: Variant) -> void:
-	pass # Replace with function body.
-
-func _on_character_4_character_touched(first_touch: Variant) -> void:
-	pass # Replace with function body.
-
-func _on_character_5_character_touched(first_touch: Variant) -> void:
-	pass # Replace with function body.
-
-func _on_character_6_character_touched(first_touch: Variant) -> void:
-	pass # Replace with function body.
-
-func _on_character_7_character_touched(first_touch: Variant) -> void:
-	$Player/Control/NinePatchRect/DialogueText.text = "Thanks for the delivery! I love that chicken! You win!!. Your final total time is: " + ("%.2f" %time[0] + " sec")
-	$Player/Control/NinePatchRect/DialogueSprite.visible = false
-	$Player/Control/NinePatchRect/Received.visible = false
-	pass # Replace with function body.
+		_dBox(firstTouchDBox[char_id])

@@ -1,23 +1,18 @@
 extends AnimatedSprite2D 
 
 var first_touch = true
+var interactable = true
+var char_id = 0
 
-signal character_touched(first_touch)
+signal character_touched(first_touch, char_id)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	character_touched.emit(first_touch)
-	if first_touch:
-		character_touch ()
-	first_touch = false
-	pass # Replace with function body.
-
-func character_touch ():
-	$"..".stage += 1
-	$"..".timerPause = true
-	$"../Player/Control/NinePatchRect".visible = true
-	$"../Player/Control/NinePatchRect/DialogueSprite".frame = $"..".stage-1
-	$"..".nodeTLArray[$"..".stage-1].frame = $"..".stage-1
-	$"../Player".process_mode = Node.PROCESS_MODE_DISABLED
 	
-	if $"..".stage > 1:
-		$"..".completeTime()
+	#if first_touch:
+		#$"../.."._dBox("Welcome to the wonderful world of ParcelVania. Here you assist chickens by delivering parcels they give you. You can also touch cows to unlock great abilities")
+	#
+	#else:
+		#$"../.."._dBox("Please deliver my package to the chicken")
+	
+	character_touched.emit(first_touch, char_id)
+	first_touch = false
