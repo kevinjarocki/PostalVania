@@ -2329,11 +2329,22 @@ script = ExtResource("16_mtk24")
 [node name="VBoxContainer" type="VBoxContainer" parent="HiScore"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="HiScore/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HiScore/VBoxContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HiScore/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/Panel"]
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2347,7 +2358,7 @@ text = "Name"
 label_settings = SubResource("LabelSettings_4quc7")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/Panel"]
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2365,11 +2376,11 @@ label_settings = SubResource("LabelSettings_4quc7")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel2" type="Panel" parent="HiScore/VBoxContainer"]
+[node name="Panel2" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/Panel2"]
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel2"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2383,7 +2394,7 @@ text = "Name"
 label_settings = SubResource("LabelSettings_4quc7")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/Panel2"]
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel2"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2401,11 +2412,11 @@ label_settings = SubResource("LabelSettings_4quc7")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel3" type="Panel" parent="HiScore/VBoxContainer"]
+[node name="Panel3" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/Panel3"]
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel3"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2419,7 +2430,7 @@ text = "Name"
 label_settings = SubResource("LabelSettings_4quc7")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/Panel3"]
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel3"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2437,11 +2448,11 @@ label_settings = SubResource("LabelSettings_4quc7")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel4" type="Panel" parent="HiScore/VBoxContainer"]
+[node name="Panel4" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/Panel4"]
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel4"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2455,7 +2466,7 @@ text = "Name"
 label_settings = SubResource("LabelSettings_4quc7")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/Panel4"]
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel4"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2473,11 +2484,11 @@ label_settings = SubResource("LabelSettings_4quc7")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Panel5" type="Panel" parent="HiScore/VBoxContainer"]
+[node name="Panel5" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/Panel5"]
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel5"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -2491,7 +2502,151 @@ text = "Name"
 label_settings = SubResource("LabelSettings_4quc7")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/Panel5"]
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel5"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -11.0
+offset_right = -3.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Time"
+label_settings = SubResource("LabelSettings_4quc7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel6" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel6"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 78.0
+offset_bottom = 11.0
+grow_vertical = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_4quc7")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel6"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -11.0
+offset_right = -3.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Time"
+label_settings = SubResource("LabelSettings_4quc7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel7" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel7"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 78.0
+offset_bottom = 11.0
+grow_vertical = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_4quc7")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel7"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -11.0
+offset_right = -3.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Time"
+label_settings = SubResource("LabelSettings_4quc7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel8" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel8"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 78.0
+offset_bottom = 11.0
+grow_vertical = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_4quc7")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel8"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -11.0
+offset_right = -3.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Time"
+label_settings = SubResource("LabelSettings_4quc7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel9" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel9"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 78.0
+offset_bottom = 11.0
+grow_vertical = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_4quc7")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel9"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
