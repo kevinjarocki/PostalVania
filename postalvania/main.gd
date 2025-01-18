@@ -94,7 +94,7 @@ func _unhandled_input(event):
 			$Player.isSwinging = false
 			$Player.isGliding = false
 
-		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible and $Timer.is_stopped():
+		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible and $Timer.is_stopped() && !$Player.cutsceneActive:
 			$Player/Control/NinePatchRect.visible = false
 			await get_tree().create_timer(.01).timeout
 			$Player.frozen = false
