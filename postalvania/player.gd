@@ -206,10 +206,10 @@ func _physics_process(delta: float) -> void:
 			var fallAngle = 0
 			if $AnimatedSprite2D.scale.x > 0:
 				fallAngle = move_toward(0,PI,1)
-				$AnimatedSprite2D.rotation = fallAngle + (PI/2)
+				$AnimatedSprite2D.rotation = fallAngle
 			if $AnimatedSprite2D.scale.x < 0:
-				fallAngle = move_toward(0,180-PI,1)
-				$AnimatedSprite2D.rotation = fallAngle + (-PI/2)
+				fallAngle = move_toward(0,-PI,1)
+				$AnimatedSprite2D.rotation = fallAngle
 		else:
 			$AnimatedSprite2D.rotation = 0
 		if direction != 0:
