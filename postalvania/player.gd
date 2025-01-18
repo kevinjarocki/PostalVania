@@ -104,26 +104,33 @@ func _process(delta: float) -> void:
 		enableAbility("dash")
 		enableAbility("slide")
 		enableAbility("glide")
-		
-	$Camera2D.zoom.x = lerp($Camera2D.zoom.x,clamp(SPEED/(abs(velocity.x)+1),0,0.3)+0.4,5*delta)
-	$Camera2D.zoom.y = lerp($Camera2D.zoom.y,clamp(SPEED/(abs(velocity.x)+1),0,0.3)+0.4,5*delta)
-	
-	if abs(velocity.x) < SPEED+100:
+	if cutsceneActive:
+		$Camera2D.zoom.x = lerp($Camera2D.zoom.x,1.0,5*delta)
+		$Camera2D.zoom.y = lerp($Camera2D.zoom.y,1.0,5*delta)
 		$Camera2D.offset.x = lerp($Camera2D.offset.x,0.0,delta)
+		$Camera2D.offset.y = lerp($Camera2D.offset.y,0.0,delta)
+		
 	else:
-		if abs(velocity.length()) > lastFrameSpeed:
-			$Camera2D.offset.x = lerp($Camera2D.offset.x,clamp(velocity.x/5,-3000,3000.0),delta/3)
+		$Camera2D.rotation = 0
+		$Camera2D.zoom.x = lerp($Camera2D.zoom.x,clamp(SPEED/(abs(velocity.x)+1),0,0.3)+0.4,5*delta)
+		$Camera2D.zoom.y = lerp($Camera2D.zoom.y,clamp(SPEED/(abs(velocity.x)+1),0,0.3)+0.4,5*delta)
+		
+		if abs(velocity.x) < SPEED+100:
+			$Camera2D.offset.x = lerp($Camera2D.offset.x,0.0,delta)
 		else:
-			$Camera2D.offset.x = lerp($Camera2D.offset.x,clamp(velocity.x/5,-3000,3000.0),delta)
-	
-	if abs(velocity.y) < abs(JUMP_VELOCITY):
-		$Camera2D.offset.y = lerp($Camera2D.offset.y,0.0,1*delta)
-	else:
-		if abs(velocity.length()) > lastFrameSpeed:
-			$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta/3)
+			if abs(velocity.length()) > lastFrameSpeed:
+				$Camera2D.offset.x = lerp($Camera2D.offset.x,clamp(velocity.x/5,-3000,3000.0),delta/3)
+			else:
+				$Camera2D.offset.x = lerp($Camera2D.offset.x,clamp(velocity.x/5,-3000,3000.0),delta)
+		
+		if abs(velocity.y) < abs(JUMP_VELOCITY):
+			$Camera2D.offset.y = lerp($Camera2D.offset.y,0.0,1*delta)
 		else:
-			$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta)
-	#$Camera2D.zoom = $Camera2D.zoom.lerp(SPEED/abs(velocity.x)+1,0,1.2)+0.4,0.1)
+			if abs(velocity.length()) > lastFrameSpeed:
+				$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta/3)
+			else:
+				$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta)
+		#$Camera2D.zoom = $Camera2D.zoom.lerp(SPEED/abs(velocity.x)+1,0,1.2)+0.4,0.1)
 
 
 		
