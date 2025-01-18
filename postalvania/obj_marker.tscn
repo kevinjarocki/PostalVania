@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfl46nms86upe"]
+
+[ext_resource type="Script" path="res://obj_marker.gd" id="1_tei50"]
+[ext_resource type="Texture2D" uid="uid://cu155iil8032e" path="res://Assets/GUI/buttons_1x.png" id="2_05sq1"]
+
+[node name="ObjMarker" type="Node2D"]
+script = ExtResource("1_tei50")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 23)
+scale = Vector2(8, 8)
+texture = ExtResource("2_05sq1")
+region_enabled = true
+region_rect = Rect2(104, 0, 8, 8)

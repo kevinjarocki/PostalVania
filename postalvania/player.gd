@@ -71,7 +71,8 @@ var yeetSpeed = 300
 #coyote variables
 var coyoteTime = false
 
-
+#freeze variables
+var frozen = false
 
 func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
@@ -83,7 +84,7 @@ func _process(delta: float) -> void:
 		dashEnabled = true
 		yeetEnabled = true
 		
-	print(isSliding)
+	
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
 	QueryInputs()
@@ -373,7 +374,9 @@ func _physics_process(delta: float) -> void:
 
 
 	oldIsYeeting = isYeeting
-	move_and_slide()
+	if !frozen:
+		move_and_slide()
+		
 	Gravity(delta)
 	
 func QueryInputs():

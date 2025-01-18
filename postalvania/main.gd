@@ -3,33 +3,82 @@ extends Node2D
 var timerPause = false
 var stage = 0
 var cur_stage = 0
-var time = [0]
-var completedTime = [0]
+var totalTime = 0
+var stageStartTime = [0,0,0,0,0,0,0,0]
+var stageStep = [0,0,0,0,0,0,0,0]
 
 var nodeTLArray = []
 var nodeTLTimerArray = []
-var nodeNPCArray = []
+var giverNPCArray = []
+var receiverNPCArray = []
+var markerArray = [0,0,0,0,0,0,0,0]
+
+#Text to display in dbox from chickens
+var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist chickens by delivering parcels they give you. You can also touch cows to unlock great abilities",
+	"Here is the second text box for the second chicken delivery",
+	"Here is the third text box for the third chicken delivery",
+	"Here is the fourth text box for the fourth chicken delivery",
+	"Here is the fifth text box for the fifth chicken delivery",
+	"Here is the sixth text box for the sixth chicken delivery",
+	"Here is the seventh text box for the seventh chicken delivery",
+	"Here is the eigth text box for the 8 chicken delivery"]
+	
+var giverNextTouchDBox = ["I already gave you my package, please deliver it! They're in the moss",
+	"I already gave you my package, please deliver it! They're in the tree",
+	"I already gave you my package, please deliver it! They're in the desert",
+	"I already gave you my package, please deliver it! They're in the lake",
+	"I already gave you my package, please deliver it! They're in the messhall",
+	"I already gave you my package, please deliver it! They're in the grasslands",
+	"I already gave you my package, please deliver it! They're in the village",
+	"I already gave you my package, please deliver it! They're in the car"]
+
+var receiverPreQuestDBox = ["I'm looking for a package 1",
+	"I'm looking for a package 2",
+	"I'm looking for a package 3",
+	"I'm looking for a package 4",
+	"I'm looking for a package 5",
+	"I'm looking for a package 6",
+	"I'm looking for a package 7",
+	"I'm looking for a package 8"]
+
+var receiverCompletingQuestDBox = ["Thanks for delivering this! I appreciate it",
+	"Thanks for delivering this! I appreciate it",
+	"Thanks for delivering this! I appreciate it",
+	"Thanks for delivering this! I appreciate it",
+	"Thanks for delivering this! I appreciate it",
+	"Thanks for delivering this! I appreciate it",
+	"Thanks for delivering this! I appreciate it",
+	"Thanks for delivering this! I appreciate it"]
+
+@onready var ObjMarker = preload("res://obj_marker.tscn")
 
 func _ready():
 	nodeTLArray = get_tree().get_nodes_in_group("TL")
 	nodeTLTimerArray = get_tree().get_nodes_in_group("TLTimer")
-	nodeNPCArray = get_tree().get_nodes_in_group("NPC")
+	giverNPCArray = get_tree().get_nodes_in_group("Giver")
+	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
 	
+	var counter = 0
+	for x in giverNPCArray:
+		x.char_id = counter
+		counter += 1
+
+	counter = 0
+	for x in receiverNPCArray:
+		x.char_id = counter
+		counter += 1
+		
 func _process (delta):
 	if !timerPause:
-		time[0] += delta
+		totalTime += delta
 		
-	$Player/Control/Timer.text = ("%.2f" %time[0] + " sec")
+	$Player/Control/Timer.text = ("%.1f" %totalTime + " sec")
 	
-	if cur_stage != stage and stage < 7:
-		cur_stage = stage
-		time.append(time[0])
-		nodeTLArray[stage-1].visible = true
+	for x in len(stageStep):
+		if stageStep[x] == 1:
+			var temp = totalTime - stageStartTime[x]
+			nodeTLTimerArray[x].text = ("%.1f" %temp + " sec")
 	
-	if stage > 0 and stage < 7:
-		nodeTLTimerArray[stage-1].text = ("%.2f" %(time[0]-time[stage]) + " sec")
-		$ObjMarker.spriteLoc = nodeNPCArray[stage].global_position + Vector2(0,-25)
-
 func _unhandled_input(event):
 	
 	if event is InputEventKey:
@@ -41,41 +90,52 @@ func _unhandled_input(event):
 			$Player.isSwinging = false
 			$Player.isGliding = false
 
-		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible and stage != 7:
+		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible:
 			$Player/Control/NinePatchRect.visible = false
 			await get_tree().create_timer(.01).timeout
-			$Player.process_mode = Node.PROCESS_MODE_PAUSABLE
+			$Player.frozen = false
 			timerPause = false
-			$Player/Control/Container/TL1.visible = true
-
-func completeTime():
-	completedTime.append(time[0]-time[stage-1])
-	nodeTLTimerArray[stage-2].text = "%.2f" %completedTime[stage-1] + " sec"
 	
-func _on_character_character_touched(first_touch: Variant) -> void:
+func _dBox (text, text2 = "", sprite = false):
+	$Player/Control/NinePatchRect/DialogueText.text = text
+	timerPause = true
+	$Player/Control/NinePatchRect.visible = true
+	$Player.frozen = true
+	$Player/Control/NinePatchRect/Received.text = text2
+	
+	if sprite:
+		$Player/Control/NinePatchRect/DialogueSprite.visible = true
+		$Player/Control/NinePatchRect/DialogueSprite.frame = sprite
+	else:
+		$Player/Control/NinePatchRect/DialogueSprite.visible = false
+	
+func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
+	
 	if first_touch:
-		$Player/Control/NinePatchRect/DialogueText.text = "Thank you for getting to me! Please deliver this package to the right! My friend the cat is waiting."
-	pass # Replace with function body.
-
-func _on_character_2_character_touched(first_touch: Variant) -> void:
-	if first_touch:
-		$Player/Control/NinePatchRect/DialogueText.text = "Thanks for the delivery! I love that chicken! Please deliver this to the other chicken to my immediate right."
-	pass # Replace with function body.
-
-func _on_character_3_character_touched(first_touch: Variant) -> void:
-	pass # Replace with function body.
-
-func _on_character_4_character_touched(first_touch: Variant) -> void:
-	pass # Replace with function body.
-
-func _on_character_5_character_touched(first_touch: Variant) -> void:
-	pass # Replace with function body.
-
-func _on_character_6_character_touched(first_touch: Variant) -> void:
-	pass # Replace with function body.
-
-func _on_character_7_character_touched(first_touch: Variant) -> void:
-	$Player/Control/NinePatchRect/DialogueText.text = "Thanks for the delivery! I love that chicken! You win!!. Your final total time is: " + ("%.2f" %time[0] + " sec")
-	$Player/Control/NinePatchRect/DialogueSprite.visible = false
-	$Player/Control/NinePatchRect/Received.visible = false
-	pass # Replace with function body.
+		_dBox(giverFirstTouchDBox[char_id])
+		var instance = ObjMarker.instantiate()
+		add_child(instance)
+		markerArray[char_id] = instance
+		instance.spriteLoc = charPosition
+		stageStep[char_id] = 1
+		stageStartTime[char_id] = totalTime
+		nodeTLArray[char_id].visible = true
+	
+	else:
+		_dBox(giverNextTouchDBox[char_id])
+		
+func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
+	
+	if stageStep[char_id] == 2:
+		_dBox("You've already delived to me! Thanks for the assistance.")
+	
+	elif stageStep[char_id] == 1:
+		_dBox(receiverCompletingQuestDBox[char_id])
+		stageStep[char_id] = 2
+		markerArray[char_id].queue_free()
+		
+	elif stageStep[char_id] == 0:
+		_dBox(receiverPreQuestDBox[char_id])
+		
+		
+		
