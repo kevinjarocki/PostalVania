@@ -60,7 +60,7 @@ func _ready():
 	nodeTLTimerArray = get_tree().get_nodes_in_group("TLTimer")
 	giverNPCArray = get_tree().get_nodes_in_group("Giver")
 	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
-	nodePanelTLArray = $Player/Control/VBoxContainer.get_children()
+	nodePanelTLArray = $Control/VBoxContainer.get_children()
 	
 	var counter = 0
 	for x in giverNPCArray:
@@ -76,7 +76,7 @@ func _process (delta):
 	if !timerPause:
 		totalTime += delta
 		
-	$Player/Control/VBoxContainer2/Timer.text = ("%.1f" %totalTime + " sec")
+	$Control/VBoxContainer2/Timer.text = ("%.1f" %totalTime + " sec")
 	
 	for x in len(stageStep):
 		if stageStep[x] == 1:
@@ -84,7 +84,7 @@ func _process (delta):
 			nodeTLTimerArray[x].text = ("%.1f" %temp + " sec")
 	
 	velocity = $Player.velocity.length() / 100
-	$Player/Control/VBoxContainer2/Velocity.text = ("%.1f" %velocity + " m/sec")
+	$Control/VBoxContainer2/Velocity.text = ("%.1f" %velocity + " m/sec")
 	
 func _unhandled_input(event):
 	
@@ -97,26 +97,26 @@ func _unhandled_input(event):
 			$Player.isSwinging = false
 			$Player.isGliding = false
 
-		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible and $Timer.is_stopped() && !$Player.cutsceneActive:
-			$Player/Control/NinePatchRect.visible = false
+		if event.pressed and event.keycode == KEY_SPACE and $Control/NinePatchRect.visible and $Timer.is_stopped() && !$Player.cutsceneActive:
+			$Control/NinePatchRect.visible = false
 			await get_tree().create_timer(.01).timeout
 			$Player.frozen = false
 			timerPause = false
 	
 func _dBox (text, text2 = "", sprite = false):
 	$Timer.start()
-	$Player/Control/NinePatchRect/DialogueText.text = text
+	$Control/NinePatchRect/DialogueText.text = text
 	timerPause = true
-	$Player/Control/NinePatchRect.visible = true
+	$Control/NinePatchRect.visible = true
 	$Player.frozen = true
-	$Player/Control/NinePatchRect/Received.text = text2
+	$Control/NinePatchRect/Received.text = text2
 	
 	
 	if sprite:
-		$Player/Control/NinePatchRect/DialogueSprite.visible = true
-		$Player/Control/NinePatchRect/DialogueSprite.frame = sprite
+		$Control/NinePatchRect/DialogueSprite.visible = true
+		$Control/NinePatchRect/DialogueSprite.frame = sprite
 	else:
-		$Player/Control/NinePatchRect/DialogueSprite.visible = false
+		$Control/NinePatchRect/DialogueSprite.visible = false
 	
 func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
 	
@@ -128,7 +128,7 @@ func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
 		instance.spriteLoc = charPosition
 		stageStep[char_id] = 1
 		stageStartTime[char_id] = totalTime
-		$Player/Control/VBoxContainer.move_child(nodePanelTLArray[char_id], 0)
+		$Control/VBoxContainer.move_child(nodePanelTLArray[char_id], 0)
 		nodePanelTLArray[char_id].visible = true
 		nodeTLArray[char_id].frame = char_id 
 	
@@ -152,5 +152,6 @@ func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 		_dBox(receiverPreQuestDBox[char_id])
 		
 func _complete_game():
+	$HiScore.position = $HiScore.position + $Player.position
 	$HiScore.start()
 	pass

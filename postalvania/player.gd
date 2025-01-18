@@ -85,11 +85,11 @@ var glideProgBar
 
 func _ready() -> void:
 	main = $".."
-	hookProgBar = $"../Player/Control/HBoxContainer/hook"
-	dashProgBar = $"../Player/Control/HBoxContainer/dash"
-	slideProgBar = $"../Player/Control/HBoxContainer/slide"
-	yeetProgBar = $"../Player/Control/HBoxContainer/yeet"
-	glideProgBar = $"../Player/Control/HBoxContainer/glide"
+	hookProgBar = $"../Control/HBoxContainer/hook"
+	dashProgBar = $"../Control/HBoxContainer/dash"
+	slideProgBar = $"../Control/HBoxContainer/slide"
+	yeetProgBar = $"../Control/HBoxContainer/yeet"
+	glideProgBar = $"../Control/HBoxContainer/glide"
 	#$Camera2D.position_smoothing_enabled = true
 	#$Camera2D.position_smoothing_speed = 12
 	
@@ -131,8 +131,6 @@ func _process(delta: float) -> void:
 			else:
 				$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta)
 		#$Camera2D.zoom = $Camera2D.zoom.lerp(SPEED/abs(velocity.x)+1,0,1.2)+0.4,0.1)
-
-
 		
 	hookProgBar.value = 100 - ($hookTimer.time_left / $hookTimer.wait_time) * 100
 	dashProgBar.value = 100 - ($dashTimer.time_left / $dashTimer.wait_time) * 100
@@ -156,11 +154,13 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D/glider.play("Walk")
 			$AnimatedSprite2D/hook.play("Walk")
 			$AnimatedSprite2D/slide.play("Walk")
+			$AnimatedSprite2D/dash.play("Walk")
 		else:
 			$AnimatedSprite2D.play("Idle")
 			$AnimatedSprite2D/glider.play("Idle")
 			$AnimatedSprite2D/hook.play("Idle")
 			$AnimatedSprite2D/slide.play("Idle")
+			$AnimatedSprite2D/dash.play("Idle")
 		#physics
 		velocity.x = move_toward(velocity.x, SPEED*direction, 200)
 		#transitions out of state
@@ -323,6 +323,8 @@ func _physics_process(delta: float) -> void:
 	if isDashing:
 		print("dash")
 		$dashTimer.start()
+		$AnimatedSprite2D/dash.play("Dash")
+		$AnimatedSprite2D.play("Dash")
 		dashIsReady = false
 		if !dashEnabled:
 			return
