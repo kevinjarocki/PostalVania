@@ -176,9 +176,9 @@ func _physics_process(delta: float) -> void:
 	if isInAir:
 		#animation control
 		if velocity.x > 0:
-			$AnimatedSprite2D.scale.x = 1
+			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 		if velocity.x < 0:
-			$AnimatedSprite2D.scale.x = -1
+			$AnimatedSprite2D.scale.x = -abs($AnimatedSprite2D.scale.x)
 		if velocity.y > stallSpeed:
 			var fallAngle = 0
 			if $AnimatedSprite2D.scale.x > 0:
@@ -224,9 +224,9 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D/glider.visible = true 
 		$AnimatedSprite2D/glider.play("flap")
 		if velocity.x > 0:
-			$AnimatedSprite2D.scale.x = 1
+			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 		if velocity.x < 0:
-			$AnimatedSprite2D.scale.x = -1
+			$AnimatedSprite2D.scale.x = -abs($AnimatedSprite2D.scale.x)
 		if $AnimatedSprite2D.scale.x > 0:
 			glideAngle = move_toward(0,velocity.angle(),1)
 			$AnimatedSprite2D.rotation = glideAngle + (PI/2)
