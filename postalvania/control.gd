@@ -14,4 +14,4 @@ func _process(delta):
 	camera_rect = Rect2(camera.get_screen_center_position() - (camera_size / 2), camera_size)
 
 	size = camera_size
-	position = $"../Player".position - (size/2)
+	position = camera.get_screen_center_position() - (size/2)
