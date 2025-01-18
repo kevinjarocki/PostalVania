@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=122 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -1475,6 +1475,20 @@ font_size = 20
 font_color = Color(0, 0, 0, 1)
 outline_size = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byi1i"]
+bg_color = Color(0.772331, 0.0940826, 9.62615e-08, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eab7t"]
+
+[sub_resource type="Theme" id="Theme_cldnu"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_byi1i")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_eab7t")
+
+[sub_resource type="LabelSettings" id="LabelSettings_sxqs0"]
+font = ExtResource("11_wjavr")
+font_size = 29
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Gradient" id="Gradient_5s0kw"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
@@ -2039,6 +2053,117 @@ horizontal_alignment = 2
 position = Vector2(15.5, 12.5)
 scale = Vector2(1.8125, 1.6875)
 sprite_frames = SubResource("SpriteFrames_tk6pr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/Control"]
+layout_mode = 2
+offset_top = 880.0
+offset_right = 412.0
+offset_bottom = 1047.0
+grow_vertical = 0
+theme = SubResource("Theme_cldnu")
+
+[node name="hook" type="ProgressBar" parent="Player/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="Player/Control/HBoxContainer/hook"]
+z_index = 1
+layout_mode = 2
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 167.0
+rotation = 4.71239
+text = "HOOK"
+label_settings = SubResource("LabelSettings_sxqs0")
+horizontal_alignment = 2
+
+[node name="glide" type="ProgressBar" parent="Player/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="Player/Control/HBoxContainer/glide"]
+z_index = 1
+layout_mode = 0
+offset_top = 133.0
+offset_right = 133.0
+offset_bottom = 172.0
+rotation = 4.71238
+text = "GLide"
+label_settings = SubResource("LabelSettings_sxqs0")
+horizontal_alignment = 2
+
+[node name="dash" type="ProgressBar" parent="Player/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="Player/Control/HBoxContainer/dash"]
+z_index = 1
+layout_mode = 0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 167.0
+rotation = 4.71239
+text = "dash"
+label_settings = SubResource("LabelSettings_sxqs0")
+horizontal_alignment = 2
+
+[node name="yeet" type="ProgressBar" parent="Player/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="Player/Control/HBoxContainer/yeet"]
+z_index = 1
+layout_mode = 0
+offset_top = 117.0
+offset_right = 117.0
+offset_bottom = 156.0
+rotation = 4.71239
+text = "YEET"
+label_settings = SubResource("LabelSettings_sxqs0")
+horizontal_alignment = 2
+justification_flags = 161
+
+[node name="slide" type="ProgressBar" parent="Player/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="Player/Control/HBoxContainer/slide"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 131.0
+offset_right = 91.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 4.71239
+text = "SLIDE"
+label_settings = SubResource("LabelSettings_sxqs0")
+horizontal_alignment = 2
 
 [node name="Lighting" type="Node2D" parent="."]
 position = Vector2(-6518, 3359)
