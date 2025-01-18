@@ -237,6 +237,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D/glider.play("Idle")
 		$AnimatedSprite2D/hook.play("Idle")
 		$AnimatedSprite2D/slide.play("Idle")
+
 		if velocity.x > 0:
 			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 		if velocity.x < 0:
@@ -330,7 +331,7 @@ func _physics_process(delta: float) -> void:
 			return
 		
 		velocity.x += sign($AnimatedSprite2D.scale.x) * dashVelocity + velocity.x
-		velocity.y = 0
+		velocity.y = -10
 		
 		isDashing = false
 		if is_on_floor():
@@ -350,6 +351,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D/hook.play("Swing")
 			$AnimatedSprite2D/glider.play("Swing")
 			$AnimatedSprite2D/slide.play("Swing")
+			$AnimatedSprite2D/dash.play("Swing")
 		#Hook Update to check if i can swing
 		if clickJustPressed:
 			hookPos = getHookPos()
@@ -575,3 +577,7 @@ func _on_cacoon_animation_finished() -> void:
 func _on_cacoon_frame_changed() -> void:
 	position .y += -2
 	cutsceneActive = true
+
+
+func _on_dash_animation_finished() -> void:
+	$AnimatedSprite2D/dash.play("Idle")
