@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgqg2sbamegk1"]
+
+[ext_resource type="Texture2D" uid="uid://24npk7h7wo61" path="res://Assets/Theresa Art/spider1.png" id="1_auf3a"]
+[ext_resource type="Texture2D" uid="uid://bwxtuphtt7mwm" path="res://Assets/Theresa Art/spider2.png" id="2_k47vg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlo7x"]
+atlas = ExtResource("1_auf3a")
+region = Rect2(0, 0, 1536, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu0up"]
+atlas = ExtResource("2_k47vg")
+region = Rect2(0, 0, 1536, 2048)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgdgn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlo7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu0up")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_rgdgn")
+animation = &"Idle"
