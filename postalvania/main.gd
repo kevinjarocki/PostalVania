@@ -77,10 +77,10 @@ func _dBox (text, text2 = "", sprite = false):
 func _on_quest_giver_character_touched(first_touch, char_id):
 	if first_touch:
 		_dBox(firstTouchDBox[char_id])
+		var instance = ObjMarker.instantiate()
+		add_child(instance)
+		instance.spriteLoc
 		
-		
-		
-	
 func _on_quest_delivery_character_touched(first_touch, char_id):
 	if first_touch:
 		_dBox(firstTouchDBox[char_id])
