@@ -3,6 +3,8 @@ extends Node2D
 var sprite
 var spriteLoc = Vector2(99,99)
 var camera
+var itemSprite
+var itemSpriteFrame = null
 var isBound = false
 
 var camera_size
@@ -11,7 +13,12 @@ var camera_rect
 func _ready() -> void:
 	camera = $"../Player/Camera2D"
 	sprite = $Sprite2D
-
+	itemSprite = $Sprite2D/AnimatedSprite2D
+	await get_tree().create_timer(.01).timeout
+	if itemSpriteFrame != null:
+		itemSprite.visible = true
+		itemSprite.set_frame(itemSpriteFrame)
+		
 func _process(delta):
 	camera_size = get_viewport().get_visible_rect().size * (1/camera.zoom.x) * .95
 	camera_rect = Rect2(camera.get_screen_center_position() - (camera_size / 2), camera_size)
@@ -28,7 +35,7 @@ func set_marker_position(bounds):
 	
 	else:
 		isBound = false
-
+	
 func set_market_rotation():
 	if isBound:
 		var angle = (spriteLoc - sprite.global_position).angle()
@@ -36,3 +43,5 @@ func set_market_rotation():
 	else:
 		var angle = (spriteLoc - sprite.global_position).angle()
 		sprite.rotation = angle + 33
+	
+	$Sprite2D/AnimatedSprite2D.rotation = -sprite.rotation

@@ -537,6 +537,7 @@ func enableAbility(abilityName):
 func morph():
 	if !$Cacoon.is_playing():
 		$Cacoon.visible = true
+		$"../EvolveAudio".play()
 		$Cacoon.play("morph")
 
 
@@ -572,6 +573,7 @@ func _on_cacoon_animation_finished() -> void:
 		$Cacoon.visible = false
 		cutsceneActive = false
 		position.y += 50
+		$"../EvolveAudio".stop()
 
 
 func _on_cacoon_frame_changed() -> void:

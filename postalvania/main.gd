@@ -16,8 +16,6 @@ var giverNPCArray = []
 var receiverNPCArray = []
 var markerArray = [0,0,0,0,0,0,0,0]
 
-
-
 #Text to display in dbox from chickens
 var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist chickens by delivering parcels they give you. You can also touch cows to unlock great abilities",
 	"Here is the second text box for the second chicken delivery",
@@ -112,7 +110,7 @@ func _dBox (text, text2 = "", sprite = false):
 	$Control/NinePatchRect/Received.text = text2
 	
 	
-	if sprite:
+	if typeof(sprite) == TYPE_INT:
 		$Control/NinePatchRect/DialogueSprite.visible = true
 		$Control/NinePatchRect/DialogueSprite.frame = sprite
 	else:
@@ -126,11 +124,12 @@ func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
 		add_child(instance)
 		markerArray[char_id] = instance
 		instance.spriteLoc = charPosition
+		instance.itemSpriteFrame = char_id
 		stageStep[char_id] = 1
 		stageStartTime[char_id] = totalTime
 		$Control/VBoxContainer.move_child(nodePanelTLArray[char_id], 0)
 		nodePanelTLArray[char_id].visible = true
-		nodeTLArray[char_id].frame = char_id 
+		nodeTLArray[char_id].set_frame(char_id) 
 	
 	else:
 		_dBox(giverNextTouchDBox[char_id])
