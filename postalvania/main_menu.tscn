@@ -1,8 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlpmu1x87mtna"]
+[gd_scene load_steps=8 format=3 uid="uid://ddw2akrbxf2lo"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_rkmam"]
+[ext_resource type="Texture2D" uid="uid://gv7ruo4dgoy7" path="res://Assets/menu/ui/Textbox1_Leaf&Branchsmaller.png" id="2_ia33t"]
 
 [sub_resource type="Theme" id="Theme_64p7o"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_05lks"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byvuq"]
+texture = SubResource("ImageTexture_05lks")
+modulate_color = Color(0.713416, 0.609142, 0.563547, 1)
+
+[sub_resource type="Theme" id="Theme_c5pfw"]
+/styles/img = SubResource("StyleBoxTexture_byvuq")
+
+[sub_resource type="Theme" id="Theme_1e12o"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,31 +26,49 @@ grow_vertical = 2
 theme = SubResource("Theme_64p7o")
 script = ExtResource("1_rkmam")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 189.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -79.5
+offset_right = 50.0
+offset_bottom = 79.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+position = Vector2(33, 45.2501)
+scale = Vector2(1.37847, 1.52785)
+texture = ExtResource("2_ia33t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
+theme = SubResource("Theme_c5pfw")
+
+[node name="Play" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1e12o")
 text = "Play"
 vertical_icon_alignment = 0
 
-[node name="How to Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="How to Play" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "How to Play"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
