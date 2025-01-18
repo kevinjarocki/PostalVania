@@ -350,6 +350,7 @@ func _physics_process(delta: float) -> void:
 		if clickJustPressed:
 			hookPos = getHookPos()
 			if hookPos:
+				$"../RopeWoosh".play()
 				$AnimatedSprite2D.play("Swing")
 				$AnimatedSprite2D/hook.play("Swing")
 				$AnimatedSprite2D/glider.play("Swing")
