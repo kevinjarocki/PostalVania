@@ -2262,6 +2262,7 @@ label_settings = SubResource("LabelSettings_sxqs0")
 horizontal_alignment = 2
 
 [node name="Lighting" type="Node2D" parent="."]
+visible = false
 position = Vector2(-6518, 3359)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighting"]
