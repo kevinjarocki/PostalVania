@@ -2312,7 +2312,7 @@ position = Vector2(2447, -4446)
 position = Vector2(6660, -4749)
 
 [node name="slide" parent="." instance=ExtResource("16_brnb8")]
-position = Vector2(11891, -2625)
+position = Vector2(11895, -2641)
 
 [node name="yeet" parent="." instance=ExtResource("16_brnb8")]
 position = Vector2(16999, -5523)

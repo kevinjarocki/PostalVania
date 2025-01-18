@@ -679,6 +679,7 @@ animation = &"Walk"
 visible = false
 sprite_frames = SubResource("SpriteFrames_i2ccv")
 animation = &"Slide"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -729,7 +730,7 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_jhlqi")
 animation = &"morph"
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="cacoonParticles" type="CPUParticles2D" parent="."]
 scale = Vector2(0.3, 0.3)
 emitting = false
 amount = 300
