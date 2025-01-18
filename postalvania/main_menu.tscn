@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://gv7ruo4dgoy7" path="res://Assets/menu/ui/Textbox1_Leaf&Branchsmaller.png" id="2_ia33t"]
 [ext_resource type="AudioStream" uid="uid://ddl606gdj0f0v" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 01 A New Day Begins (General Background Music).mp3" id="3_lv17t"]
 
-
 [sub_resource type="Theme" id="Theme_64p7o"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_05lks"]
@@ -29,7 +28,6 @@ theme = SubResource("Theme_64p7o")
 script = ExtResource("1_rkmam")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 z_index = 1

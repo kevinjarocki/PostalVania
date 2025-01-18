@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7d41hku60q2r"
+path="res://.godot/imported/Water_Boiling_4.wav-608b05caed5fbcc6a6df4e829764b334.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Water_Boiling_4.wav"
+dest_files=["res://.godot/imported/Water_Boiling_4.wav-608b05caed5fbcc6a6df4e829764b334.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://k6wp2784x3qa"
+path="res://.godot/imported/Typing.wav-9edcc65eb93b6760ff30736a7f7b2a8f.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Typing.wav"
+dest_files=["res://.godot/imported/Typing.wav-9edcc65eb93b6760ff30736a7f7b2a8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

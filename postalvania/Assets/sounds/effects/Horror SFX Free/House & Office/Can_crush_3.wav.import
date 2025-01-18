@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5y1nvccrvgqe"
+path="res://.godot/imported/Can_crush_3.wav-03e6b8e902d1421a2d334647a1e13d54.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Can_crush_3.wav"
+dest_files=["res://.godot/imported/Can_crush_3.wav-03e6b8e902d1421a2d334647a1e13d54.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

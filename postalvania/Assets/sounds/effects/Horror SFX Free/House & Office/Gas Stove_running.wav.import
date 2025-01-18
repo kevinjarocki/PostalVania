@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3xo4kmnx3mae"
+path="res://.godot/imported/Gas Stove_running.wav-639e5ba9d3ac0b0a7e4814fb6f18bef9.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Gas Stove_running.wav"
+dest_files=["res://.godot/imported/Gas Stove_running.wav-639e5ba9d3ac0b0a7e4814fb6f18bef9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

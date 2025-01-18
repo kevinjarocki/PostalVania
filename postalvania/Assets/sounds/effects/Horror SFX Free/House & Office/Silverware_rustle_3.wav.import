@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://iubxjlkxudjs"
+path="res://.godot/imported/Silverware_rustle_3.wav-37b91b7fd923413b8db127682e40e0e7.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Silverware_rustle_3.wav"
+dest_files=["res://.godot/imported/Silverware_rustle_3.wav-37b91b7fd923413b8db127682e40e0e7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbj0n8bgnhpq"
+path="res://.godot/imported/robotic_groan_3.wav-990e2bf2a7e4088e7807cf9764fe35c0.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/Monsters & Ghosts/robotic_groan_3.wav"
+dest_files=["res://.godot/imported/robotic_groan_3.wav-990e2bf2a7e4088e7807cf9764fe35c0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

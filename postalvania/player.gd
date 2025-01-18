@@ -386,6 +386,9 @@ func _physics_process(delta: float) -> void:
 			#the next line can be used to limit/remove massive reel
 			#velocity += radius.normalized() * 40
 			
+			#hook audio
+			$"../RopeSwoosh".play()
+			
 			#draw the hook
 			$Rope.visible = true
 			$Rope.look_at(hookPos)
@@ -532,6 +535,7 @@ func enableAbility(abilityName):
 func morph():
 	if !$Cacoon.is_playing():
 		$Cacoon.visible = true
+		$"../EvolveSound".play()
 		$Cacoon.play("morph")
 
 
@@ -567,6 +571,8 @@ func _on_cacoon_animation_finished() -> void:
 		$Cacoon.visible = false
 		cutsceneActive = false
 		position.y += 50
+		$"../EvolveSound".stop()
+		
 
 
 func _on_cacoon_frame_changed() -> void:

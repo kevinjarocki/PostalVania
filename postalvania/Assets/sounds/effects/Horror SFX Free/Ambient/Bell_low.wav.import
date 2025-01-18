@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://diltr4vtqm2lp"
+path="res://.godot/imported/Bell_low.wav-ee29f0af2010c0b991df31897cad4b7f.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/Ambient/Bell_low.wav"
+dest_files=["res://.godot/imported/Bell_low.wav-ee29f0af2010c0b991df31897cad4b7f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

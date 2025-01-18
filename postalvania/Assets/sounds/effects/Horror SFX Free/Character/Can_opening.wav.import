@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfcxeerdtq0gj"
+path="res://.godot/imported/Can_opening.wav-38c05e3b3555d7f4cefe88a233804578.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/Character/Can_opening.wav"
+dest_files=["res://.godot/imported/Can_opening.wav-38c05e3b3555d7f4cefe88a233804578.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

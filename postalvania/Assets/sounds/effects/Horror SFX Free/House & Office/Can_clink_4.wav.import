@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ygpl8bfhq6xu"
+path="res://.godot/imported/Can_clink_4.wav-8861ac261f3fd8e5b7f1e2c585bbd594.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Can_clink_4.wav"
+dest_files=["res://.godot/imported/Can_clink_4.wav-8861ac261f3fd8e5b7f1e2c585bbd594.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

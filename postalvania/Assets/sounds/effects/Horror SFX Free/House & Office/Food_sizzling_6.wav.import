@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbksehqwcpd18"
+path="res://.godot/imported/Food_sizzling_6.wav-65f531ff3e348c6c499a2ef9851d7fc6.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Food_sizzling_6.wav"
+dest_files=["res://.godot/imported/Food_sizzling_6.wav-65f531ff3e348c6c499a2ef9851d7fc6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

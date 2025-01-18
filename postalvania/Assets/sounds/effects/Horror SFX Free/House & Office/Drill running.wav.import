@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjdof7owkjigb"
+path="res://.godot/imported/Drill running.wav-d2cc2e0cde56f4ff84da8f87a84e734e.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Drill running.wav"
+dest_files=["res://.godot/imported/Drill running.wav-d2cc2e0cde56f4ff84da8f87a84e734e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

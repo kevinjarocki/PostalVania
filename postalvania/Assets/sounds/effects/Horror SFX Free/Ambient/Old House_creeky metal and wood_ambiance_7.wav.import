@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ivbd0nthodl8"
+path="res://.godot/imported/Old House_creeky metal and wood_ambiance_7.wav-0b5ffebd517761ca859dbc7bbd22a34e.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/Ambient/Old House_creeky metal and wood_ambiance_7.wav"
+dest_files=["res://.godot/imported/Old House_creeky metal and wood_ambiance_7.wav-0b5ffebd517761ca859dbc7bbd22a34e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

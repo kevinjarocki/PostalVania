@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbngigfr85e2"
+path="res://.godot/imported/Cutting board_chop_4.wav-26a5638563659f9c6c6ebbed9db616dd.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/effects/Horror SFX Free/House & Office/Cutting board_chop_4.wav"
+dest_files=["res://.godot/imported/Cutting board_chop_4.wav-26a5638563659f9c6c6ebbed9db616dd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
