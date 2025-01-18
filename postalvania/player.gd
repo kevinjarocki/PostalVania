@@ -131,8 +131,6 @@ func _process(delta: float) -> void:
 			else:
 				$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta)
 		#$Camera2D.zoom = $Camera2D.zoom.lerp(SPEED/abs(velocity.x)+1,0,1.2)+0.4,0.1)
-
-
 		
 	hookProgBar.value = 100 - ($hookTimer.time_left / $hookTimer.wait_time) * 100
 	dashProgBar.value = 100 - ($dashTimer.time_left / $dashTimer.wait_time) * 100

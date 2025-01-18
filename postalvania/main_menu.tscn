@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddw2akrbxf2lo"]
+[gd_scene load_steps=9 format=3 uid="uid://ddw2akrbxf2lo"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_rkmam"]
 [ext_resource type="Texture2D" uid="uid://gv7ruo4dgoy7" path="res://Assets/menu/ui/Textbox1_Leaf&Branchsmaller.png" id="2_ia33t"]
+[ext_resource type="AudioStream" uid="uid://ddl606gdj0f0v" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 01 A New Day Begins (General Background Music).mp3" id="3_lv17t"]
+
 
 [sub_resource type="Theme" id="Theme_64p7o"]
 
@@ -27,6 +29,7 @@ theme = SubResource("Theme_64p7o")
 script = ExtResource("1_rkmam")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 z_index = 1
@@ -68,6 +71,11 @@ text = "Options"
 [node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lv17t")
+autoplay = true
+parameters/looping = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]

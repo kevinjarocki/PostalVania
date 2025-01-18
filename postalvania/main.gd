@@ -16,6 +16,8 @@ var giverNPCArray = []
 var receiverNPCArray = []
 var markerArray = [0,0,0,0,0,0,0,0]
 
+
+
 #Text to display in dbox from chickens
 var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist chickens by delivering parcels they give you. You can also touch cows to unlock great abilities",
 	"Here is the second text box for the second chicken delivery",
@@ -53,6 +55,7 @@ var receiverCompletingQuestDBox = ["Thanks for delivering this! I appreciate it"
 @onready var ObjMarker = preload("res://obj_marker.tscn")
 
 func _ready():
+
 	nodeTLArray = get_tree().get_nodes_in_group("TL")
 	nodeTLTimerArray = get_tree().get_nodes_in_group("TLTimer")
 	giverNPCArray = get_tree().get_nodes_in_group("Giver")
@@ -149,5 +152,6 @@ func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 		_dBox(receiverPreQuestDBox[char_id])
 		
 func _complete_game():
+	$HiScore.position = $HiScore.position + $Player.position
 	$HiScore.start()
 	pass
