@@ -514,6 +514,7 @@ func enableAbility(abilityName):
 			dashIsReady = true
 			dashProgBar.visible = true
 			main._dBox("You just got the DASH ability! Press Shift for a quick speed boost!")
+			$AnimatedSprite2D/dash.visible = true
 		elif abilityName == "slide" && !slideEnabled:
 			morph()
 			slideEnabled = true
