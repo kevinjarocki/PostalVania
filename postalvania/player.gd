@@ -233,7 +233,7 @@ func _physics_process(delta: float) -> void:
 			glideAngle = move_toward(0,velocity.angle(),1)
 			$AnimatedSprite2D.rotation = glideAngle
 		if $AnimatedSprite2D.scale.x < 0:
-			glideAngle = move_toward(0,PI/2 - velocity.angle(),1)
+			glideAngle = move_toward(0,-PI + velocity.angle(),1)
 			$AnimatedSprite2D.rotation = glideAngle
 		if velocity.y > 0 && abs(velocity.x) < maxGlideSpeed:
 			if abs(velocity.x) != 0:
