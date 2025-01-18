@@ -7,6 +7,8 @@ var totalTime = 0
 var stageStartTime = [0,0,0,0,0,0,0,0]
 var stageStep = [0,0,0,0,0,0,0,0]
 
+var velocity = 0
+
 var nodePanelTLArray = []
 var nodeTLArray = []
 var nodeTLTimerArray = []
@@ -23,7 +25,6 @@ var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here 
 	"Here is the sixth text box for the sixth chicken delivery",
 	"Here is the seventh text box for the seventh chicken delivery",
 	"Here is the eigth text box for the 8 chicken delivery"]
-	
 var giverNextTouchDBox = ["I already gave you my package, please deliver it! They're in the moss",
 	"I already gave you my package, please deliver it! They're in the tree",
 	"I already gave you my package, please deliver it! They're in the desert",
@@ -32,7 +33,6 @@ var giverNextTouchDBox = ["I already gave you my package, please deliver it! The
 	"I already gave you my package, please deliver it! They're in the grasslands",
 	"I already gave you my package, please deliver it! They're in the village",
 	"I already gave you my package, please deliver it! They're in the car"]
-
 var receiverPreQuestDBox = ["I'm looking for a package 1",
 	"I'm looking for a package 2",
 	"I'm looking for a package 3",
@@ -41,7 +41,6 @@ var receiverPreQuestDBox = ["I'm looking for a package 1",
 	"I'm looking for a package 6",
 	"I'm looking for a package 7",
 	"I'm looking for a package 8"]
-
 var receiverCompletingQuestDBox = ["Thanks for delivering this! I appreciate it",
 	"Thanks for delivering this! I appreciate it",
 	"Thanks for delivering this! I appreciate it",
@@ -74,14 +73,15 @@ func _process (delta):
 	if !timerPause:
 		totalTime += delta
 		
-	$Player/Control/Timer.text = ("%.1f" %totalTime + " sec")
+	$Player/Control/VBoxContainer2/Timer.text = ("%.1f" %totalTime + " sec")
 	
 	for x in len(stageStep):
 		if stageStep[x] == 1:
 			var temp = totalTime - stageStartTime[x]
 			nodeTLTimerArray[x].text = ("%.1f" %temp + " sec")
 	
-	#print ($Player.velocity.length)
+	velocity = $Player.velocity.length() / 100
+	$Player/Control/VBoxContainer2/Velocity.text = ("%.1f" %velocity + " m/sec")
 	
 func _unhandled_input(event):
 	
@@ -94,18 +94,20 @@ func _unhandled_input(event):
 			$Player.isSwinging = false
 			$Player.isGliding = false
 
-		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible:
+		if event.pressed and event.keycode == KEY_SPACE and $Player/Control/NinePatchRect.visible and $Timer.is_stopped() && !$Player.cutsceneActive:
 			$Player/Control/NinePatchRect.visible = false
 			await get_tree().create_timer(.01).timeout
 			$Player.frozen = false
 			timerPause = false
 	
 func _dBox (text, text2 = "", sprite = false):
+	$Timer.start()
 	$Player/Control/NinePatchRect/DialogueText.text = text
 	timerPause = true
 	$Player/Control/NinePatchRect.visible = true
 	$Player.frozen = true
 	$Player/Control/NinePatchRect/Received.text = text2
+	
 	
 	if sprite:
 		$Player/Control/NinePatchRect/DialogueSprite.visible = true
@@ -147,5 +149,5 @@ func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 		_dBox(receiverPreQuestDBox[char_id])
 		
 func _complete_game():
-	
+	$HiScore.start()
 	pass

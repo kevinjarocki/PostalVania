@@ -5,6 +5,7 @@ const SPEED = 400.0
 const JUMP_VELOCITY = -550.0
 const gravityConstant = 750
 var terminalVelocity = 600
+var lastFrameSpeed = 0.0
 
 #state Variables
 var isGrounded = false
@@ -17,6 +18,8 @@ var isSliding = false
 var oldIsSliding = false
 var isYeeting = false
 var oldIsYeeting = false
+
+var cutsceneActive = false
 
 #Input Variables
 var mousePosition = Vector2(0,0)
@@ -87,6 +90,8 @@ func _ready() -> void:
 	slideProgBar = $"../Player/Control/HBoxContainer/slide"
 	yeetProgBar = $"../Player/Control/HBoxContainer/yeet"
 	glideProgBar = $"../Player/Control/HBoxContainer/glide"
+	#$Camera2D.position_smoothing_enabled = true
+	#$Camera2D.position_smoothing_speed = 12
 	
 	#hookProgBar.color = Color.DARK_RED
 
@@ -94,17 +99,41 @@ func _process(delta: float) -> void:
 	$RayCast01.look_at(get_global_mouse_position())
 	if Input.is_action_pressed("1"):
 		#CHEAT MODE
-		hookEnabled = true
-		glideEnabled = true
-		slideEnabled = true
-		dashEnabled = true
-		yeetEnabled = true
+		enableAbility("hook")
+		enableAbility("yeet")
+		enableAbility("dash")
+		enableAbility("slide")
+		enableAbility("glide")
+		
+	$Camera2D.zoom.x = lerp($Camera2D.zoom.x,clamp(SPEED/(abs(velocity.x)+1),0,0.3)+0.4,5*delta)
+	$Camera2D.zoom.y = lerp($Camera2D.zoom.y,clamp(SPEED/(abs(velocity.x)+1),0,0.3)+0.4,5*delta)
+	
+	if abs(velocity.x) < SPEED+100:
+		$Camera2D.offset.x = lerp($Camera2D.offset.x,0.0,delta)
+	else:
+		if abs(velocity.length()) > lastFrameSpeed:
+			$Camera2D.offset.x = lerp($Camera2D.offset.x,clamp(velocity.x/5,-3000,3000.0),delta/3)
+		else:
+			$Camera2D.offset.x = lerp($Camera2D.offset.x,clamp(velocity.x/5,-3000,3000.0),delta)
+	
+	if abs(velocity.y) < abs(JUMP_VELOCITY):
+		$Camera2D.offset.y = lerp($Camera2D.offset.y,0.0,1*delta)
+	else:
+		if abs(velocity.length()) > lastFrameSpeed:
+			$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta/3)
+		else:
+			$Camera2D.offset.y = lerp($Camera2D.offset.y,clamp(velocity.y/3,-3000,3000.0),delta)
+	#$Camera2D.zoom = $Camera2D.zoom.lerp(SPEED/abs(velocity.x)+1,0,1.2)+0.4,0.1)
+
+
 		
 	hookProgBar.value = 100 - ($hookTimer.time_left / $hookTimer.wait_time) * 100
 	dashProgBar.value = 100 - ($dashTimer.time_left / $dashTimer.wait_time) * 100
 	slideProgBar.value = 100 - ($slideTimer.time_left / $slideTimer.wait_time) * 100
 	yeetProgBar.value = 100 - ($yeetTimer.time_left / $yeetTimer.wait_time) * 100
 	glideProgBar.value = 100 - ($glideTimer.time_left / $glideTimer.wait_time) * 100
+	
+	lastFrameSpeed = abs(velocity.length())
 	
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
@@ -146,12 +175,15 @@ func _physics_process(delta: float) -> void:
 	if isSliding:
 		$slideTimer.start()
 		slideIsReady = false
-		if oldIsSliding == false:
+		if oldIsSliding != isSliding:
 			slideSpeed = velocity.x*1.5 + SPEED*sign(velocity.x)
+			$AnimatedSprite2D/slide.play("Slide")
+			$AnimatedSprite2D.play("Slide")
+			print($AnimatedSprite2D.animation)
+			print("animate pls")
 		if cntrlHeld:
 			velocity.x = slideSpeed
 
-		
 		if !is_on_floor():
 			isInAir = true
 			isSliding = false
@@ -167,8 +199,6 @@ func _physics_process(delta: float) -> void:
 				isGrounded = true
 			else:
 				isInAir = true
-		else:
-			isInAir = true
 			
 	oldIsSliding = isSliding
 	####################################JUMPING JUMPING
@@ -235,7 +265,7 @@ func _physics_process(delta: float) -> void:
 			isInAir = false
 		elif is_on_floor():
 			isInAir = false
-			if cntrlHeld && slideEnabled && slideIsReady:
+			if cntrlHeld && slideEnabled:
 				isSliding = true
 			else:
 				isGrounded = true
@@ -284,11 +314,13 @@ func _physics_process(delta: float) -> void:
 		################################################## DASHING DASHING
 		
 	if isDashing:
+		print("dash")
+		$dashTimer.start()
 		dashIsReady = false
 		if !dashEnabled:
 			return
 		
-		velocity.x += $AnimatedSprite2D.scale.x * dashVelocity + velocity.x
+		velocity.x += sign($AnimatedSprite2D.scale.x) * dashVelocity + velocity.x
 		velocity.y = 0
 		
 		isDashing = false
@@ -453,36 +485,47 @@ func getHookPos():
 		
 		########################## Signals and Enable Methods #######################################
 func enableAbility(abilityName):
-	if abilityName == "hook":
-		hookIsReady = true
-		hookProgBar.visible = true
-		hookEnabled = true
-		main._dBox("You just got the HOOK ability! Point and click to swing on a terrain while in the air!")
-		$AnimatedSprite2D/hook.visible = true
-	elif abilityName == "yeet":
-		yeetEnabled = true
-		yeetIsReady = true
-		yeetProgBar.visible = true
-		main._dBox("You just got the YEET ability! While swinging right click!")
-	elif abilityName == "dash":
-		dashEnabled = true
-		dashIsReady = true
-		dashProgBar.visible = true
-		main._dBox("You just got the DASH ability! Press Shift for a quick speed boost!")
-	elif abilityName == "slide":
-		slideEnabled = true
-		slideIsReady = true
-		slideProgBar.visible = true
-		main._dBox("You just got the SLIDE ability! Press ctrl just before landing to keep up your speed!")
-		$AnimatedSprite2D/slide.visible = true
-	elif abilityName == "glide":
-		glideEnabled = true
-		glideIsReady = true
-		glideProgBar.visible = true
-		$AnimatedSprite2D/glider.visible = true
-		main._dBox("You just got the GLIDE ability! Hold space while in the air to traverse horizontally!")
-	else:
-		print("no ability name match found")
+	
+		if abilityName == "hook" && !hookEnabled:
+			morph()
+			hookIsReady = true
+			hookProgBar.visible = true
+			hookEnabled = true
+			main._dBox("You just got the HOOK ability! Point and click to swing on a terrain while in the air!")
+			$AnimatedSprite2D/hook.visible = true
+		elif abilityName == "yeet" && !yeetEnabled:
+			morph()
+			yeetEnabled = true
+			yeetIsReady = true
+			yeetProgBar.visible = true
+			main._dBox("You just got the YEET ability! While swinging right click!")
+		elif abilityName == "dash" && !dashEnabled:
+			morph()
+			dashEnabled = true
+			dashIsReady = true
+			dashProgBar.visible = true
+			main._dBox("You just got the DASH ability! Press Shift for a quick speed boost!")
+		elif abilityName == "slide" && !slideEnabled:
+			morph()
+			slideEnabled = true
+			slideIsReady = true
+			slideProgBar.visible = true
+			main._dBox("You just got the SLIDE ability! Press ctrl just before landing to keep up your speed!")
+			$AnimatedSprite2D/slide.visible = true
+		elif abilityName == "glide" && !glideEnabled:
+			morph()
+			glideEnabled = true
+			glideIsReady = true
+			glideProgBar.visible = true
+			$AnimatedSprite2D/glider.visible = true
+			main._dBox("You just got the GLIDE ability! Hold space while in the air to traverse horizontally!")
+		else:
+			print("no ability name match found")
+			
+func morph():
+	if !$Cacoon.is_playing():
+		$Cacoon.visible = true
+		$Cacoon.play("morph")
 
 
 func _on_hook_timer_timeout() -> void:
@@ -495,6 +538,7 @@ func _on_glide_timer_timeout() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	dashIsReady = true
+	print("dash ready again")
 
 
 func _on_slide_timer_timeout() -> void:
@@ -509,3 +553,15 @@ func _on_coyote_time_timeout() -> void:
 	coyoteTime = false
 	isGrounded = false
 	isInAir = true
+
+
+func _on_cacoon_animation_finished() -> void:
+		$cacoonParticles.emitting = true
+		$Cacoon.visible = false
+		cutsceneActive = false
+		position.y += 50
+
+
+func _on_cacoon_frame_changed() -> void:
+	position .y += -2
+	cutsceneActive = true
