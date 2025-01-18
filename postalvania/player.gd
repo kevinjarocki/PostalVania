@@ -106,8 +106,6 @@ func _process(delta: float) -> void:
 	yeetProgBar.value = 100 - ($yeetTimer.time_left / $yeetTimer.wait_time) * 100
 	glideProgBar.value = 100 - ($glideTimer.time_left / $glideTimer.wait_time) * 100
 	
-	print (hookProgBar.value)
-	
 func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
 	QueryInputs()
