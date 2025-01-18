@@ -18,6 +18,8 @@ var oldIsSliding = false
 var isYeeting = false
 var oldIsYeeting = false
 
+var cutsceneActive = false
+
 #Input Variables
 var mousePosition = Vector2(0,0)
 var direction = 0
@@ -200,10 +202,10 @@ func _physics_process(delta: float) -> void:
 		################################################## IN AIR IN AIR
 	if isInAir:
 		#animation control
-		#$AnimatedSprite2D.play("Idle")
-		#$AnimatedSprite2D/glider.play("Idle")
-		#$AnimatedSprite2D/hook.play("Idle")
-		#$AnimatedSprite2D/slide.play("Idle")
+		$AnimatedSprite2D.play("Idle")
+		$AnimatedSprite2D/glider.play("Idle")
+		$AnimatedSprite2D/hook.play("Idle")
+		$AnimatedSprite2D/slide.play("Idle")
 		if velocity.x > 0:
 			$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
 		if velocity.x < 0:
@@ -532,8 +534,10 @@ func _on_coyote_time_timeout() -> void:
 func _on_cacoon_animation_finished() -> void:
 		$cacoonParticles.emitting = true
 		$Cacoon.visible = false
+		cutsceneActive = false
 		position.y += 50
 
 
 func _on_cacoon_frame_changed() -> void:
 	position .y += -2
+	cutsceneActive = true
