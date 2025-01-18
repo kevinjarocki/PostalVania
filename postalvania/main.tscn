@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=132 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -1575,10 +1575,6 @@ LineEdit/styles/focus = SubResource("StyleBoxFlat_f40rv")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_845o5")
 Panel/styles/panel = SubResource("StyleBoxFlat_ydhgy")
 
-[sub_resource type="LabelSettings" id="LabelSettings_4quc7"]
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1foqp"]
 bg_color = Color(0.10748, 0.10748, 0.10748, 1)
 corner_radius_top_left = 3
@@ -2317,14 +2313,53 @@ position = Vector2(11895, -2641)
 [node name="yeet" parent="." instance=ExtResource("16_brnb8")]
 position = Vector2(16999, -5523)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="HiScore" type="MarginContainer" parent="."]
 texture_filter = 4
-offset_left = -570.0
-offset_top = -4246.0
-offset_right = -256.0
-offset_bottom = -3996.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -144.0
+offset_right = 157.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_7l6vo")
 script = ExtResource("16_mtk24")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HiScore"]
+layout_mode = 2
+texture = ExtResource("10_n0836")
+region_rect = Rect2(96, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HiScore/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.029
+anchor_top = -0.072
+offset_left = -7.894
+offset_top = 3.736
+offset_right = 157.0
+offset_bottom = 144.0
+scale = Vector2(2, 2)
+texture = ExtResource("10_n0836")
+region_rect = Rect2(0, 56, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HiScore"]
 layout_mode = 2
@@ -2339,330 +2374,6 @@ vertical_scroll_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Panel2" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel2"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel2"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Panel3" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel3"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel3"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Panel4" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel4"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel4"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Panel5" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel5"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel5"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Panel6" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel6"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel6"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Panel7" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel7"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel7"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Panel8" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel8"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel8"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Panel9" type="Panel" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel9"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -11.0
-offset_right = 78.0
-offset_bottom = 11.0
-grow_vertical = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_4quc7")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="HiScore/VBoxContainer/ScrollContainer/VBoxContainer/Panel9"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.0
-offset_right = -3.0
-offset_bottom = 11.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Time"
-label_settings = SubResource("LabelSettings_4quc7")
-horizontal_alignment = 2
-vertical_alignment = 1
 
 [node name="Panel6" type="Panel" parent="HiScore/VBoxContainer"]
 custom_minimum_size = Vector2(80, 10)
@@ -2690,7 +2401,7 @@ offset_top = -11.0
 offset_right = 142.0
 offset_bottom = 11.0
 grow_vertical = 2
-placeholder_text = "Enter name"
+placeholder_text = "Enter Name"
 
 [node name="Panel" type="Panel" parent="HiScore/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -2711,10 +2422,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Score"
 label_settings = SubResource("LabelSettings_odmwe")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
 
 [connection signal="character_touched" from="CharPair/QuestGiver" to="." method="_on_quest_giver_character_touched"]
 [connection signal="body_entered" from="CharPair/QuestGiver/Area2D" to="CharPair/QuestGiver" method="_on_area_2d_body_entered"]

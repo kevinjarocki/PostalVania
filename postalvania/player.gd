@@ -102,8 +102,8 @@ func _process(delta: float) -> void:
 		enableAbility("slide")
 		enableAbility("glide")
 		
-	print($AnimatedSprite2D/slide.animation)
-	print(isSliding)
+	#print($AnimatedSprite2D/slide.animation)
+	#print(isSliding)
 		
 	hookProgBar.value = 100 - ($hookTimer.time_left / $hookTimer.wait_time) * 100
 	dashProgBar.value = 100 - ($dashTimer.time_left / $dashTimer.wait_time) * 100

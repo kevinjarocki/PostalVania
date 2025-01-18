@@ -149,5 +149,6 @@ func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 		_dBox(receiverPreQuestDBox[char_id])
 		
 func _complete_game():
+	$HiScore.position = $HiScore.position + $Player.position
 	$HiScore.start()
 	pass
