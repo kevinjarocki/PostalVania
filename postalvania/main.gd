@@ -86,16 +86,6 @@ func _ready():
 	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
 	
 	$Lighting/DirectionalLight2D.energy -= (Singleton.brightnessSelected)/100 - .5
-	
-	#var counter = 0
-	#for x in giverNPCArray:
-		#x.char_id = counter
-		#counter += 1
-#
-	#counter = 0
-	#for x in receiverNPCArray:
-		#x.char_id = counter
-		#counter += 1
 		
 func _process (delta):
 	if !timerPause:
@@ -108,7 +98,10 @@ func _process (delta):
 			var temp = totalTime - stageStartTime[x]
 			nodeTLTimerArray[x].text = ("%.1f" %temp + " sec")
 	
-	velocity = ($Player.velocity.length() / 100) - 0.1
+	if Singleton.lowGravMode == false:
+		velocity = ($Player.velocity.length() / 100) - 0.1
+	if Singleton.lowGravMode == true:
+		velocity = ($Player.velocity.length() / 100) - 0.05
 	$Control/VBoxContainer2/Velocity.text = ("%.1f" %velocity + " m/sec")
 	
 func _unhandled_input(event):

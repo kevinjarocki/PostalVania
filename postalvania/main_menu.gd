@@ -7,6 +7,8 @@ func _process(delta: float):
 
 func _on_play_pressed():
 	Singleton.brightnessSelected = $CanvasLayer/MarginContainer/VBoxContainer/Panel/HSlider.value
+	if $CanvasLayer/MarginContainer/VBoxContainer/CheckBox.button_pressed:
+		Singleton.lowGravMode = true
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://main.tscn")
 
