@@ -19,7 +19,7 @@ var receiverNPCArray = []
 var markerArray = [0,0,0,0,0,0,0,0]
 
 #Text to display in dbox from chickens
-var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist chickens by delivering parcels they give you. You can also touch cows to unlock great abilities",
+var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist the villagers by delivering parcels they give you. You can also touch cows to unlock great abilities",
 	"Here is the second text box for the second chicken delivery",
 	"Here is the third text box for the third chicken delivery",
 	"Here is the fourth text box for the fourth chicken delivery",
