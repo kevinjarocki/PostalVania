@@ -2,6 +2,9 @@ extends Control
 
 var cursor = load("res://Assets/menu/cursor/cursor04_gr16x16.png")
 
+func _process(delta: float):
+	$DirectionalLight2D.energy = 0.6 - (($CanvasLayer/MarginContainer/VBoxContainer/Panel/HSlider.value)/100 - .5)
+
 func _on_play_pressed():
 	Singleton.brightnessSelected = $CanvasLayer/MarginContainer/VBoxContainer/Panel/HSlider.value
 	await get_tree().create_timer(0.5).timeout

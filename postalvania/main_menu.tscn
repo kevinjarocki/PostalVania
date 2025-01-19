@@ -238,6 +238,16 @@ stream = ExtResource("3_lv17t")
 autoplay = true
 parameters/looping = true
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-590, -2281)
+color = Color(0.749856, 0.679318, 0.598889, 1)
+energy = 0.6
+blend_mode = 1
+range_z_max = 0
+range_layer_min = -140
+range_layer_max = 140
+shadow_item_cull_mask = 3
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
