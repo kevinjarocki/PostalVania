@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=148 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -10,10 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://dtg54j5ef17qo" path="res://Assets/GUI/cryo.png" id="10_n0836"]
 [ext_resource type="FontFile" uid="uid://b6nas1lanoebc" path="res://Assets/Daydream.ttf" id="11_wjavr"]
 [ext_resource type="Texture2D" uid="uid://cw35sbw1jtuss" path="res://Assets/Food.png" id="12_70epx"]
+[ext_resource type="PackedScene" path="res://Assets/Theresa Art/butterfly_sprite_2d.tscn" id="14_o0hcx"]
 [ext_resource type="Texture2D" uid="uid://lcou3mpkiloq" path="res://icon.svg" id="15_gbex4"]
+[ext_resource type="PackedScene" path="res://Assets/Theresa Art/deer_animated_sprite_2d.tscn" id="15_vy6dp"]
 [ext_resource type="PackedScene" uid="uid://bw7sec2n3ip5y" path="res://abilityCow.tscn" id="16_brnb8"]
+[ext_resource type="PackedScene" path="res://Assets/Theresa Art/snail_animated_sprite_2d.tscn" id="16_ghmm3"]
 [ext_resource type="PackedScene" uid="uid://cgqg2sbamegk1" path="res://Assets/Theresa Art/spiderAnimation.tscn" id="16_hydth"]
 [ext_resource type="Script" path="res://hi_score.gd" id="16_mtk24"]
+[ext_resource type="PackedScene" path="res://Assets/Theresa Art/chameleon_animated_sprite_2d.tscn" id="17_65dj2"]
 [ext_resource type="AudioStream" uid="uid://8pdx24csnu81" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 02 A New Day's Hurry (General Background Music).mp3" id="17_gv42l"]
 [ext_resource type="Script" path="res://Wisp.gd" id="18_yby3r"]
 [ext_resource type="Script" path="res://job_board.gd" id="18_yxf6o"]
@@ -2301,19 +2305,19 @@ characterSprite = ExtResource("16_hydth")
 
 [node name="glide" parent="." instance=ExtResource("16_brnb8")]
 position = Vector2(-9616, -32)
-characterSprite = ExtResource("16_hydth")
+characterSprite = ExtResource("14_o0hcx")
 
 [node name="dash" parent="." instance=ExtResource("16_brnb8")]
-position = Vector2(-5403, -335)
-characterSprite = ExtResource("16_hydth")
+position = Vector2(-5389, -260)
+characterSprite = ExtResource("15_vy6dp")
 
 [node name="slide" parent="." instance=ExtResource("16_brnb8")]
 position = Vector2(-168, 1773)
-characterSprite = ExtResource("16_hydth")
+characterSprite = ExtResource("16_ghmm3")
 
 [node name="yeet" parent="." instance=ExtResource("16_brnb8")]
-position = Vector2(4936, -1109)
-characterSprite = ExtResource("16_hydth")
+position = Vector2(4936, -1100)
+characterSprite = ExtResource("17_65dj2")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
@@ -2570,46 +2574,7 @@ z_index = -5
 position = Vector2(9685, -1175)
 texture = ExtResource("23_mr7yn")
 
-[connection signal="character_touched" from="Pairs/CharPair/QuestGiver" to="." method="_on_quest_giver_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair/QuestGiver/Area2D" to="Pairs/CharPair/QuestGiver" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair/QuestDelivery/Area2D" to="Pairs/CharPair/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair2/QuestGiver" to="." method="_on_quest_giver_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair2/QuestGiver/Area2D" to="Pairs/CharPair2/QuestGiver" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair2/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair2/QuestDelivery/Area2D" to="Pairs/CharPair2/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair3/QuestGiver" to="." method="_on_quest_giver_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair3/QuestGiver/Area2D" to="Pairs/CharPair3/QuestGiver" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair3/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair3/QuestDelivery/Area2D" to="Pairs/CharPair3/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair4/QuestGiver" to="." method="_on_quest_giver_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair4/QuestGiver/Area2D" to="Pairs/CharPair4/QuestGiver" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair4/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair4/QuestDelivery/Area2D" to="Pairs/CharPair4/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair5/QuestGiver" to="." method="_on_quest_giver_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair5/QuestGiver/Area2D" to="Pairs/CharPair5/QuestGiver" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair5/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair5/QuestDelivery/Area2D" to="Pairs/CharPair5/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair6/QuestGiver" to="." method="_on_quest_giver_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair6/QuestGiver/Area2D" to="Pairs/CharPair6/QuestGiver" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair6/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair6/QuestDelivery/Area2D" to="Pairs/CharPair6/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair7/QuestGiver" to="." method="_on_quest_giver_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair7/QuestGiver/Area2D" to="Pairs/CharPair7/QuestGiver" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair7/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair7/QuestDelivery/Area2D" to="Pairs/CharPair7/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair8/QuestGiver" to="." method="_on_quest_giver_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair8/QuestGiver/Area2D" to="Pairs/CharPair8/QuestGiver" method="_on_area_2d_body_entered"]
-[connection signal="character_touched" from="Pairs/CharPair8/QuestDelivery" to="." method="_on_quest_delivery_character_touched"]
-[connection signal="body_entered" from="Pairs/CharPair8/QuestDelivery/Area2D" to="Pairs/CharPair8/QuestDelivery" method="_on_area_2d_body_entered"]
-[connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
-[connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="JobBoard4/Sprite2D/Area2D" to="JobBoard4" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard4/Sprite2D/Area2D" to="JobBoard4" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="JobBoard5/Sprite2D/Area2D" to="JobBoard5" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="JobBoard5/Sprite2D/Area2D" to="JobBoard5" method="_on_area_2d_body_exited"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_gv42l")
+autoplay = true
+parameters/looping = true

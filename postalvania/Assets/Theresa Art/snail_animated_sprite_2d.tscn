@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://w5y6qim3d4jf"]
+
+[ext_resource type="Texture2D" uid="uid://cjm6u41qxxlwe" path="res://Assets/Theresa Art/snailassets/snail0.png" id="1_a53bl"]
+[ext_resource type="Texture2D" uid="uid://drjqxhkmcs1r8" path="res://Assets/Theresa Art/snailassets/snail1.png" id="2_kds3m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xh7u2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a53bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kds3m")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="SnailAnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_xh7u2")
+animation = &"Idle"
+frame_progress = 0.929659
