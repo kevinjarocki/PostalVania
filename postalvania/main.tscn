@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=146 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://yywqqrpj1tn0" path="res://Assets/Cassandra Art/GnomeHouse1.png" id="4_rtvur"]
 [ext_resource type="Texture2D" uid="uid://drnw7jqv0iqxp" path="res://Assets/Cassandra Art/oakHouse.png" id="5_ob54s"]
 [ext_resource type="Texture2D" uid="uid://c0gnuivhu6d17" path="res://Assets/map outline.PNG" id="5_v0w8x"]
-[ext_resource type="Texture2D" uid="uid://d2cs0ka0jx6mp" path="res://Assets/Shareef Art/Background_4.png" id="5_wwbr2"]
 [ext_resource type="Texture2D" uid="uid://itl36xokcpnb" path="res://Assets/Cassandra Art/LampOn.png" id="6_0kol5"]
 [ext_resource type="Texture2D" uid="uid://xycccs31qkp3" path="res://Assets/Tilesets/Terrain_and_Props.png" id="7_tqpnm"]
 [ext_resource type="Script" path="res://control.gd" id="10_1vfgw"]
@@ -1691,7 +1690,6 @@ texture = ExtResource("4_rneix")
 [node name="bg4" type="Sprite2D" parent="."]
 z_index = -5
 position = Vector2(9698, -1179)
-texture = ExtResource("5_wwbr2")
 
 [node name="Control" type="Control" parent="."]
 z_index = 10
