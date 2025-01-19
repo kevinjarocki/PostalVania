@@ -1763,6 +1763,23 @@ range_layer_max = 128
 range_item_cull_mask = 23
 texture = SubResource("GradientTexture2D_kb50v")
 
+[node name="Lamp3" type="Sprite2D" parent="TownDecor"]
+z_index = 2
+position = Vector2(-245, -143)
+scale = Vector2(-0.358, 0.358)
+texture = ExtResource("6_0kol5")
+
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/Lamp3"]
+z_index = 2
+position = Vector2(-184.283, -276.424)
+scale = Vector2(18.7262, 16.8365)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
 [node name="bg1" type="Sprite2D" parent="."]
 z_index = -5
 position = Vector2(-16601, -892)
