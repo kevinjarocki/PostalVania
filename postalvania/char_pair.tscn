@@ -70,7 +70,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58dkn"]
-size = Vector2(8.90002, 9.1)
+size = Vector2(27.6001, 29.6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45i6v"]
 atlas = ExtResource("3_6laai")
@@ -164,7 +164,7 @@ script = ExtResource("3_pyr1p")
 scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestDelivery/Area2D"]
-position = Vector2(0, 2)
+position = Vector2(-6, 8)
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_58dkn")
 
