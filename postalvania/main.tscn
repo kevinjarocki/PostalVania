@@ -2364,11 +2364,6 @@ label_settings = SubResource("LabelSettings_odmwe")
 position = Vector2(-33663, 10370)
 scale = Vector2(1.72466, 1.49464)
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_gv42l")
-volume_db = -13.619
-autoplay = true
-
 [node name="EvolveAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_5p51k")
 volume_db = 8.667
@@ -2446,11 +2441,12 @@ shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="RopeWoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_o3up8")
-volume_db = 2.029
+volume_db = 9.564
 pitch_scale = 0.67
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_gv42l")
+volume_db = -13.116
 autoplay = true
 parameters/looping = true
 
@@ -2527,6 +2523,8 @@ position = Vector2(9483.93, -1157.48)
 scale = Vector2(1.03079, 1)
 texture = ExtResource("34_iuib4")
 metadata/_edit_lock_ = true
+
+[node name="SnailSound" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
