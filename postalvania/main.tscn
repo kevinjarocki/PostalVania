@@ -1486,6 +1486,7 @@ pattern_16 = SubResource("TileMapPattern_rbvoe")
 pattern_17 = SubResource("TileMapPattern_vq5g4")
 
 [sub_resource type="Gradient" id="Gradient_5s0kw"]
+offsets = PackedFloat32Array(0, 0.88961)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vvs6g"]
@@ -1494,8 +1495,8 @@ width = 204
 height = 264
 use_hdr = true
 fill = 1
-fill_from = Vector2(0.527523, 1)
-fill_to = Vector2(0.542532, 0.508547)
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.370538, 0.735043)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sfr7w"]
 polygon = PackedVector2Array(6375, -5145, 6387, -5144, 6395, -5140, 6399, -5132, 6403, -5127, 6400, -5120, 6400, -5117, 6408, -5122, 6409, -5130, 6407, -5139, 6405, -5145, 6399, -5150, 6391, -5151, 6381, -5152, 6377, -5150)
@@ -2062,10 +2063,10 @@ collision_mask = 255
 position = Vector2(-6518, 3359)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighting"]
-position = Vector2(-5641, -1082.63)
-scale = Vector2(1.42157, 1.26136)
-color = Color(0.439216, 0.890196, 1, 1)
-energy = 0.39
+position = Vector2(6084, -7952)
+scale = Vector2(12.6299, 9.31155)
+color = Color(0.898039, 0.815686, 0, 1)
+energy = 1.61
 range_layer_min = -305
 range_layer_max = 70
 texture = SubResource("GradientTexture2D_vvs6g")
@@ -2342,17 +2343,43 @@ stream = ExtResource("17_gv42l")
 autoplay = true
 parameters/looping = true
 
-[node name="BlackRoom" type="Polygon2D" parent="."]
+[node name="Polys" type="Node2D" parent="."]
+
+[node name="BlackRoom" type="Polygon2D" parent="Polys"]
 z_index = -30
 position = Vector2(-18971, 2376)
 color = Color(0.054902, 0.00784314, 0.0117647, 1)
 polygon = PackedVector2Array(-4757, -164, -4585, -1934, -3101, -3209, -875, -2999, 1427, -2638, 3216, -1591, 3577, -963, 4110, 939, 3558, 2157, 1465, 3166, -2587, 2937, -4719, 1586)
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="BrownRoom" type="Polygon2D" parent="Polys"]
 z_index = -20
 position = Vector2(-13842, 1104)
 color = Color(0.243137, 0.0705882, 0.0705882, 1)
 polygon = PackedVector2Array(-1069, 2217, -1351, 826, -1926, -253, -3661, -1288, -1624, -2726, 1481, -2978, 1493, -856, 1625, -353, 3231, 1841, 1157, 3195, -977, 3015, -1312, 2812)
+
+[node name="BlueRoom" type="Polygon2D" parent="Polys"]
+z_index = -28
+position = Vector2(-91, 317)
+color = Color(0.285338, 0.416074, 0.498105, 1)
+polygon = PackedVector2Array(-12387, -1853, -12372, -570, -12357, 231, -12236, 805, -11647, 1560, -10696, 2949, -8959, 2270, -8415, 1333, -7313, -1355, -7101, -2654, -10107, -3137, -12176, -3092)
+
+[node name="Well" type="Polygon2D" parent="Polys"]
+z_index = -27
+position = Vector2(-15, 45)
+color = Color(0.168627, 0.0745098, 0.0627451, 1)
+polygon = PackedVector2Array(-3361, 510, -8362, 798, -9871, 2714, -3296, 5033, -1317, 6302, 1555, 6172, 3792, 5358, 5267, 4409, 4962, 1663, 5216, 544, 2020, 1801)
+
+[node name="Blue" type="Polygon2D" parent="Polys"]
+z_index = -25
+position = Vector2(-12, -50)
+color = Color(0.0745098, 0.129412, 0.243137, 1)
+polygon = PackedVector2Array(5120, 738, 4864, 1602, 5104, 4434, 7248, 5058, 10096, 4786, 11104, 3618, 9968, 1602, 7936, -2366, 6144, -4638, 4800, -4558, 4592, -4142, 4128, -3646, 3472, -2254, 4656, -1054, 5328, -318, 5424, 322)
+
+[node name="Pink" type="Polygon2D" parent="Polys"]
+z_index = -24
+position = Vector2(-341, 72)
+color = Color(0.356863, 0.294118, 0.407843, 1)
+polygon = PackedVector2Array(7745, -2420, 10870, 3453, 12630, 3471, 14695, 3148, 16653, 903, 16994, -1809, 13689, -4072, 9684, -4647, 7098, -4359, 6092, -4485)
 
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_entered"]
