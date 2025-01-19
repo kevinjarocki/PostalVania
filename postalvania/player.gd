@@ -187,23 +187,28 @@ func _physics_process(delta: float) -> void:
 	if isSliding:
 		$slideTimer.start()
 		slideIsReady = false
+		print("sliding")
+		
 		if oldIsSliding != isSliding:
 			slideSpeed = velocity.x*1.5 + SPEED*sign(velocity.x)
 			$AnimatedSprite2D/slide.play("Slide")
 			$AnimatedSprite2D.play("Slide")
+			$"../SnailNoise".play()
 		if cntrlHeld:
 			velocity.x = slideSpeed
-
+			
 		if !is_on_floor():
 			isInAir = true
 			isSliding = false
 		if spaceJustPressed:
 			isSliding = false
 			isJumping = true
+			$"../SnailNoise".stop()
 		elif clickJustPressed && hookEnabled && hookIsReady:
 			isSliding = false
 			isSwinging = true
 		elif cntrlJustReleased:
+			$"../SnailNoise".stop()
 			isSliding = false
 			if is_on_floor():
 				isGrounded = true
