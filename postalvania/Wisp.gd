@@ -1,5 +1,5 @@
 extends PathFollow2D
-@export var followSpeed = 100
+@export var followSpeed = 300
 
 
 # Called when the node enters the scene tree for the first time.

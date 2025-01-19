@@ -887,6 +887,7 @@ floor_max_angle = 0.959931
 script = ExtResource("1_y5ota")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 8
 scale = Vector2(0.11175, 0.11175)
 sprite_frames = SubResource("SpriteFrames_sos26")
 animation = &"Dash"
@@ -895,21 +896,29 @@ autoplay = "Idle"
 [node name="glider" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
 show_behind_parent = true
+z_index = 9
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_308a8")
 animation = &"Swing"
 
 [node name="hook" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
+z_index = 10
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_ca5yv")
 animation = &"Swing"
 
 [node name="slide" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
+z_index = 11
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_i2ccv")
 animation = &"Swing"
 
 [node name="dash" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
+z_index = 7
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_4cre5")
 animation = &"Swing"
 
@@ -958,7 +967,9 @@ one_shot = true
 
 [node name="Cacoon" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(0.15, 0.15)
+z_index = 12
+z_as_relative = false
+scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_jhlqi")
 animation = &"morph"
 
