@@ -83,6 +83,8 @@ func _ready():
 	giverNPCArray = get_tree().get_nodes_in_group("Giver")
 	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
 	
+	$Lighting/DirectionalLight2D.energy -= (Singleton.brightnessSelected)/100 - .5
+	
 	#var counter = 0
 	#for x in giverNPCArray:
 		#x.char_id = counter

@@ -2195,6 +2195,7 @@ color = Color(1, 1, 0.454902, 1)
 texture = SubResource("GradientTexture2D_3588u")
 
 [node name="Respawn Point" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(0, 0.583628, 0.464719, 1)
 position = Vector2(-12068, 607)
 scale = Vector2(0.1, 0.1)
