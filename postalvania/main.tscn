@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=148 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -52,6 +52,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_tuxpk")
 fill = 1
 fill_from = Vector2(0.545872, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_3hr76"]
+colors = PackedColorArray(0.964706, 0.823529, 0.827451, 1, 1, 1, 1, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lugyo"]
 
@@ -1658,6 +1661,24 @@ range_layer_min = -128
 range_layer_max = 128
 range_item_cull_mask = 23
 texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TownDecor/MushroomHouse"]
+position = Vector2(194.282, -279.493)
+amount = 25
+lifetime = 7.0
+randomness = 0.32
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(1, 1)
+spread = 48.63
+gravity = Vector2(0, -15)
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+angle_min = -480.0
+angle_max = 232.7
+scale_amount_min = 5.0
+scale_amount_max = 12.0
+color_ramp = SubResource("Gradient_3hr76")
 
 [node name="FlowerHouse" type="Sprite2D" parent="TownDecor"]
 position = Vector2(-1515, -181)
