@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=150 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -51,6 +51,12 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_tuxpk")
 fill = 1
 fill_from = Vector2(0.545872, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_0itco"]
+
+[sub_resource type="Gradient" id="Gradient_ys5rd"]
+offsets = PackedFloat32Array(0.353333, 1)
+colors = PackedColorArray(0.999559, 0.950839, 0.915373, 1, 1, 1, 1, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lugyo"]
 
@@ -1500,6 +1506,16 @@ fill_to = Vector2(0.370538, 0.735043)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sfr7w"]
 polygon = PackedVector2Array(6375, -5145, 6387, -5144, 6395, -5140, 6399, -5132, 6403, -5127, 6400, -5120, 6400, -5117, 6408, -5122, 6409, -5130, 6407, -5139, 6405, -5145, 6399, -5150, 6391, -5151, 6381, -5152, 6377, -5150)
 
+[sub_resource type="Gradient" id="Gradient_q8iyc"]
+offsets = PackedFloat32Array(0, 0.74026)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ub6dt"]
+gradient = SubResource("Gradient_q8iyc")
+fill = 1
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jutjg"]
 bg_color = Color(0.4, 0.2516, 0.188, 1)
 border_width_left = 1
@@ -1659,17 +1675,23 @@ texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="TownDecor/MushroomHouse"]
 position = Vector2(201.099, -282.901)
-amount = 10
+amount = 15
 lifetime = 4.0
 emission_shape = 1
 emission_sphere_radius = 6.0
 direction = Vector2(1, 1)
-spread = 15.0
-gravity = Vector2(0, 50)
+spread = 40.0
+gravity = Vector2(0, -20)
 initial_velocity_min = 20.2
 initial_velocity_max = 40.76
 linear_accel_min = 1.0
 linear_accel_max = 4.04
+angle_min = -436.4
+angle_max = 189.1
+scale_amount_min = 8.0
+scale_amount_max = 12.0
+color_ramp = SubResource("Gradient_0itco")
+color_initial_ramp = SubResource("Gradient_ys5rd")
 
 [node name="FlowerHouse" type="Sprite2D" parent="TownDecor"]
 position = Vector2(-1515, -181)
@@ -1765,6 +1787,23 @@ scale = Vector2(-0.358, 0.358)
 texture = ExtResource("6_0kol5")
 
 [node name="PointLight2D" type="PointLight2D" parent="TownDecor/Lamp2"]
+z_index = 2
+position = Vector2(-184.283, -276.424)
+scale = Vector2(18.7262, 16.8365)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="Lamp3" type="Sprite2D" parent="TownDecor"]
+z_index = 2
+position = Vector2(-218, -135)
+scale = Vector2(-0.358, 0.358)
+texture = ExtResource("6_0kol5")
+
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/Lamp3"]
 z_index = 2
 position = Vector2(-184.283, -276.424)
 scale = Vector2(18.7262, 16.8365)
@@ -2191,6 +2230,15 @@ texture = SubResource("GradientTexture2D_vvs6g")
 position = Vector2(-6377, 5211)
 occluder = SubResource("OccluderPolygon2D_sfr7w")
 occluder_light_mask = 512
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lighting"]
+position = Vector2(6516, -8331.5)
+scale = Vector2(26.9688, 27.6406)
+color = Color(1, 1, 0.529412, 1)
+energy = 3.0
+range_layer_min = -128
+range_layer_max = 50
+texture = SubResource("GradientTexture2D_ub6dt")
 
 [node name="Respawn Point" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0.583628, 0.464719, 1)
