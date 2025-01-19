@@ -11,16 +11,16 @@
 
 [sub_resource type="ImageTexture" id="ImageTexture_05lks"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byvuq"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cltvm"]
 texture = SubResource("ImageTexture_05lks")
 modulate_color = Color(0.713416, 0.609142, 0.563547, 1)
 
 [sub_resource type="Theme" id="Theme_c5pfw"]
-/styles/img = SubResource("StyleBoxTexture_byvuq")
+/styles/img = SubResource("StyleBoxTexture_cltvm")
 
 [sub_resource type="Theme" id="Theme_1e12o"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_135v1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e7my"]
 bg_color = Color(0.4, 0.2516, 0.188, 1)
 border_width_left = 1
 border_width_top = 1
@@ -32,7 +32,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cov6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sha2g"]
 bg_color = Color(0.505882, 0.317647, 0.239216, 1)
 border_width_left = 1
 border_width_top = 1
@@ -44,7 +44,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0btxs"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue46p"]
 bg_color = Color(0.3, 0.1887, 0.141, 1)
 border_width_left = 2
 border_width_top = 2
@@ -56,13 +56,13 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6pjv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lclj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mn3fe"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uy54"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elohg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsqat"]
 bg_color = Color(0.505882, 0.317647, 0.239216, 1)
 border_width_left = 1
 border_width_top = 1
@@ -80,15 +80,15 @@ shadow_size = 2
 Button/constants/outline_size = 3
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("3_6w02u")
-Button/styles/hover = SubResource("StyleBoxFlat_135v1")
-Button/styles/normal = SubResource("StyleBoxFlat_3cov6")
-Button/styles/pressed = SubResource("StyleBoxFlat_0btxs")
+Button/styles/hover = SubResource("StyleBoxFlat_1e7my")
+Button/styles/normal = SubResource("StyleBoxFlat_sha2g")
+Button/styles/pressed = SubResource("StyleBoxFlat_ue46p")
 Label/fonts/font = ExtResource("3_6w02u")
 LineEdit/font_sizes/font_size = 10
 LineEdit/fonts/font = ExtResource("3_6w02u")
-LineEdit/styles/focus = SubResource("StyleBoxFlat_i6pjv")
-LineEdit/styles/normal = SubResource("StyleBoxFlat_mn3fe")
-Panel/styles/panel = SubResource("StyleBoxFlat_elohg")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_1lclj")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_0uy54")
+Panel/styles/panel = SubResource("StyleBoxFlat_wsqat")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -164,10 +164,6 @@ offset_right = 50.0
 grow_horizontal = 2
 grow_vertical = 0
 value = 50.0
-
-[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Options"
 
 [node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -250,4 +246,5 @@ shadow_item_cull_mask = 3
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/How to Play" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
