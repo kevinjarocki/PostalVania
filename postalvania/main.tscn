@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=151 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -27,11 +27,9 @@
 [ext_resource type="PackedScene" uid="uid://j770a3wpvy7e" path="res://Assets/Theresa Art/chameleon_animated_sprite_2d.tscn" id="17_65dj2"]
 [ext_resource type="AudioStream" uid="uid://8pdx24csnu81" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 02 A New Day's Hurry (General Background Music).mp3" id="17_gv42l"]
 [ext_resource type="Script" path="res://job_board.gd" id="18_yxf6o"]
-[ext_resource type="AudioStream" uid="uid://drdhogvtl0vqo" path="res://Assets/sounds/effects/Horror SFX Free/Monsters & Ghosts/Gore_Ripping_4.wav" id="19_5p51k"]
 [ext_resource type="PackedScene" uid="uid://dg6a0qtglwxgh" path="res://WispTemplate.tscn" id="19_vhr3a"]
 [ext_resource type="PackedScene" uid="uid://cp3wp0tn3b3tu" path="res://tutorialWisp.tscn" id="20_dqrg0"]
 [ext_resource type="Texture2D" uid="uid://cm614ek7kosk4" path="res://Assets/Shareef Art/Background_1.png" id="20_j6ekd"]
-[ext_resource type="AudioStream" uid="uid://decl8exp2yftq" path="res://Assets/sounds/effects/woosh_5.wav" id="22_o3up8"]
 [ext_resource type="Texture2D" uid="uid://0qienv8a5g6a" path="res://Assets/Cassandra Art/Page2.png" id="33_1gyd1"]
 [ext_resource type="Texture2D" uid="uid://d2cs0ka0jx6mp" path="res://Assets/Shareef Art/Background_4.png" id="34_iuib4"]
 [ext_resource type="Script" path="res://spider_tutor.gd" id="35_54rda"]
@@ -2366,11 +2364,6 @@ label_settings = SubResource("LabelSettings_odmwe")
 position = Vector2(-33663, 10370)
 scale = Vector2(1.72466, 1.49464)
 
-[node name="EvolveAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_5p51k")
-volume_db = 8.667
-pitch_scale = 0.39
-
 [node name="JobBoard" type="Node2D" parent="."]
 position = Vector2(-11275, 633)
 script = ExtResource("18_yxf6o")
@@ -2441,14 +2434,9 @@ texture = ExtResource("33_1gyd1")
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_xb2st")
 
-[node name="RopeWoosh" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("22_o3up8")
-volume_db = 9.564
-pitch_scale = 0.67
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_gv42l")
-volume_db = -13.116
+volume_db = -21.55
 autoplay = true
 parameters/looping = true
 
@@ -2525,8 +2513,6 @@ position = Vector2(9483.93, -1157.48)
 scale = Vector2(1.03079, 1)
 texture = ExtResource("34_iuib4")
 metadata/_edit_lock_ = true
-
-[node name="SnailSound" type="AudioStreamPlayer" parent="."]
 
 [node name="SpiderTutor" type="Node2D" parent="."]
 position = Vector2(-15637, 1992)
