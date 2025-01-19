@@ -18,13 +18,6 @@ var giverNPCArray = []
 var receiverNPCArray = []
 var markerArray = [0,0,0,0,0,0,0,0]
 
-#New arrays
-var giverArrayFix = [Vector2(-12164, 644), Vector2(-8284, -110), Vector2(-702, 42), Vector2(-1919, -947),
-Vector2(2028, 980), Vector2(3077, -137), Vector2(5841, -643), Vector2(-653, -5031)]
-
-var receiverArrayFix = [Vector2(-997, 621), Vector2(-2849, 759), Vector2(-174, 4165), Vector2(-71, -5068),
-Vector2(-3490, -1399), Vector2(12365, 307), Vector2(-11818, 319), Vector2(116, 4156)]
-
 #Text to display in dbox from chickens
 var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist the villagers by delivering parcels they give you. You can also touch cows to unlock great abilities",
 	"Here is the second text box for the second chicken delivery",
@@ -60,38 +53,24 @@ var receiverCompletingQuestDBox = ["Thanks for delivering this! I appreciate it"
 	"Thanks for delivering this! I appreciate it"]
 
 @onready var ObjMarker = preload("res://obj_marker.tscn")
-@onready var CharPair = preload("res://char_pair.tscn")
 
 func _ready():
 
 	nodeTLArray = get_tree().get_nodes_in_group("TL")
 	nodeTLTimerArray = get_tree().get_nodes_in_group("TLTimer")
-	nodePanelTLArray = $Control/VBoxContainer.get_children()
-	
-	for x in 8:
-		var charPairInstance = CharPair.instantiate()
-		add_child(charPairInstance)
-		var charPairChildren = charPairInstance.get_children()
-		charPairChildren[0].position = giverArrayFix[x]
-		print(charPairChildren)
-		charPairChildren[1].position = receiverArrayFix[x]
-		
-		charPairChildren[0].char_id = x
-		charPairChildren[1].char_id = x
-		
-	
 	giverNPCArray = get_tree().get_nodes_in_group("Giver")
 	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
+	nodePanelTLArray = $Control/VBoxContainer.get_children()
 	
-	#var counter = 0
-	#for x in giverNPCArray:
-		#x.char_id = counter
-		#counter += 1
-#
-	#counter = 0
-	#for x in receiverNPCArray:
-		#x.char_id = counter
-		#counter += 1
+	var counter = 0
+	for x in giverNPCArray:
+		x.char_id = counter
+		counter += 1
+
+	counter = 0
+	for x in receiverNPCArray:
+		x.char_id = counter
+		counter += 1
 		
 func _process (delta):
 	if !timerPause:
@@ -140,7 +119,7 @@ func _dBox (text, text2 = "", sprite = false):
 		$Control/NinePatchRect/DialogueSprite.visible = false
 	
 func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
-	print("Im being called")
+	
 	if first_touch:
 		_dBox(giverFirstTouchDBox[char_id], "Received: ", char_id)
 		var instance = ObjMarker.instantiate()
