@@ -38,7 +38,7 @@ shape = SubResource("CircleShape2D_ghtis")
 position = Vector2(-54.4342, -44.9773)
 scale = Vector2(2.98023, 4.53872)
 color = Color(1, 0.516203, 0.999883, 1)
-energy = 0.2
+energy = 0.3
 range_layer_min = -128
 texture = SubResource("GradientTexture2D_op5kd")
 
@@ -46,7 +46,7 @@ texture = SubResource("GradientTexture2D_op5kd")
 position = Vector2(68.2809, -23.2744)
 scale = Vector2(3.64345, 3.33667)
 color = Color(0.218535, 0.81749, 0.908127, 1)
-energy = 0.2
+energy = 0.3
 range_layer_min = -128
 texture = SubResource("GradientTexture2D_op5kd")
 
@@ -54,6 +54,6 @@ texture = SubResource("GradientTexture2D_op5kd")
 position = Vector2(0.399527, 73.3543)
 scale = Vector2(3.13451, 3.60631)
 color = Color(0.811765, 0.831373, 0, 1)
-energy = 0.2
+energy = 0.3
 range_layer_min = -128
 texture = SubResource("GradientTexture2D_op5kd")

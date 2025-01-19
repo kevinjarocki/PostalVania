@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ckls6y168cth2" path="res://Assets/Cassandra Art/PurpleGeode.png" id="3_r0bp7"]
 [ext_resource type="Texture2D" uid="uid://bn1q55ttojijj" path="res://Assets/Shareef Art/Background_3.png" id="4_rneix"]
 [ext_resource type="Texture2D" uid="uid://yywqqrpj1tn0" path="res://Assets/Cassandra Art/GnomeHouse1.png" id="4_rtvur"]
+[ext_resource type="Texture2D" uid="uid://5nckl0x6d2kl" path="res://Assets/Cassandra Art/PinkGeode.png" id="4_u6xf2"]
 [ext_resource type="Texture2D" uid="uid://drnw7jqv0iqxp" path="res://Assets/Cassandra Art/oakHouse.png" id="5_ob54s"]
 [ext_resource type="Texture2D" uid="uid://c0gnuivhu6d17" path="res://Assets/map outline.PNG" id="5_v0w8x"]
 [ext_resource type="Texture2D" uid="uid://itl36xokcpnb" path="res://Assets/Cassandra Art/LampOn.png" id="6_0kol5"]
@@ -1633,6 +1634,20 @@ range_layer_min = -128
 range_layer_max = 128
 texture = SubResource("GradientTexture2D_mhl4g")
 
+[node name="PinkGem" type="Sprite2D" parent="CrystalDecor"]
+position = Vector2(10068, 530)
+scale = Vector2(0.645485, 0.645485)
+texture = ExtResource("4_u6xf2")
+
+[node name="PointLight2D" type="PointLight2D" parent="CrystalDecor/PinkGem"]
+position = Vector2(-0.774136, -111.544)
+scale = Vector2(8.44813, 8.4239)
+color = Color(0.740403, 0.501772, 0.903719, 1)
+energy = 2.01
+range_layer_min = -128
+range_layer_max = 128
+texture = SubResource("GradientTexture2D_mhl4g")
+
 [node name="TownDecor" type="Node2D" parent="."]
 
 [node name="MushroomHouse" type="Sprite2D" parent="TownDecor"]
@@ -1642,8 +1657,13 @@ texture = ExtResource("2_jrls6")
 
 [node name="PointLight2D" type="PointLight2D" parent="TownDecor/MushroomHouse"]
 z_index = 2
+<<<<<<< HEAD
 position = Vector2(117.591, 81.8028)
 scale = Vector2(2.82681, 2.54155)
+=======
+position = Vector2(119.296, 86.9155)
+scale = Vector2(2.3506, 2.47857)
+>>>>>>> master
 color = Color(0.54902, 0.54902, 0, 1)
 energy = 1.46
 range_layer_min = -128
@@ -1653,8 +1673,13 @@ texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="PointLight2D2" type="PointLight2D" parent="TownDecor/MushroomHouse"]
 z_index = 2
+<<<<<<< HEAD
 position = Vector2(-140.599, 120.148)
 scale = Vector2(1.83737, 2.95577)
+=======
+position = Vector2(-141.451, 115.887)
+scale = Vector2(1.7345, 3.57541)
+>>>>>>> master
 color = Color(0.54902, 0.54902, 0, 1)
 energy = 1.46
 range_layer_min = -128
@@ -1664,8 +1689,13 @@ texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="PointLight2D3" type="PointLight2D" parent="TownDecor/MushroomHouse"]
 z_index = 2
+<<<<<<< HEAD
 position = Vector2(4.6866, 170.423)
 scale = Vector2(1.398, 1.43794)
+=======
+position = Vector2(6.81693, 168.718)
+scale = Vector2(2.3506, 2.47857)
+>>>>>>> master
 color = Color(0.54902, 0.54902, 0, 1)
 energy = 1.46
 range_layer_min = -128
@@ -1674,6 +1704,7 @@ range_item_cull_mask = 23
 texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="TownDecor/MushroomHouse"]
+<<<<<<< HEAD
 position = Vector2(201.099, -282.901)
 amount = 15
 lifetime = 4.0
@@ -1692,6 +1723,23 @@ scale_amount_min = 8.0
 scale_amount_max = 12.0
 color_ramp = SubResource("Gradient_0itco")
 color_initial_ramp = SubResource("Gradient_ys5rd")
+=======
+position = Vector2(192.577, -286.31)
+amount = 13
+lifetime = 3.0
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, -50)
+initial_velocity_min = 30.3
+initial_velocity_max = 30.3
+angle_min = -305.5
+angle_max = 101.8
+scale_amount_min = 21.2
+scale_amount_max = 31.3
+color = Color(0.930117, 0.87047, 0.822979, 1)
+>>>>>>> master
 
 [node name="FlowerHouse" type="Sprite2D" parent="TownDecor"]
 position = Vector2(-1515, -181)
@@ -1699,8 +1747,13 @@ texture = ExtResource("3_qerii")
 
 [node name="PointLight2D" type="PointLight2D" parent="TownDecor/FlowerHouse"]
 z_index = 2
+<<<<<<< HEAD
 position = Vector2(220, -53)
 scale = Vector2(3.94939, 3.55085)
+=======
+position = Vector2(217, -63.0001)
+scale = Vector2(6.37874, 5.24637)
+>>>>>>> master
 color = Color(0.54902, 0.54902, 0, 1)
 energy = 1.46
 range_layer_min = -128
@@ -1708,10 +1761,17 @@ range_layer_max = 128
 range_item_cull_mask = 23
 texture = SubResource("GradientTexture2D_kb50v")
 
+<<<<<<< HEAD
 [node name="PointLight2D3" type="PointLight2D" parent="TownDecor/FlowerHouse"]
 z_index = 2
 position = Vector2(111, 126)
 scale = Vector2(1.398, 1.43794)
+=======
+[node name="PointLight2D2" type="PointLight2D" parent="TownDecor/FlowerHouse"]
+z_index = 2
+position = Vector2(114, 110)
+scale = Vector2(2.3506, 2.47857)
+>>>>>>> master
 color = Color(0.54902, 0.54902, 0, 1)
 energy = 1.46
 range_layer_min = -128
@@ -1719,10 +1779,17 @@ range_layer_max = 128
 range_item_cull_mask = 23
 texture = SubResource("GradientTexture2D_kb50v")
 
+<<<<<<< HEAD
 [node name="PointLight2D4" type="PointLight2D" parent="TownDecor/FlowerHouse"]
 z_index = 2
 position = Vector2(-93, -23)
 scale = Vector2(1.398, 1.43794)
+=======
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/FlowerHouse/PointLight2D2"]
+z_index = 2
+position = Vector2(-85.9354, -51.6427)
+scale = Vector2(2.3506, 2.47857)
+>>>>>>> master
 color = Color(0.54902, 0.54902, 0, 1)
 energy = 1.46
 range_layer_min = -128
@@ -1735,10 +1802,17 @@ position = Vector2(1037, -306)
 scale = Vector2(0.54023, 0.54023)
 texture = ExtResource("4_rtvur")
 
+<<<<<<< HEAD
 [node name="PointLight2D4" type="PointLight2D" parent="TownDecor/GnomeHouse"]
 z_index = 2
 position = Vector2(-166.596, 549.766)
 scale = Vector2(2.65347, 2.72929)
+=======
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/GnomeHouse"]
+z_index = 2
+position = Vector2(-166.596, 536.809)
+scale = Vector2(2.3506, 2.47857)
+>>>>>>> master
 color = Color(0.54902, 0.54902, 0, 1)
 energy = 1.46
 range_layer_min = -128
@@ -1747,6 +1821,7 @@ range_item_cull_mask = 23
 texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="OakHouse" type="Sprite2D" parent="TownDecor"]
+<<<<<<< HEAD
 z_index = 1
 position = Vector2(220, -216)
 scale = Vector2(0.759475, 0.759475)
@@ -1756,6 +1831,21 @@ texture = ExtResource("5_ob54s")
 z_index = 2
 position = Vector2(197.505, 231.739)
 scale = Vector2(2.65347, 2.72929)
+=======
+
+z_index = 2
+position = Vector2(236, -216)
+
+z_index = -1
+position = Vector2(-148, -222)
+scale = Vector2(0.759475, 0.759475)
+texture = ExtResource("5_ob54s")
+
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/OakHouse"]
+z_index = 2
+position = Vector2(201.455, 244.906)
+scale = Vector2(2.3506, 2.47857)
+>>>>>>> master
 color = Color(0.54902, 0.54902, 0, 1)
 energy = 1.46
 range_layer_min = -128
@@ -1799,8 +1889,13 @@ texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="Lamp3" type="Sprite2D" parent="TownDecor"]
 z_index = 2
+<<<<<<< HEAD
 position = Vector2(-218, -135)
 scale = Vector2(-0.358, 0.358)
+=======
+position = Vector2(-219, -167)
+scale = Vector2(-0.4, 0.4)
+>>>>>>> master
 texture = ExtResource("6_0kol5")
 
 [node name="PointLight2D" type="PointLight2D" parent="TownDecor/Lamp3"]
@@ -1821,20 +1916,25 @@ texture = ExtResource("20_j6ekd")
 
 [node name="bg2" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(-7839, -1143)
+position = Vector2(-7857.12, -1143)
 texture = ExtResource("3_lsety")
 
 [node name="bg3" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(928, -1128)
+position = Vector2(888.805, -1128)
 texture = ExtResource("4_rneix")
 
 [node name="bg4" type="Sprite2D" parent="."]
 z_index = -5
+
+position = Vector2(9633.42, -1179)
+texture = ExtResource("5_wwbr2")
+
 position = Vector2(9698, -1179)
 
+
 [node name="Control" type="Control" parent="."]
-z_index = 10
+z_index = 20
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2525,7 +2625,7 @@ polygon = PackedVector2Array(5120, 738, 4864, 1602, 5104, 4434, 7248, 5058, 1009
 
 [node name="Pink" type="Polygon2D" parent="Polys"]
 z_index = -24
-position = Vector2(-341, 72)
+position = Vector2(-291, 27)
 color = Color(0.356863, 0.294118, 0.407843, 1)
 polygon = PackedVector2Array(7745, -2420, 10870, 3453, 12630, 3471, 14695, 3148, 16653, 903, 16994, -1809, 13689, -4072, 9684, -4647, 7098, -4359, 6092, -4485)
 
