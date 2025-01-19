@@ -26,14 +26,14 @@ var receiverArrayFix = [Vector2(-9997, 621), Vector2(-2849, 759), Vector2(-174, 
 Vector2(-3490, -1399), Vector2(12365, 307), Vector2(-11818, 319), Vector2(116, 4156)]
 
 #Text to display in dbox from chickens
-var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist the villagers by delivering parcels they give you. You can also touch cows to unlock great abilities. Can you please bring this cookie for my brother wearing blue?",
-	"Hi there, my brother loves cheese. He is wearing a red outfit like mine. Can you please deliver this cheese to him?",
-	"Hi there! My husband is an alcoholic and I support his drinking habits, can you please deliver this aged booze for to him? He wears a pink shirt like mine!",
-	"Mmmmmm I love pretzels mmmmm. I bought an extra pretzel for my sick brother. He should be wearing the same shirt as me. Can you deliver it to him?",
-	"Help! My brother is very sick, he needs this special red medicince or he will die. He is wearing a mustard shirt. Please hurry and bring this to him!",
-	"Hehehe I just bought this scary mask for my brother. It's perfect for halloween. He is wearing a vintage yellow shirt and wings. Can you help me deliver this to him?",
-	"I found this apple with a nasty work living inside it. It would be funny if my brother ate it. He is wearing cyan. Can you give this to him?",
-	"Hey! I love beer, you love beer, we all love beer! My son especially loves beer. He loves wearing purple to match his wings. Can you get him this drink on me?"]
+var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania! Can you please deliver this cookie to my fairy friend? They should be just to the right of me on the other side of the wall! A glide ability might help you out.",
+	"Hi there, my fairy friend loves cheese. He is wearing a red outfit like mine. Can you please deliver this cheese to him, he is at the base of the tree in a cave?",
+	"Hi there! Can you please deliver this aged booze to the pink fairy in the deep roots of the tree?",
+	"Mmmmmm I love pretzels mmmmm. I bought an extra pretzel for my green fairy friend. Can you go to the top of the tree and deliver him the pretzel?",
+	"Help! My fairy is very sick, he needs this special red medicince or he will die. He is wearing a mustard shirt. Please hurry and bring this to him, he is on a floating island in the north-west of our world!",
+	"Hehehe I just bought this scary mask for my friend. It's perfect for halloween. He is wearing a vintage yellow shirt and wings. Please go to the crystal caverns in the east.",
+	"I found this apple with a nasty worm living inside it. It would be funny if a fairy ate it. Give it to the cyan colored fairy at the western gardens.",
+	"Hey! I love beer, you love beer, we all love beer! My partner especially loves beer. He loves wearing purple to match his wings. Go to the tree roots and get him this drink."]
 	
 var giverNextTouchDBox = ["I already gave you my package, please deliver it! They're in the moss",
 	"I already gave you my package, please deliver it! They're in the tree",

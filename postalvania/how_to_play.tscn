@@ -1,8 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cilt07hdlh01r"]
+[gd_scene load_steps=7 format=3 uid="uid://cilt07hdlh01r"]
 
 [ext_resource type="Script" path="res://how_to_play.gd" id="1_bt4mg"]
 [ext_resource type="Texture2D" uid="uid://gv7ruo4dgoy7" path="res://Assets/menu/ui/Textbox1_Leaf&Branchsmaller.png" id="1_nbpxl"]
 [ext_resource type="AudioStream" uid="uid://ddl606gdj0f0v" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 01 A New Day Begins (General Background Music).mp3" id="2_1a3ps"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0otdp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.576981, 0.390474, 0.270028, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_70xfe"]
+Panel/styles/panel = SubResource("StyleBoxFlat_0otdp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_338uu"]
+font_size = 24
+font_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+outline_size = 3
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -41,24 +61,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -190.5
-offset_top = -76.5
-offset_right = 190.5
-offset_bottom = 76.5
+offset_left = -360.0
+offset_top = -203.5
+offset_right = 360.0
+offset_bottom = 203.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_70xfe")
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -50.0
-offset_right = 50.0
-offset_bottom = 23.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "In the game you "
+grow_vertical = 2
+text = "In the game you will help the forest owls by delivering their packages to the fairies. Each owl will have a package that is specific to the same color of fairy. 
+Use various movement abilities that are unlocked by touching the  woodland creatures to help traverse the terrain. The initial power you receive is the swing ability, which is critical in helping you traverse the environment and deliver the owl's packages.
+There are job boards located around the map that can help you find the location of the next pick up.
+Can you help the eight owls with their delivery requests?"
+label_settings = SubResource("LabelSettings_338uu")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_1a3ps")
