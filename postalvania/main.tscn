@@ -1587,6 +1587,7 @@ size = Vector2(539.996, 600)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a7pk4")
+metadata/_edit_horizontal_guides_ = [-725.0]
 
 [node name="CrystalDecor" type="Node2D" parent="."]
 
@@ -1625,20 +1626,108 @@ position = Vector2(-907, -60)
 scale = Vector2(0.586777, 0.586777)
 texture = ExtResource("2_jrls6")
 
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/MushroomHouse"]
+z_index = 2
+position = Vector2(114.183, 74.9859)
+scale = Vector2(2.0835, 2.07619)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="PointLight2D2" type="PointLight2D" parent="TownDecor/MushroomHouse"]
+z_index = 2
+position = Vector2(-146.563, 122.704)
+scale = Vector2(1.55093, 3.4875)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="PointLight2D3" type="PointLight2D" parent="TownDecor/MushroomHouse"]
+z_index = 2
+position = Vector2(3.40843, 172.127)
+scale = Vector2(1.76396, 1.78328)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
 [node name="FlowerHouse" type="Sprite2D" parent="TownDecor"]
 position = Vector2(-1515, -181)
 texture = ExtResource("3_qerii")
+
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/FlowerHouse"]
+z_index = 2
+position = Vector2(112, 121)
+scale = Vector2(2.0835, 2.07619)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="PointLight2D2" type="PointLight2D" parent="TownDecor/FlowerHouse"]
+z_index = 2
+position = Vector2(-100, -39)
+scale = Vector2(2.0835, 2.07619)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="PointLight2D3" type="PointLight2D" parent="TownDecor/FlowerHouse"]
+z_index = 2
+position = Vector2(219, -48)
+scale = Vector2(2.0835, 2.07619)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="GnomeHouse" type="Sprite2D" parent="TownDecor"]
 position = Vector2(1037, -306)
 scale = Vector2(0.54023, 0.54023)
 texture = ExtResource("4_rtvur")
 
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/GnomeHouse"]
+z_index = 2
+position = Vector2(-164.745, 551.617)
+scale = Vector2(2.0835, 2.07619)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
 [node name="OakHouse" type="Sprite2D" parent="TownDecor"]
-z_index = -1
-position = Vector2(-148, -222)
+z_index = 1
+position = Vector2(223, -218)
 scale = Vector2(0.759475, 0.759475)
 texture = ExtResource("5_ob54s")
+
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/OakHouse"]
+z_index = 2
+position = Vector2(206.962, 231.382)
+scale = Vector2(2.17329, 2.53995)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="Lamp" type="Sprite2D" parent="TownDecor"]
 z_index = 2
