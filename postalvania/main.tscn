@@ -2258,7 +2258,6 @@ texture = ExtResource("33_1gyd1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard/Sprite2D/Area2D"]
 position = Vector2(-9.97656, 10)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="JobBoard2" type="Node2D" parent="."]
@@ -2384,6 +2383,7 @@ position = Vector2(-341, 72)
 color = Color(0.356863, 0.294118, 0.407843, 1)
 polygon = PackedVector2Array(7745, -2420, 10870, 3453, 12630, 3471, 14695, 3148, 16653, 903, 16994, -1809, 13689, -4072, 9684, -4647, 7098, -4359, 6092, -4485)
 
+[connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_entered"]
