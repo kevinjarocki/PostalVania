@@ -3,7 +3,7 @@ extends CharacterBody2D
 # all global variable declarations
 const SPEED = 400.0
 const JUMP_VELOCITY = -550.0
-const gravityConstant = 750
+var gravityConstant = 750
 var terminalVelocity = 600
 var lastFrameSpeed = 0.0
 
@@ -87,6 +87,8 @@ var glideProgBar
 
 var fpsSuperSpeedBoost = 0
 
+var lowGravMode = false
+
 func _ready() -> void:
 	main = $".."
 	hookProgBar = $"../Control/HBoxContainer/hook"
@@ -98,6 +100,8 @@ func _ready() -> void:
 	#$Camera2D.position_smoothing_speed = 12
 	
 	#hookProgBar.color = Color.DARK_RED
+	if Singleton.lowGravMode == true:
+		gravityConstant = gravityConstant * .5
 
 func _process(delta: float) -> void:
 	fpsSuperSpeedBoost += 1

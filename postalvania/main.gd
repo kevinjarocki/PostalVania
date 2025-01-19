@@ -28,11 +28,11 @@ Vector2(-3490, -1399), Vector2(12365, 307), Vector2(-11818, 319), Vector2(116, 4
 #Text to display in dbox from chickens
 var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania! Can you please deliver this cookie to my fairy friend? They should be just to the right of me on the other side of the wall! A glide ability might help you out.",
 	"Hi there, my fairy friend loves cheese. He is wearing a red outfit like mine. Can you please deliver this cheese to him, he is at the base of the tree in a cave?",
-	"Hi there! Can you please deliver this aged booze to the pink fairy in the deep roots of the tree?",
-	"Mmmmmm I love pretzels mmmmm. I bought an extra pretzel for my green fairy friend. Can you go to the top of the tree and deliver him the pretzel?",
+	"Hi there! Can you please deliver this elixir to the pink fairy in the deep roots of the tree?",
+	"Mmmmmm I love pretzels. I bought an extra pretzel for my green fairy friend. Can you go to the top of the tree and deliver him the pretzel?",
 	"Help! My fairy is very sick, he needs this special red medicince or he will die. He is wearing a mustard shirt. Please hurry and bring this to him, he is on a floating island in the north-west of our world!",
-	"Hehehe I just bought this scary mask for my friend. It's perfect for halloween. He is wearing a vintage yellow shirt and wings. Please go to the crystal caverns in the east.",
-	"I found this apple with a nasty worm living inside it. It would be funny if a fairy ate it. Give it to the cyan colored fairy at the western gardens.",
+	"Hehehe I just bought this scary mask for my friend. It's perfect for halloween. He is wearing a yellow shirt and wings. Please go to the crystal caverns in the east.",
+	"I found this apple with a nasty worm living inside it. It would be funny if a fairy ate it. Give it to the teal colored fairy at the western gardens.",
 	"Hey! I love beer, you love beer, we all love beer! My partner especially loves beer. He loves wearing purple to match his wings. Go to the tree roots and get him this drink."]
 	
 var giverNextTouchDBox = ["I already gave you my package, please deliver it. They're to the right of me.",
@@ -53,14 +53,14 @@ var receiverPreQuestDBox = ["I think the owl on the other side of my wall wants 
 	"I think there is an owl between the central town and the crystal caves has something to give me.",
 	"I think the owl at the top of the tree wants to give me something."]
 	
-var receiverCompletingQuestDBox = ["Thanks for delivering this! I appreciate it",
-	"Thanks for delivering this! I appreciate it",
-	"Thanks for delivering this! I appreciate it",
-	"Thanks for delivering this! I appreciate it",
-	"Thanks for delivering this! I appreciate it",
-	"Thanks for delivering this! I appreciate it",
-	"Thanks for delivering this! I appreciate it",
-	"Thanks for delivering this! I appreciate it"]
+var receiverCompletingQuestDBox = ["Thanks for delivering this!",
+	"Thanks for delivering this!",
+	"Thanks for delivering this!",
+	"Thanks for delivering this!",
+	"Thanks for delivering this!",
+	"Thanks for delivering this!",
+	"Thanks for delivering this!",
+	"Thanks for delivering this!"]
 
 @onready var ObjMarker = preload("res://obj_marker.tscn")
 @onready var CharPair = preload("res://char_pair.tscn")
@@ -86,16 +86,6 @@ func _ready():
 	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
 	
 	$Lighting/DirectionalLight2D.energy -= (Singleton.brightnessSelected)/100 - .5
-	
-	#var counter = 0
-	#for x in giverNPCArray:
-		#x.char_id = counter
-		#counter += 1
-#
-	#counter = 0
-	#for x in receiverNPCArray:
-		#x.char_id = counter
-		#counter += 1
 		
 func _process (delta):
 	if !timerPause:
@@ -108,7 +98,10 @@ func _process (delta):
 			var temp = totalTime - stageStartTime[x]
 			nodeTLTimerArray[x].text = ("%.1f" %temp + " sec")
 	
-	velocity = ($Player.velocity.length() / 100) - 0.1
+	if Singleton.lowGravMode == false:
+		velocity = ($Player.velocity.length() / 100) - 0.1
+	if Singleton.lowGravMode == true:
+		velocity = ($Player.velocity.length() / 100) - 0.05
 	$Control/VBoxContainer2/Velocity.text = ("%.1f" %velocity + " m/sec")
 	
 func _unhandled_input(event):
