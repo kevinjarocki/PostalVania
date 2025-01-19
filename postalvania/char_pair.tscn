@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://l03mvmoq3qlw" path="res://Assets/Theresa Art/fairywoman.png" id="1_sds3y"]
 [ext_resource type="Script" path="res://Character.gd" id="2_ig1cm"]
+[ext_resource type="Texture2D" uid="uid://julhnrbh4vva" path="res://Assets/Theresa Art/fairyMan1.png" id="3_6laai"]
 [ext_resource type="Script" path="res://quest_delivery.gd" id="3_pyr1p"]
-[ext_resource type="Texture2D" uid="uid://byd3wvme1kakt" path="res://Assets/Theresa Art/fairyMan.png" id="3_s6fvl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8becg"]
 atlas = ExtResource("1_sds3y")
@@ -72,64 +72,64 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58dkn"]
 size = Vector2(12, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5fbvv"]
-atlas = ExtResource("3_s6fvl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_45i6v"]
+atlas = ExtResource("3_6laai")
 region = Rect2(0, 0, 1408, 1567)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mq8s"]
-atlas = ExtResource("3_s6fvl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfwxk"]
+atlas = ExtResource("3_6laai")
 region = Rect2(1408, 0, 1408, 1567)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rk5ap"]
-atlas = ExtResource("3_s6fvl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh6pm"]
+atlas = ExtResource("3_6laai")
 region = Rect2(2816, 0, 1408, 1567)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2yatp"]
-atlas = ExtResource("3_s6fvl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkmp7"]
+atlas = ExtResource("3_6laai")
 region = Rect2(4224, 0, 1408, 1567)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfmji"]
-atlas = ExtResource("3_s6fvl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0h8k"]
+atlas = ExtResource("3_6laai")
 region = Rect2(0, 1567, 1408, 1567)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ag15f"]
-atlas = ExtResource("3_s6fvl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o3cg"]
+atlas = ExtResource("3_6laai")
 region = Rect2(1408, 1567, 1408, 1567)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5uhf"]
-atlas = ExtResource("3_s6fvl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i616e"]
+atlas = ExtResource("3_6laai")
 region = Rect2(2816, 1567, 1408, 1567)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xno3"]
-atlas = ExtResource("3_s6fvl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p02jp"]
+atlas = ExtResource("3_6laai")
 region = Rect2(4224, 1567, 1408, 1567)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2uf5m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5fbvv")
+"texture": SubResource("AtlasTexture_45i6v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7mq8s")
+"texture": SubResource("AtlasTexture_sfwxk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rk5ap")
+"texture": SubResource("AtlasTexture_hh6pm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2yatp")
+"texture": SubResource("AtlasTexture_gkmp7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tfmji")
+"texture": SubResource("AtlasTexture_m0h8k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ag15f")
+"texture": SubResource("AtlasTexture_4o3cg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m5uhf")
+"texture": SubResource("AtlasTexture_i616e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1xno3")
+"texture": SubResource("AtlasTexture_p02jp")
 }],
 "loop": true,
 "name": &"Idle",
@@ -150,7 +150,7 @@ scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestGiver/Area2D"]
 position = Vector2(-1, 0.5)
-scale = Vector2(5, 5)
+scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="QuestDelivery" type="AnimatedSprite2D" parent="." groups=["NPC", "Receiver"]]
@@ -165,7 +165,7 @@ scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestDelivery/Area2D"]
 position = Vector2(-1, 0.5)
-scale = Vector2(5, 5)
+scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [connection signal="body_entered" from="QuestGiver/Area2D" to="QuestGiver" method="_on_area_2d_body_entered"]
