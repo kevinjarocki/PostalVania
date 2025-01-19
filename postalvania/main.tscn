@@ -1819,6 +1819,7 @@ texture = ExtResource("4_rneix")
 [node name="bg4" type="Sprite2D" parent="."]
 z_index = -5
 position = Vector2(9698, -1179)
+texture = ExtResource("34_iuib4")
 
 [node name="Control" type="Control" parent="."]
 z_index = 10
@@ -2446,24 +2447,6 @@ shape = SubResource("RectangleShape2D_xb2st")
 stream = ExtResource("22_o3up8")
 volume_db = 2.029
 pitch_scale = 0.67
-
-[node name="bg5" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(-16666, -844)
-texture = ExtResource("20_j6ekd")
-
-[node name="bg6" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(-7839, -1143)
-
-[node name="bg7" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(928, -1128)
-
-[node name="bg8" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(9685, -1175)
-texture = ExtResource("34_iuib4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_gv42l")
