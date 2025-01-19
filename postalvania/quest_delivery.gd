@@ -21,5 +21,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	var charPosition = $"../QuestDelivery".position + Vector2(0, -50)
 	
 
-	MainNode._on_quest_giver_character_touched(first_touch, char_id, charPosition)
+	MainNode._on_quest_delivery_character_touched(first_touch, char_id, charPosition)
 	first_touch = false
