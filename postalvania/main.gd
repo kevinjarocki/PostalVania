@@ -189,6 +189,7 @@ func _job_board(char_id):
 	var instance = ObjMarker.instantiate()
 	add_child(instance)
 	instance.add_to_group("GiverObj")
+	print(giverNPCArray[char_id])
 	instance.spriteLoc = giverNPCArray[char_id].position + Vector2(0, -50)
 	instance.itemSpriteFrame = char_id
 	instance.modulate = Color.RED
