@@ -2314,7 +2314,6 @@ position = Vector2(11895, -2641)
 characterSprite = ExtResource("16_ghmm3")
 
 [node name="yeet" parent="." instance=ExtResource("16_brnb8")]
-characterSprite = ExtResource("16_hydth")
 position = Vector2(16999, -5510)
 characterSprite = ExtResource("17_65dj2")
 
@@ -2500,10 +2499,11 @@ scale = Vector2(16.7652, 15.68)
 texture = ExtResource("6_wkjxa")
 centered = false
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_gv42l")
 volume_db = -13.619
 autoplay = true
+parameters/looping = true
 
 [node name="EvolveAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_5p51k")
