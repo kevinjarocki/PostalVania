@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=154 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://0qienv8a5g6a" path="res://Assets/Cassandra Art/Page2.png" id="33_1gyd1"]
 [ext_resource type="Texture2D" uid="uid://d2cs0ka0jx6mp" path="res://Assets/Shareef Art/Background_4.png" id="34_iuib4"]
 [ext_resource type="Script" path="res://spider_tutor.gd" id="35_54rda"]
+[ext_resource type="AudioStream" uid="uid://dtjpo0186oqt0" path="res://Assets/sounds/effects/Snailmp3shortened.mp3" id="35_qbmkc"]
 [ext_resource type="Texture2D" uid="uid://bwxtuphtt7mwm" path="res://Assets/Theresa Art/spider2.png" id="35_ssvp5"]
 [ext_resource type="Texture2D" uid="uid://bb38jg88gjdik" path="res://Assets/Shareef Art/Rope.png" id="36_evv5o"]
 
@@ -2527,7 +2528,11 @@ scale = Vector2(1.03079, 1)
 texture = ExtResource("34_iuib4")
 metadata/_edit_lock_ = true
 
-[node name="SnailSound" type="AudioStreamPlayer" parent="."]
+[node name="SnailNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_qbmkc")
+volume_db = 19.315
+pitch_scale = 3.33
+parameters/looping = true
 
 [node name="SpiderTutor" type="Node2D" parent="."]
 position = Vector2(-15637, 1992)
