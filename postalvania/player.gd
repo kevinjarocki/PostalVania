@@ -85,6 +85,8 @@ var slideProgBar
 var yeetProgBar
 var glideProgBar
 
+var fpsSuperSpeedBoost = 0
+
 func _ready() -> void:
 	main = $".."
 	hookProgBar = $"../Control/HBoxContainer/hook"
@@ -98,7 +100,9 @@ func _ready() -> void:
 	#hookProgBar.color = Color.DARK_RED
 
 func _process(delta: float) -> void:
-	$RayCast01.look_at(get_global_mouse_position())
+	fpsSuperSpeedBoost += 1
+	if fpsSuperSpeedBoost % 10 == 0:
+		$RayCast01.look_at(get_global_mouse_position())
 	if Input.is_action_pressed("1"):
 		#CHEAT MODE
 		enableAbility("hook")
@@ -187,8 +191,6 @@ func _physics_process(delta: float) -> void:
 			slideSpeed = velocity.x*1.5 + SPEED*sign(velocity.x)
 			$AnimatedSprite2D/slide.play("Slide")
 			$AnimatedSprite2D.play("Slide")
-			print($AnimatedSprite2D.animation)
-			print("animate pls")
 		if cntrlHeld:
 			velocity.x = slideSpeed
 
@@ -323,7 +325,6 @@ func _physics_process(delta: float) -> void:
 		################################################## DASHING DASHING
 		
 	if isDashing:
-		print("dash")
 		$dashTimer.start()
 		$AnimatedSprite2D/dash.play("Dash")
 		$AnimatedSprite2D.play("Dash")
@@ -501,7 +502,8 @@ func getHookPos():
 			movingTarget = true
 		return $RayCast01.get_collision_point()
 	else:
-		print("couldnt find raycast collision")
+		#print("couldnt find raycast collision")
+		pass
 		
 		########################## Signals and Enable Methods #######################################
 func enableAbility(abilityName):
@@ -551,7 +553,6 @@ func morph():
 
 func MovingHookPos(Body:CharacterBody2D):	
 	hookPos = Body.global_position
-	print(Body.global_position)
 
 func _on_hook_timer_timeout() -> void:
 	hookIsReady = true

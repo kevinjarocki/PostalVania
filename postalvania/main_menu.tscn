@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddw2akrbxf2lo"]
+[gd_scene load_steps=19 format=3 uid="uid://ddw2akrbxf2lo"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_rkmam"]
 [ext_resource type="Texture2D" uid="uid://gv7ruo4dgoy7" path="res://Assets/menu/ui/Textbox1_Leaf&Branchsmaller.png" id="2_ia33t"]
+[ext_resource type="FontFile" uid="uid://b6nas1lanoebc" path="res://Assets/Daydream.ttf" id="3_6w02u"]
 [ext_resource type="AudioStream" uid="uid://ddl606gdj0f0v" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 01 A New Day Begins (General Background Music).mp3" id="3_lv17t"]
+[ext_resource type="Script" path="res://hi_score.gd" id="4_wygut"]
+[ext_resource type="Texture2D" uid="uid://dtg54j5ef17qo" path="res://Assets/GUI/cryo.png" id="5_m2sqc"]
 
 [sub_resource type="Theme" id="Theme_64p7o"]
 
@@ -16,6 +19,76 @@ modulate_color = Color(0.713416, 0.609142, 0.563547, 1)
 /styles/img = SubResource("StyleBoxTexture_byvuq")
 
 [sub_resource type="Theme" id="Theme_1e12o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_135v1"]
+bg_color = Color(0.4, 0.2516, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cov6"]
+bg_color = Color(0.505882, 0.317647, 0.239216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0btxs"]
+bg_color = Color(0.3, 0.1887, 0.141, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6pjv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mn3fe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elohg"]
+bg_color = Color(0.505882, 0.317647, 0.239216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0, 0, 0, 0.756863)
+shadow_size = 2
+
+[sub_resource type="Theme" id="Theme_2n8af"]
+Button/constants/outline_size = 3
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("3_6w02u")
+Button/styles/hover = SubResource("StyleBoxFlat_135v1")
+Button/styles/normal = SubResource("StyleBoxFlat_3cov6")
+Button/styles/pressed = SubResource("StyleBoxFlat_0btxs")
+Label/fonts/font = ExtResource("3_6w02u")
+LineEdit/font_sizes/font_size = 10
+LineEdit/fonts/font = ExtResource("3_6w02u")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_i6pjv")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_mn3fe")
+Panel/styles/panel = SubResource("StyleBoxFlat_elohg")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -69,6 +142,66 @@ text = "Options"
 [node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="HiScore" type="MarginContainer" parent="CanvasLayer"]
+z_index = 20
+texture_filter = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -161.0
+offset_right = -98.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2n8af")
+script = ExtResource("4_wygut")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HiScore"]
+layout_mode = 2
+texture = ExtResource("5_m2sqc")
+region_rect = Rect2(96, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HiScore/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.029
+anchor_top = -0.072
+offset_left = -7.894
+offset_top = 3.736
+offset_right = 157.0
+offset_bottom = 144.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_m2sqc")
+region_rect = Rect2(0, 56, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HiScore"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/HiScore/VBoxContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HiScore/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_lv17t")

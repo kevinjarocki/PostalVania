@@ -10,6 +10,9 @@ const url_submit = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeqPVDLyp7k14UY
 const headers = ["Content-Type: application/x-www-form-urlencoded"]
 const url_data = "https://opensheet.elk.sh/1ZZUQk2zmmpON93tmDhA1aX9c222ltbPysiMaky1i798/data"
 
+func _ready():
+	update_data()
+
 func start():
 	$".".visible = true
 	$VBoxContainer/HBoxContainer/Panel/Label.text = "%.1f" %$"..".totalTime + " sec"

@@ -1471,8 +1471,8 @@ fill_to = Vector2(0.542532, 0.508547)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sfr7w"]
 polygon = PackedVector2Array(6375, -5145, 6387, -5144, 6395, -5140, 6399, -5132, 6403, -5127, 6400, -5120, 6400, -5117, 6408, -5122, 6409, -5130, 6407, -5139, 6405, -5145, 6399, -5150, 6391, -5151, 6381, -5152, 6377, -5150)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mebp8"]
-bg_color = Color(0.43616, 0.3016, 0.58, 0.94902)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jutjg"]
+bg_color = Color(0.4, 0.2516, 0.188, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -1483,8 +1483,8 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dm72"]
-bg_color = Color(0.572549, 0.396078, 0.760784, 0.94902)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmdgx"]
+bg_color = Color(0.505882, 0.317647, 0.239216, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -1495,8 +1495,8 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfhcy"]
-bg_color = Color(0.2632, 0.182, 0.35, 0.94902)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w53h6"]
+bg_color = Color(0.3, 0.1887, 0.141, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -1507,14 +1507,14 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f40rv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyou5"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_845o5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgkjs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydhgy"]
-bg_color = Color(0.57152, 0.3952, 0.76, 0.94902)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3bua"]
+bg_color = Color(0.505882, 0.317647, 0.239216, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -1531,15 +1531,15 @@ shadow_size = 2
 Button/constants/outline_size = 3
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("11_wjavr")
-Button/styles/hover = SubResource("StyleBoxFlat_mebp8")
-Button/styles/normal = SubResource("StyleBoxFlat_8dm72")
-Button/styles/pressed = SubResource("StyleBoxFlat_dfhcy")
+Button/styles/hover = SubResource("StyleBoxFlat_jutjg")
+Button/styles/normal = SubResource("StyleBoxFlat_dmdgx")
+Button/styles/pressed = SubResource("StyleBoxFlat_w53h6")
 Label/fonts/font = ExtResource("11_wjavr")
 LineEdit/font_sizes/font_size = 10
 LineEdit/fonts/font = ExtResource("11_wjavr")
-LineEdit/styles/focus = SubResource("StyleBoxFlat_f40rv")
-LineEdit/styles/normal = SubResource("StyleBoxFlat_845o5")
-Panel/styles/panel = SubResource("StyleBoxFlat_ydhgy")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_yyou5")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_hgkjs")
+Panel/styles/panel = SubResource("StyleBoxFlat_b3bua")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1foqp"]
 bg_color = Color(0.10748, 0.10748, 0.10748, 1)
@@ -1615,7 +1615,6 @@ label_settings = SubResource("LabelSettings_rt3j8")
 horizontal_alignment = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

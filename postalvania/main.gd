@@ -104,7 +104,7 @@ func _process (delta):
 			var temp = totalTime - stageStartTime[x]
 			nodeTLTimerArray[x].text = ("%.1f" %temp + " sec")
 	
-	velocity = $Player.velocity.length() / 100
+	velocity = ($Player.velocity.length() / 100) - 0.1
 	$Control/VBoxContainer2/Velocity.text = ("%.1f" %velocity + " m/sec")
 	
 func _unhandled_input(event):
