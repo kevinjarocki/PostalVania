@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://cilt07hdlh01r"]
+
+[ext_resource type="Script" path="res://how_to_play.gd" id="1_bt4mg"]
+[ext_resource type="Texture2D" uid="uid://gv7ruo4dgoy7" path="res://Assets/menu/ui/Textbox1_Leaf&Branchsmaller.png" id="1_nbpxl"]
+[ext_resource type="AudioStream" uid="uid://ddl606gdj0f0v" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 01 A New Day Begins (General Background Music).mp3" id="2_1a3ps"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bt4mg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(559, 289.75)
+scale = Vector2(1.37847, 1.52785)
+texture = ExtResource("1_nbpxl")
+
+[node name="Back To Menu" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -39.0
+offset_right = 50.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Return to menu"
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.5
+offset_top = -76.5
+offset_right = 190.5
+offset_bottom = 76.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "In the game you "
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1a3ps")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="CanvasLayer/Back To Menu" to="." method="_on_back_to_menu_pressed"]

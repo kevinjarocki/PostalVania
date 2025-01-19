@@ -15,5 +15,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		for x in mainNode.stageStep.size():
 			if mainNode.stageStep[x] == 0:
 				temp.append(x)
-
-		mainNode._job_board(temp.pick_random())
+		if temp.size() != 0:
+			mainNode._job_board(temp.pick_random())
