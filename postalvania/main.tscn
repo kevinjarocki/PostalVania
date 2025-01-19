@@ -1460,8 +1460,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3588u"]
 gradient = SubResource("Gradient_don8s")
-fill_from = Vector2(0.509174, 0)
-fill_to = Vector2(0.559633, 1)
+fill_to = Vector2(0.766055, 0.518349)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jutjg"]
 bg_color = Color(0.4, 0.2516, 0.188, 1)
@@ -1759,30 +1758,6 @@ range_layer_min = -128
 range_layer_max = 128
 range_item_cull_mask = 23
 texture = SubResource("GradientTexture2D_kb50v")
-
-[node name="bg1" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(-16660.9, -892)
-texture = ExtResource("20_j6ekd")
-metadata/_edit_lock_ = true
-
-[node name="bg2" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(-7883.53, -1143)
-texture = ExtResource("3_lsety")
-metadata/_edit_lock_ = true
-
-[node name="bg3" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(866.06, -1128)
-texture = ExtResource("4_rneix")
-metadata/_edit_lock_ = true
-
-[node name="bg4" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(9618.62, -1179)
-texture = ExtResource("34_iuib4")
-metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="."]
 z_index = 10
@@ -2192,6 +2167,7 @@ texture = SubResource("GradientTexture2D_3588u")
 position = Vector2(-11721, -1294)
 scale = Vector2(76.0625, 35.7188)
 color = Color(1, 1, 0.454902, 1)
+energy = 2.0
 texture = SubResource("GradientTexture2D_3588u")
 
 [node name="Respawn Point" type="Sprite2D" parent="."]
@@ -2472,6 +2448,32 @@ position = Vector2(-341, 72)
 color = Color(0.356863, 0.294118, 0.407843, 1)
 polygon = PackedVector2Array(7745, -2420, 10870, 3453, 12630, 3471, 14695, 3148, 16653, 903, 16994, -1809, 13689, -4072, 9684, -4647, 7098, -4359, 6092, -4485)
 metadata/_edit_lock_ = true
+
+[node name="Backgrounds" type="Node2D" parent="."]
+position = Vector2(471.765, 0)
+
+[node name="bg1" type="Sprite2D" parent="Backgrounds"]
+z_index = -5
+position = Vector2(-17125.8, -1208)
+scale = Vector2(0.970057, 0.951385)
+texture = ExtResource("20_j6ekd")
+
+[node name="bg2" type="Sprite2D" parent="Backgrounds"]
+z_index = -5
+position = Vector2(-8242.35, -1143)
+scale = Vector2(1.07255, 1)
+texture = ExtResource("3_lsety")
+
+[node name="bg3" type="Sprite2D" parent="Backgrounds"]
+z_index = -5
+position = Vector2(609.59, -1128)
+texture = ExtResource("4_rneix")
+
+[node name="bg4" type="Sprite2D" parent="Backgrounds"]
+z_index = -5
+position = Vector2(9483.93, -1179)
+scale = Vector2(1.03079, 1)
+texture = ExtResource("34_iuib4")
 
 [connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
