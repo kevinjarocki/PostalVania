@@ -8,19 +8,19 @@
 [ext_resource type="Texture2D" uid="uid://dtg54j5ef17qo" path="res://Assets/GUI/cryo.png" id="10_n0836"]
 [ext_resource type="FontFile" uid="uid://b6nas1lanoebc" path="res://Assets/Daydream.ttf" id="11_wjavr"]
 [ext_resource type="Texture2D" uid="uid://cw35sbw1jtuss" path="res://Assets/Food.png" id="12_70epx"]
-[ext_resource type="PackedScene" path="res://Assets/Theresa Art/butterfly_sprite_2d.tscn" id="14_o0hcx"]
+[ext_resource type="PackedScene" uid="uid://cu4lpvcsucw4y" path="res://Assets/Theresa Art/butterfly_sprite_2d.tscn" id="14_o0hcx"]
 [ext_resource type="Texture2D" uid="uid://lcou3mpkiloq" path="res://icon.svg" id="15_gbex4"]
-[ext_resource type="PackedScene" path="res://Assets/Theresa Art/deer_animated_sprite_2d.tscn" id="15_vy6dp"]
+[ext_resource type="PackedScene" uid="uid://2ijua1yhtepm" path="res://Assets/Theresa Art/deer_animated_sprite_2d.tscn" id="15_vy6dp"]
 [ext_resource type="PackedScene" uid="uid://bw7sec2n3ip5y" path="res://abilityCow.tscn" id="16_brnb8"]
-[ext_resource type="PackedScene" path="res://Assets/Theresa Art/snail_animated_sprite_2d.tscn" id="16_ghmm3"]
+[ext_resource type="PackedScene" uid="uid://w5y6qim3d4jf" path="res://Assets/Theresa Art/snail_animated_sprite_2d.tscn" id="16_ghmm3"]
 [ext_resource type="PackedScene" uid="uid://cgqg2sbamegk1" path="res://Assets/Theresa Art/spiderAnimation.tscn" id="16_hydth"]
 [ext_resource type="Script" path="res://hi_score.gd" id="16_mtk24"]
-[ext_resource type="PackedScene" path="res://Assets/Theresa Art/chameleon_animated_sprite_2d.tscn" id="17_65dj2"]
+[ext_resource type="PackedScene" uid="uid://j770a3wpvy7e" path="res://Assets/Theresa Art/chameleon_animated_sprite_2d.tscn" id="17_65dj2"]
 [ext_resource type="AudioStream" uid="uid://8pdx24csnu81" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 02 A New Day's Hurry (General Background Music).mp3" id="17_gv42l"]
 [ext_resource type="Script" path="res://job_board.gd" id="18_yxf6o"]
 [ext_resource type="AudioStream" uid="uid://drdhogvtl0vqo" path="res://Assets/sounds/effects/Horror SFX Free/Monsters & Ghosts/Gore_Ripping_4.wav" id="19_5p51k"]
-[ext_resource type="PackedScene" path="res://WispTemplate.tscn" id="19_vhr3a"]
-[ext_resource type="PackedScene" path="res://tutorialWisp.tscn" id="20_dqrg0"]
+[ext_resource type="PackedScene" uid="uid://dg6a0qtglwxgh" path="res://WispTemplate.tscn" id="19_vhr3a"]
+[ext_resource type="PackedScene" uid="uid://cp3wp0tn3b3tu" path="res://tutorialWisp.tscn" id="20_dqrg0"]
 [ext_resource type="Texture2D" uid="uid://cm614ek7kosk4" path="res://Assets/Shareef Art/Background_1.png" id="20_j6ekd"]
 [ext_resource type="AudioStream" uid="uid://decl8exp2yftq" path="res://Assets/sounds/effects/woosh_5.wav" id="22_o3up8"]
 
@@ -1615,6 +1615,7 @@ label_settings = SubResource("LabelSettings_rt3j8")
 horizontal_alignment = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
