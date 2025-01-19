@@ -160,8 +160,11 @@ func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
 				var temp = get_tree().get_nodes_in_group("GiverObj")
 				temp[0].queue_free()
 	
-	else:
+	elif (stageStep[char_id] == 1):
 		_dBox(giverNextTouchDBox[char_id])
+	
+	elif (stageStep[char_id] == 2):
+		_dBox("Thanks for delivering my package! I appreciate it!")
 		
 func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 	

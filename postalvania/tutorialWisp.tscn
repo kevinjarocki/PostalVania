@@ -27,8 +27,8 @@ rotation = -1.45535
 script = ExtResource("1_gv0rd")
 
 [node name="PointLight2D" type="PointLight2D" parent="Wisp"]
-position = Vector2(1.80066, 1.32586)
-scale = Vector2(0.553299, 0.520476)
+position = Vector2(-0.279565, -1.12668)
+scale = Vector2(1.23541, 1.41328)
 color = Color(0.811765, 0.831373, 0, 1)
 energy = 3.0
 range_layer_min = -128
