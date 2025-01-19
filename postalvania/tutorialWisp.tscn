@@ -22,8 +22,8 @@ position = Vector2(-12063, 4414)
 curve = SubResource("Curve2D_orxon")
 
 [node name="Wisp" type="PathFollow2D" parent="."]
-position = Vector2(7946, -5693)
-rotation = 2.04329
+position = Vector2(7644.4, -5282.88)
+rotation = -1.45535
 script = ExtResource("1_gv0rd")
 
 [node name="PointLight2D" type="PointLight2D" parent="Wisp"]
