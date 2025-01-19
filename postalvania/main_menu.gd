@@ -20,6 +20,7 @@ func _on_quit_pressed():
 
 func _on_how_to_play_pressed():
 	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://how_to_play.tscn")
 
 
 func _on_ready() -> void:
