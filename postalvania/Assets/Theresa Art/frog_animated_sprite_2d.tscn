@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhn37l1csdyfy"]
+
+[ext_resource type="Texture2D" uid="uid://cbmgo7rsriwps" path="res://Assets/Theresa Art/frogassets/frog0.png" id="1_e7vm0"]
+[ext_resource type="Texture2D" uid="uid://tbshs65e54dl" path="res://Assets/Theresa Art/frogassets/frog1.png" id="2_vkq5q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_of2tw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e7vm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vkq5q")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="FrogAnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_of2tw")
+animation = &"Idle"
+frame_progress = 0.047151

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://2ijua1yhtepm"]
+
+[ext_resource type="Texture2D" uid="uid://6ecqq1ngujyf" path="res://Assets/Theresa Art/deerassets/deer0.png" id="1_d140s"]
+[ext_resource type="Texture2D" uid="uid://ca462k1hjcus7" path="res://Assets/Theresa Art/deerassets/deer1.png" id="2_q4uh4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2wmm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d140s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q4uh4")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="DeerAnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.075, 0.075)
+sprite_frames = SubResource("SpriteFrames_q2wmm")
+animation = &"Idle"
+frame_progress = 0.160607
