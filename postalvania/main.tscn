@@ -7126,7 +7126,7 @@ texture = SubResource("GradientTexture2D_vvs6g")
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
 position = Vector2(-590, -2281)
 color = Color(0.749856, 0.679318, 0.598889, 1)
-energy = 0.3
+energy = 0.1
 blend_mode = 1
 range_layer_min = -140
 shadow_item_cull_mask = 3
