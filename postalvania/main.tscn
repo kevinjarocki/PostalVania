@@ -2499,12 +2499,6 @@ scale = Vector2(16.7652, 15.68)
 texture = ExtResource("6_wkjxa")
 centered = false
 
-[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_gv42l")
-volume_db = -13.619
-autoplay = true
-parameters/looping = true
-
 [node name="EvolveAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_5p51k")
 volume_db = 8.667
@@ -2584,6 +2578,11 @@ shape = SubResource("RectangleShape2D_xb2st")
 stream = ExtResource("22_o3up8")
 volume_db = 2.029
 pitch_scale = 0.67
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_gv42l")
+autoplay = true
+parameters/looping = true
 
 [connection signal="character_touched" from="Pairs/CharPair/QuestGiver" to="." method="_on_quest_giver_character_touched"]
 [connection signal="body_entered" from="Pairs/CharPair/QuestGiver/Area2D" to="Pairs/CharPair/QuestGiver" method="_on_area_2d_body_entered"]
