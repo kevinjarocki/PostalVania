@@ -77,8 +77,8 @@ func _ready():
 		
 		charPairChildren[0].char_id = x
 		charPairChildren[1].char_id = x
-		
-	
+		charPairChildren[0].frame = charPairChildren[0].char_id
+		charPairChildren[1].frame = charPairChildren[1].char_id
 	giverNPCArray = get_tree().get_nodes_in_group("Giver")
 	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
 	
