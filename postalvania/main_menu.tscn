@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddw2akrbxf2lo"]
+[gd_scene load_steps=29 format=3 uid="uid://ddw2akrbxf2lo"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_rkmam"]
 [ext_resource type="Texture2D" uid="uid://gv7ruo4dgoy7" path="res://Assets/menu/ui/Textbox1_Leaf&Branchsmaller.png" id="2_ia33t"]
@@ -60,6 +60,12 @@ Panel/styles/panel = SubResource("StyleBoxFlat_w0xnc")
 
 [sub_resource type="Theme" id="Theme_1e12o"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jut7u"]
+bg_color = Color(0.345098, 0.447059, 0.160784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyqk4"]
+bg_color = Color(0.345098, 0.447059, 0.160784, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1plm"]
 bg_color = Color(0.345098, 0.447059, 0.160784, 1)
 corner_radius_top_left = 3
@@ -67,8 +73,14 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a4p1"]
+bg_color = Color(0.345098, 0.447059, 0.160784, 1)
+
 [sub_resource type="Theme" id="Theme_28y20"]
+CheckBox/styles/hover = SubResource("StyleBoxFlat_jut7u")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_gyqk4")
 CheckBox/styles/normal = SubResource("StyleBoxFlat_k1plm")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_5a4p1")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e7my"]
 bg_color = Color(0.4, 0.2516, 0.188, 1)
