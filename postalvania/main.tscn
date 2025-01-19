@@ -2342,6 +2342,18 @@ stream = ExtResource("17_gv42l")
 autoplay = true
 parameters/looping = true
 
+[node name="BlackRoom" type="Polygon2D" parent="."]
+z_index = -30
+position = Vector2(-18971, 2376)
+color = Color(0.054902, 0.00784314, 0.0117647, 1)
+polygon = PackedVector2Array(-4757, -164, -4585, -1934, -3101, -3209, -875, -2999, 1427, -2638, 3216, -1591, 3577, -963, 4110, 939, 3558, 2157, 1465, 3166, -2587, 2937, -4719, 1586)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -20
+position = Vector2(-13842, 1104)
+color = Color(0.243137, 0.0705882, 0.0705882, 1)
+polygon = PackedVector2Array(-1069, 2217, -1351, 826, -1926, -253, -3661, -1288, -1624, -2726, 1481, -2978, 1493, -856, 1625, -353, 3231, 1841, 1157, 3195, -977, 3015, -1312, 2812)
+
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_entered"]
