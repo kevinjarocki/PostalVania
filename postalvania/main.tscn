@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=148 format=4 uid="uid://eun7wq37viyo"]
+
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -12,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://5nckl0x6d2kl" path="res://Assets/Cassandra Art/PinkGeode.png" id="4_u6xf2"]
 [ext_resource type="Texture2D" uid="uid://drnw7jqv0iqxp" path="res://Assets/Cassandra Art/oakHouse.png" id="5_ob54s"]
 [ext_resource type="Texture2D" uid="uid://c0gnuivhu6d17" path="res://Assets/map outline.PNG" id="5_v0w8x"]
-[ext_resource type="Texture2D" uid="uid://d2cs0ka0jx6mp" path="res://Assets/Shareef Art/Background_4.png" id="5_wwbr2"]
 [ext_resource type="Texture2D" uid="uid://itl36xokcpnb" path="res://Assets/Cassandra Art/LampOn.png" id="6_0kol5"]
 [ext_resource type="Texture2D" uid="uid://xycccs31qkp3" path="res://Assets/Tilesets/Terrain_and_Props.png" id="7_tqpnm"]
 [ext_resource type="Script" path="res://control.gd" id="10_1vfgw"]
@@ -1584,7 +1585,7 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2st"]
-size = Vector2(130, 132)
+size = Vector2(539.996, 600)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a7pk4")
@@ -1744,8 +1745,12 @@ range_item_cull_mask = 23
 texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="OakHouse" type="Sprite2D" parent="TownDecor"]
+
 z_index = 2
 position = Vector2(236, -216)
+
+z_index = -1
+position = Vector2(-148, -222)
 scale = Vector2(0.759475, 0.759475)
 texture = ExtResource("5_ob54s")
 
@@ -1828,8 +1833,12 @@ texture = ExtResource("4_rneix")
 
 [node name="bg4" type="Sprite2D" parent="."]
 z_index = -5
+
 position = Vector2(9633.42, -1179)
 texture = ExtResource("5_wwbr2")
+
+position = Vector2(9698, -1179)
+
 
 [node name="Control" type="Control" parent="."]
 z_index = 20
@@ -2200,10 +2209,10 @@ collision_mask = 255
 position = Vector2(-6518, 3359)
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighting"]
-position = Vector2(6084, -7952)
-scale = Vector2(12.6299, 9.31155)
-color = Color(0.898039, 0.815686, 0, 1)
-energy = 1.61
+position = Vector2(-5641, -1082.63)
+scale = Vector2(1.42157, 1.26136)
+color = Color(0.439216, 0.890196, 1, 1)
+energy = 0.39
 range_layer_min = -305
 range_layer_max = 70
 texture = SubResource("GradientTexture2D_vvs6g")
@@ -2394,7 +2403,8 @@ texture = ExtResource("33_1gyd1")
 [node name="Area2D" type="Area2D" parent="JobBoard/Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard/Sprite2D/Area2D"]
-position = Vector2(-1, 0)
+position = Vector2(-9.97656, 10)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="JobBoard2" type="Node2D" parent="."]
@@ -2493,6 +2503,8 @@ z_index = -20
 position = Vector2(-13842, 1104)
 color = Color(0.243137, 0.0705882, 0.0705882, 1)
 polygon = PackedVector2Array(-1069, 2217, -1351, 826, -1926, -253, -3661, -1288, -1624, -2726, 1481, -2978, 1493, -856, 1625, -353, 3231, 1841, 1157, 3195, -977, 3015, -1312, 2812)
+
+[connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
 
 [node name="BlueRoom" type="Polygon2D" parent="Polys"]
 z_index = -28

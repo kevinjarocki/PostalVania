@@ -1,94 +1,171 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxmwon5lhiuwi"]
+[gd_scene load_steps=24 format=3 uid="uid://dxmwon5lhiuwi"]
 
-[ext_resource type="Texture2D" uid="uid://dopufd88dl2a4" path="res://Assets/Characters/Free Chicken Sprites.png" id="1_hdnsu"]
+[ext_resource type="Texture2D" uid="uid://l03mvmoq3qlw" path="res://Assets/Theresa Art/fairywoman.png" id="1_sds3y"]
 [ext_resource type="Script" path="res://Character.gd" id="2_ig1cm"]
 [ext_resource type="Script" path="res://quest_delivery.gd" id="3_pyr1p"]
+[ext_resource type="Texture2D" uid="uid://byd3wvme1kakt" path="res://Assets/Theresa Art/fairyMan.png" id="3_s6fvl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ergs0"]
-atlas = ExtResource("1_hdnsu")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8becg"]
+atlas = ExtResource("1_sds3y")
+region = Rect2(82, 0, 659, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8nop1"]
-atlas = ExtResource("1_hdnsu")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kotm4"]
+atlas = ExtResource("1_sds3y")
+region = Rect2(741, 0, 659, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8lo1w"]
-atlas = ExtResource("1_hdnsu")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_im4de"]
+atlas = ExtResource("1_sds3y")
+region = Rect2(1400, 0, 659, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgc83"]
-atlas = ExtResource("1_hdnsu")
-region = Rect2(16, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_srf67"]
+atlas = ExtResource("1_sds3y")
+region = Rect2(2059, 0, 659, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g3r58"]
-atlas = ExtResource("1_hdnsu")
-region = Rect2(32, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bapux"]
+atlas = ExtResource("1_sds3y")
+region = Rect2(82, 750, 659, 750)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbqm3"]
-atlas = ExtResource("1_hdnsu")
-region = Rect2(48, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3bhn"]
+atlas = ExtResource("1_sds3y")
+region = Rect2(741, 750, 659, 750)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2u4v5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6if65"]
+atlas = ExtResource("1_sds3y")
+region = Rect2(1400, 750, 659, 750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bidhm"]
+atlas = ExtResource("1_sds3y")
+region = Rect2(2059, 750, 659, 750)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vygh8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ergs0")
+"texture": SubResource("AtlasTexture_8becg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8nop1")
+"texture": SubResource("AtlasTexture_kotm4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8lo1w")
+"texture": SubResource("AtlasTexture_im4de")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cgc83")
+"texture": SubResource("AtlasTexture_srf67")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g3r58")
+"texture": SubResource("AtlasTexture_bapux")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tbqm3")
+"texture": SubResource("AtlasTexture_x3bhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6if65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bidhm")
 }],
 "loop": true,
-"name": &"chicken",
+"name": &"Idle",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58dkn"]
 size = Vector2(12, 13)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fbvv"]
+atlas = ExtResource("3_s6fvl")
+region = Rect2(0, 0, 1408, 1567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mq8s"]
+atlas = ExtResource("3_s6fvl")
+region = Rect2(1408, 0, 1408, 1567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk5ap"]
+atlas = ExtResource("3_s6fvl")
+region = Rect2(2816, 0, 1408, 1567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yatp"]
+atlas = ExtResource("3_s6fvl")
+region = Rect2(4224, 0, 1408, 1567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfmji"]
+atlas = ExtResource("3_s6fvl")
+region = Rect2(0, 1567, 1408, 1567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag15f"]
+atlas = ExtResource("3_s6fvl")
+region = Rect2(1408, 1567, 1408, 1567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5uhf"]
+atlas = ExtResource("3_s6fvl")
+region = Rect2(2816, 1567, 1408, 1567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xno3"]
+atlas = ExtResource("3_s6fvl")
+region = Rect2(4224, 1567, 1408, 1567)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2uf5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fbvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mq8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk5ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yatp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfmji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag15f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5uhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xno3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
 [node name="CharPair" type="Node2D"]
 
 [node name="QuestGiver" type="AnimatedSprite2D" parent="." groups=["Giver", "NPC"]]
 position = Vector2(-12163, 643)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_2u4v5")
-animation = &"chicken"
-autoplay = "chicken"
-frame = 3
-frame_progress = 0.216514
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_vygh8")
+animation = &"Idle"
 script = ExtResource("2_ig1cm")
 
 [node name="Area2D" type="Area2D" parent="QuestGiver"]
+scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestGiver/Area2D"]
 position = Vector2(-1, 0.5)
+scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [node name="QuestDelivery" type="AnimatedSprite2D" parent="." groups=["NPC", "Receiver"]]
 position = Vector2(-9976, 621)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_2u4v5")
-animation = &"chicken"
-autoplay = "chicken"
-frame = 3
-frame_progress = 0.216514
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_2uf5m")
+animation = &"Idle"
 script = ExtResource("3_pyr1p")
 
 [node name="Area2D" type="Area2D" parent="QuestDelivery"]
+scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestDelivery/Area2D"]
 position = Vector2(-1, 0.5)
+scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_58dkn")
 
 [connection signal="body_entered" from="QuestGiver/Area2D" to="QuestGiver" method="_on_area_2d_body_entered"]
