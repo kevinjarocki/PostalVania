@@ -35,22 +35,24 @@ var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania! Can y
 	"I found this apple with a nasty worm living inside it. It would be funny if a fairy ate it. Give it to the cyan colored fairy at the western gardens.",
 	"Hey! I love beer, you love beer, we all love beer! My partner especially loves beer. He loves wearing purple to match his wings. Go to the tree roots and get him this drink."]
 	
-var giverNextTouchDBox = ["I already gave you my package, please deliver it! They're in the moss",
-	"I already gave you my package, please deliver it! They're in the tree",
-	"I already gave you my package, please deliver it! They're in the desert",
-	"I already gave you my package, please deliver it! They're in the lake",
-	"I already gave you my package, please deliver it! They're in the messhall",
-	"I already gave you my package, please deliver it! They're in the grasslands",
-	"I already gave you my package, please deliver it! They're in the village",
-	"I already gave you my package, please deliver it! They're in the car"]
-var receiverPreQuestDBox = ["I'm looking for a package 1",
-	"I'm looking for a package 2",
-	"I'm looking for a package 3",
-	"I'm looking for a package 4",
-	"I'm looking for a package 5",
-	"I'm looking for a package 6",
-	"I'm looking for a package 7",
-	"I'm looking for a package 8"]
+var giverNextTouchDBox = ["I already gave you my package, please deliver it. They're to the right of me.",
+	"I already gave you my package, please deliver it. They're at ground level to the west of the central tree.",
+	"I already gave you my package, please deliver it. They're at the southern most point of our world. You can get there by going down the central tree.",
+	"I already gave you my package, please deliver it. They're at the northern most point of our world. You can get there by going up the central tree.",
+	"I already gave you my package, please deliver it. They're on the north-western floating islands.",
+	"I already gave you my package, please deliver it. They're in the eastern most part of our world. In the crystal caverns.",
+	"I already gave you my package, please deliver it. They're in the western most part of our world. In the great gardens.",
+	"I already gave you my package, please deliver it. They're at the southern most point of our world. You can get there by going down the central tree."]
+	
+var receiverPreQuestDBox = ["I think the owl on the other side of my wall wants to give me something.",
+	"I think the owl at the entrance of the western gardens wants to give me something.",
+	"I think the owl in the central town wants to give me something.",
+	"I think the owl on the floating island just north-west of the central town wants to give me something.",
+	"I think the owl to the south-east of the central town wants to give me something.",
+	"I think the owl in the vines to the east of the central town wants to give me something.",
+	"I think there is an owl between the central town and the crystal caves has something to give me.",
+	"I think the owl at the top of the tree wants to give me something."]
+	
 var receiverCompletingQuestDBox = ["Thanks for delivering this! I appreciate it",
 	"Thanks for delivering this! I appreciate it",
 	"Thanks for delivering this! I appreciate it",
