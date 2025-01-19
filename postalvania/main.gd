@@ -22,7 +22,7 @@ var markerArray = [0,0,0,0,0,0,0,0]
 var giverArrayFix = [Vector2(-12164, 644), Vector2(-8284, -110), Vector2(-702, 42), Vector2(-1919, -947),
 Vector2(2028, 980), Vector2(3077, -137), Vector2(5841, -643), Vector2(-653, -5031)]
 
-var receiverArrayFix = [Vector2(-997, 621), Vector2(-2849, 759), Vector2(-174, 4165), Vector2(-71, -5068),
+var receiverArrayFix = [Vector2(-9997, 621), Vector2(-2849, 759), Vector2(-174, 4165), Vector2(-71, -5068),
 Vector2(-3490, -1399), Vector2(12365, 307), Vector2(-11818, 319), Vector2(116, 4156)]
 
 #Text to display in dbox from chickens
