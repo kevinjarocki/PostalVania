@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg6a0qtglwxgh"]
+
+[ext_resource type="Script" path="res://Wisp.gd" id="1_27d32"]
+
+[sub_resource type="Curve2D" id="Curve2D_orxon"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7946, -5693, -233.736, 89.8984, 233.736, -89.8984, 8998, -6236, 0, 0, 0, 0, 9615, -6479, -538.103, 67.7083, 538.103, -67.7083, 11597, -7464, 0, 0, 0, 0, 12616, -7440, -245.888, -138.98, 245.888, 138.98, 13425, -7104, 0, 0, 0, 0, 13970, -6745, 192.434, -481.085, -192.434, 481.085, 14372, -6055, 0, 0, 0, 0, 13371, -5510, 320.724, -110.471, -320.724, 110.471, 12413, -5132, 331.414, -28.5088, -331.414, 28.5088, 11699, -4797, 288.651, 39.1995, -288.651, -39.1995, 10802, -5132, 837.445, 374.177, -837.445, -374.177, 9170, -4821, 302.906, 114.035, -302.906, -114.035, 7785, -5378, 0, 0, 0, 0, 7947, -5696)
+}
+point_count = 15
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghtis"]
+radius = 70.7098
+
+[sub_resource type="Gradient" id="Gradient_u2y7e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_op5kd"]
+gradient = SubResource("Gradient_u2y7e")
+fill = 1
+fill_from = Vector2(0.490826, 0.490826)
+fill_to = Vector2(0.165138, 0.12844)
+
+[node name="WispPath" type="Path2D"]
+position = Vector2(-12063, 4414)
+curve = SubResource("Curve2D_orxon")
+
+[node name="Wisp" type="PathFollow2D" parent="."]
+position = Vector2(7946, -5693)
+rotation = -0.476492
+script = ExtResource("1_27d32")
+
+[node name="WispBody" type="CharacterBody2D" parent="Wisp"]
+
+[node name="WispBox" type="CollisionShape2D" parent="Wisp/WispBody"]
+shape = SubResource("CircleShape2D_ghtis")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Wisp"]
+position = Vector2(-54.4342, -44.9773)
+scale = Vector2(2.98023, 4.53872)
+color = Color(1, 0.516203, 0.999883, 1)
+energy = 0.2
+range_layer_min = -128
+texture = SubResource("GradientTexture2D_op5kd")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Wisp"]
+position = Vector2(68.2809, -23.2744)
+scale = Vector2(3.64345, 3.33667)
+color = Color(0.218535, 0.81749, 0.908127, 1)
+energy = 0.2
+range_layer_min = -128
+texture = SubResource("GradientTexture2D_op5kd")
+
+[node name="PointLight2D" type="PointLight2D" parent="Wisp"]
+position = Vector2(0.399527, 73.3543)
+scale = Vector2(3.13451, 3.60631)
+color = Color(0.811765, 0.831373, 0, 1)
+energy = 0.2
+range_layer_min = -128
+texture = SubResource("GradientTexture2D_op5kd")
