@@ -197,7 +197,7 @@ func _physics_process(delta: float) -> void:
 			slideSpeed = velocity.x*1.5 + SPEED*sign(velocity.x)
 			$AnimatedSprite2D/slide.play("Slide")
 			$AnimatedSprite2D.play("Slide")
-			$"../SnailNoise".play()
+			$SnailNoise.play()
 		if cntrlHeld:
 			velocity.x = slideSpeed
 			
@@ -207,12 +207,12 @@ func _physics_process(delta: float) -> void:
 		if spaceJustPressed:
 			isSliding = false
 			isJumping = true
-			$"../SnailNoise".stop()
+			$SnailNoise.stop()
 		elif clickJustPressed && hookEnabled && hookIsReady:
 			isSliding = false
 			isSwinging = true
 		elif cntrlJustReleased:
-			$"../SnailNoise".stop()
+			$SnailNoise.stop()
 			isSliding = false
 			if is_on_floor():
 				isGrounded = true
@@ -293,6 +293,8 @@ func _physics_process(delta: float) -> void:
 				
 		################################## GLIDING GLIDING
 	if isGliding:
+		if $FlapAudio.playing != true:
+					$FlapAudio.play()
 		$glideTimer.start()
 		glideIsReady = false
 		var glideAngle = 0
@@ -330,10 +332,12 @@ func _physics_process(delta: float) -> void:
 			isGliding = false
 		if isGliding == false:
 			$AnimatedSprite2D/glider.stop()
+			$FlapAudio.stop()
 		
 		################################################## DASHING DASHING
 		
 	if isDashing:
+		$DashAudio.play()
 		$dashTimer.start()
 		$AnimatedSprite2D/dash.play("Dash")
 		$AnimatedSprite2D.play("Dash")
@@ -361,7 +365,7 @@ func _physics_process(delta: float) -> void:
 		if clickJustPressed:
 			hookPos = getHookPos()
 			if hookPos:
-				$"../RopeWoosh".play()
+				$RopeWoosh.play()
 				$AnimatedSprite2D.play("Swing")
 				$AnimatedSprite2D/hook.play("Swing")
 				$AnimatedSprite2D/glider.play("Swing")
@@ -568,7 +572,7 @@ func enableAbility(abilityName):
 func morph():
 	if !$Cacoon.is_playing():
 		$Cacoon.visible = true
-		$"../EvolveAudio".play()
+		$EvolveAudio.play()
 		$Cacoon.play("morph")
 
 func MovingHookPos(Body:CharacterBody2D):	
@@ -606,7 +610,7 @@ func _on_cacoon_animation_finished() -> void:
 		$Cacoon.visible = false
 		cutsceneActive = false
 		position.y += 50
-		$"../EvolveAudio".stop()
+		$EvolveAudio.stop()
 
 
 func _on_cacoon_frame_changed() -> void:

@@ -57,3 +57,9 @@ color = Color(0.811765, 0.831373, 0, 1)
 energy = 0.3
 range_layer_min = -128
 texture = SubResource("GradientTexture2D_op5kd")
+
+[node name="Polygon2D" type="Polygon2D" parent="Wisp"]
+modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(0, 2.30085)
+scale = Vector2(0.3, 0.32)
+polygon = PackedVector2Array(-1.74756, -37.7822, 25.8567, -28.292, 35.5166, -14.3032, 36.634, 3.15381, 33.3086, 15.002, 20.2371, 22.3848, 5.84692, 28.0762, -16.0244, 28.8652, -30.2136, 15.9133, -40.1885, -6.82715, -28.6643, -31.8228)

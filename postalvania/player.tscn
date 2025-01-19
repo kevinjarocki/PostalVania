@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://drcg3w6rfh6p2"]
+[gd_scene load_steps=135 format=3 uid="uid://drcg3w6rfh6p2"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_y5ota"]
 [ext_resource type="Texture2D" uid="uid://uielx0nm8tbw" path="res://Assets/Shareef Art/wormDash.png" id="2_oobd5"]
@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://cd0itp2xcaffg" path="res://Assets/Shareef Art/deerWalk.png" id="13_5oh7y"]
 [ext_resource type="Texture2D" uid="uid://chu7b7npjfbs4" path="res://Assets/Shareef Art/metamorph.png" id="13_g1qw2"]
 [ext_resource type="Texture2D" uid="uid://xsabckkdd8yw" path="res://Assets/Shareef Art/deerSwing.png" id="15_7oj5r"]
+[ext_resource type="AudioStream" uid="uid://dtjpo0186oqt0" path="res://Assets/sounds/effects/Snailmp3shortened.mp3" id="18_w6024"]
+[ext_resource type="AudioStream" uid="uid://drdhogvtl0vqo" path="res://Assets/sounds/effects/Horror SFX Free/Monsters & Ghosts/Gore_Ripping_4.wav" id="19_ho323"]
+[ext_resource type="AudioStream" uid="uid://decl8exp2yftq" path="res://Assets/sounds/effects/woosh_5.wav" id="20_m1rls"]
+[ext_resource type="AudioStream" uid="uid://bfmpbbk0jqjed" path="res://Assets/sounds/Swoosh_3.wav" id="22_fxowg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0psj"]
 atlas = ExtResource("2_oobd5")
@@ -987,6 +991,30 @@ scale_amount_max = 26.2
 scale_amount_curve = SubResource("Curve_kb6d4")
 color = Color(1, 0.968627, 0, 1)
 color_ramp = SubResource("Gradient_rc76v")
+
+[node name="SnailNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_w6024")
+volume_db = 19.315
+pitch_scale = 3.33
+parameters/looping = true
+
+[node name="EvolveAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_ho323")
+volume_db = 8.667
+pitch_scale = 0.39
+
+[node name="RopeWoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_m1rls")
+volume_db = 9.564
+pitch_scale = 0.67
+
+[node name="FlapAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_m1rls")
+volume_db = 10.0
+pitch_scale = 0.2
+
+[node name="DashAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_fxowg")
 
 [connection signal="animation_finished" from="AnimatedSprite2D/dash" to="." method="_on_dash_animation_finished"]
 [connection signal="timeout" from="hookTimer" to="." method="_on_hook_timer_timeout"]
