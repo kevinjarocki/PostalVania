@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=139 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
@@ -77,33 +77,17 @@ font_color = Color(0, 0, 0, 1)
 atlas = ExtResource("12_70epx")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2w3ci"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms3te"]
 atlas = ExtResource("12_70epx")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ooy2v"]
-atlas = ExtResource("12_70epx")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_imrx2"]
 atlas = ExtResource("12_70epx")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hftoe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgkgd"]
 atlas = ExtResource("12_70epx")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uoxqu"]
-atlas = ExtResource("12_70epx")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o5foh"]
-atlas = ExtResource("12_70epx")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxajt"]
-atlas = ExtResource("12_70epx")
-region = Rect2(112, 0, 16, 16)
+region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgtgn"]
 atlas = ExtResource("12_70epx")
@@ -112,6 +96,14 @@ region = Rect2(0, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8d4at"]
 atlas = ExtResource("12_70epx")
 region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je4yt"]
+atlas = ExtResource("12_70epx")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idv16"]
+atlas = ExtResource("12_70epx")
+region = Rect2(64, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_km6rx"]
 atlas = ExtResource("12_70epx")
@@ -124,14 +116,6 @@ region = Rect2(48, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kje1i"]
 atlas = ExtResource("12_70epx")
 region = Rect2(64, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_je4yt"]
-atlas = ExtResource("12_70epx")
-region = Rect2(80, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6un7n"]
-atlas = ExtResource("12_70epx")
-region = Rect2(96, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8jjn"]
 atlas = ExtResource("12_70epx")
@@ -153,10 +137,6 @@ region = Rect2(32, 32, 16, 16)
 atlas = ExtResource("12_70epx")
 region = Rect2(48, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_idv16"]
-atlas = ExtResource("12_70epx")
-region = Rect2(64, 32, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_62ldo"]
 atlas = ExtResource("12_70epx")
 region = Rect2(80, 32, 16, 16)
@@ -168,10 +148,6 @@ region = Rect2(96, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_evsr7"]
 atlas = ExtResource("12_70epx")
 region = Rect2(112, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ms3te"]
-atlas = ExtResource("12_70epx")
-region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b33aq"]
 atlas = ExtResource("12_70epx")
@@ -232,10 +208,6 @@ region = Rect2(96, 64, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ca32v"]
 atlas = ExtResource("12_70epx")
 region = Rect2(112, 64, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgkgd"]
-atlas = ExtResource("12_70epx")
-region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4soo"]
 atlas = ExtResource("12_70epx")
@@ -336,31 +308,25 @@ animations = [{
 "texture": SubResource("AtlasTexture_jyiwk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2w3ci")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ooy2v")
+"texture": SubResource("AtlasTexture_ms3te")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_imrx2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hftoe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uoxqu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o5foh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kxajt")
+"texture": SubResource("AtlasTexture_rgkgd")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cgtgn")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8d4at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je4yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idv16")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_km6rx")
@@ -370,12 +336,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kje1i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_je4yt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6un7n")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t8jjn")
@@ -393,9 +353,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_nssd2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_idv16")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_62ldo")
 }, {
 "duration": 1.0,
@@ -403,9 +360,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_evsr7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ms3te")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b33aq")
@@ -451,9 +405,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ca32v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rgkgd")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w4soo")
@@ -2256,7 +2207,6 @@ texture = ExtResource("33_1gyd1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard/Sprite2D/Area2D"]
 position = Vector2(-9.97656, 10)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="JobBoard2" type="Node2D" parent="."]
@@ -2356,8 +2306,6 @@ position = Vector2(-13842, 1104)
 color = Color(0.243137, 0.0705882, 0.0705882, 1)
 polygon = PackedVector2Array(-1069, 2217, -1351, 826, -1926, -253, -3661, -1288, -1624, -2726, 1481, -2978, 1493, -856, 1625, -353, 3231, 1841, 1157, 3195, -977, 3015, -1312, 2812)
 
-[connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
-
 [node name="BlueRoom" type="Polygon2D" parent="Polys"]
 z_index = -28
 position = Vector2(-91, 317)
@@ -2382,6 +2330,7 @@ position = Vector2(-341, 72)
 color = Color(0.356863, 0.294118, 0.407843, 1)
 polygon = PackedVector2Array(7745, -2420, 10870, 3453, 12630, 3471, 14695, 3148, 16653, 903, 16994, -1809, 13689, -4072, 9684, -4647, 7098, -4359, 6092, -4485)
 
+[connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_entered"]
