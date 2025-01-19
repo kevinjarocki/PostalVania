@@ -1624,20 +1624,122 @@ position = Vector2(-907, -60)
 scale = Vector2(0.586777, 0.586777)
 texture = ExtResource("2_jrls6")
 
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/MushroomHouse"]
+z_index = 2
+position = Vector2(117.591, 81.8028)
+scale = Vector2(2.82681, 2.54155)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="PointLight2D2" type="PointLight2D" parent="TownDecor/MushroomHouse"]
+z_index = 2
+position = Vector2(-140.599, 120.148)
+scale = Vector2(1.83737, 2.95577)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="PointLight2D3" type="PointLight2D" parent="TownDecor/MushroomHouse"]
+z_index = 2
+position = Vector2(4.6866, 170.423)
+scale = Vector2(1.398, 1.43794)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TownDecor/MushroomHouse"]
+position = Vector2(201.099, -282.901)
+amount = 10
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(1, 1)
+spread = 15.0
+gravity = Vector2(0, 50)
+initial_velocity_min = 20.2
+initial_velocity_max = 40.76
+linear_accel_min = 1.0
+linear_accel_max = 4.04
+
 [node name="FlowerHouse" type="Sprite2D" parent="TownDecor"]
 position = Vector2(-1515, -181)
 texture = ExtResource("3_qerii")
+
+[node name="PointLight2D" type="PointLight2D" parent="TownDecor/FlowerHouse"]
+z_index = 2
+position = Vector2(220, -53)
+scale = Vector2(3.94939, 3.55085)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="PointLight2D3" type="PointLight2D" parent="TownDecor/FlowerHouse"]
+z_index = 2
+position = Vector2(111, 126)
+scale = Vector2(1.398, 1.43794)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
+[node name="PointLight2D4" type="PointLight2D" parent="TownDecor/FlowerHouse"]
+z_index = 2
+position = Vector2(-93, -23)
+scale = Vector2(1.398, 1.43794)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="GnomeHouse" type="Sprite2D" parent="TownDecor"]
 position = Vector2(1037, -306)
 scale = Vector2(0.54023, 0.54023)
 texture = ExtResource("4_rtvur")
 
+[node name="PointLight2D4" type="PointLight2D" parent="TownDecor/GnomeHouse"]
+z_index = 2
+position = Vector2(-166.596, 549.766)
+scale = Vector2(2.65347, 2.72929)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
+
 [node name="OakHouse" type="Sprite2D" parent="TownDecor"]
-z_index = -1
-position = Vector2(-148, -222)
+z_index = 1
+position = Vector2(220, -216)
 scale = Vector2(0.759475, 0.759475)
 texture = ExtResource("5_ob54s")
+
+[node name="PointLight2D4" type="PointLight2D" parent="TownDecor/OakHouse"]
+z_index = 2
+position = Vector2(197.505, 231.739)
+scale = Vector2(2.65347, 2.72929)
+color = Color(0.54902, 0.54902, 0, 1)
+energy = 1.46
+range_layer_min = -128
+range_layer_max = 128
+range_item_cull_mask = 23
+texture = SubResource("GradientTexture2D_kb50v")
 
 [node name="Lamp" type="Sprite2D" parent="TownDecor"]
 z_index = 2
@@ -2256,7 +2358,6 @@ texture = ExtResource("33_1gyd1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JobBoard/Sprite2D/Area2D"]
 position = Vector2(-9.97656, 10)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xb2st")
 
 [node name="JobBoard2" type="Node2D" parent="."]
@@ -2356,8 +2457,6 @@ position = Vector2(-13842, 1104)
 color = Color(0.243137, 0.0705882, 0.0705882, 1)
 polygon = PackedVector2Array(-1069, 2217, -1351, 826, -1926, -253, -3661, -1288, -1624, -2726, 1481, -2978, 1493, -856, 1625, -353, 3231, 1841, 1157, 3195, -977, 3015, -1312, 2812)
 
-[connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
-
 [node name="BlueRoom" type="Polygon2D" parent="Polys"]
 z_index = -28
 position = Vector2(-91, 317)
@@ -2382,6 +2481,7 @@ position = Vector2(-341, 72)
 color = Color(0.356863, 0.294118, 0.407843, 1)
 polygon = PackedVector2Array(7745, -2420, 10870, 3453, 12630, 3471, 14695, 3148, 16653, 903, 16994, -1809, 13689, -4072, 9684, -4647, 7098, -4359, 6092, -4485)
 
+[connection signal="pressed" from="HiScore/VBoxContainer/HBoxContainer/Button" to="HiScore" method="_on_button_pressed"]
 [connection signal="body_entered" from="JobBoard/Sprite2D/Area2D" to="JobBoard" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard2/Sprite2D/Area2D" to="JobBoard2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JobBoard3/Sprite2D/Area2D" to="JobBoard3" method="_on_area_2d_body_entered"]
