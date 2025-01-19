@@ -20,7 +20,7 @@ func _ready() -> void:
 		itemSprite.set_frame(itemSpriteFrame)
 		
 func _process(delta):
-	camera_size = get_viewport().get_visible_rect().size * (1/camera.zoom.x) * .95
+	camera_size = get_viewport().get_visible_rect().size * (1/camera.zoom.x) * .80
 	camera_rect = Rect2(camera.get_screen_center_position() - (camera_size / 2), camera_size)
 	
 	set_marker_position(camera_rect)

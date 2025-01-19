@@ -73,7 +73,6 @@ func _ready():
 		add_child(charPairInstance)
 		var charPairChildren = charPairInstance.get_children()
 		charPairChildren[0].position = giverArrayFix[x]
-		print(charPairChildren)
 		charPairChildren[1].position = receiverArrayFix[x]
 		
 		charPairChildren[0].char_id = x
@@ -140,7 +139,7 @@ func _dBox (text, text2 = "", sprite = false):
 		$Control/NinePatchRect/DialogueSprite.visible = false
 	
 func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
-	print("Im being called")
+
 	if first_touch:
 		_dBox(giverFirstTouchDBox[char_id], "Received: ", char_id)
 		var instance = ObjMarker.instantiate()
