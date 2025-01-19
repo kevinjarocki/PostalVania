@@ -1,11 +1,8 @@
-[gd_scene load_steps=143 format=4 uid="uid://eun7wq37viyo"]
+[gd_scene load_steps=144 format=4 uid="uid://eun7wq37viyo"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7pk4"]
 [ext_resource type="PackedScene" uid="uid://drcg3w6rfh6p2" path="res://player.tscn" id="1_hritv"]
-[ext_resource type="Texture2D" uid="uid://bhh4ehkxrm0sg" path="res://Assets/BG/BG_3.png" id="4_l77g2"]
-[ext_resource type="Texture2D" uid="uid://bpejw5eibl3ff" path="res://Assets/BG/BG_2.png" id="5_fmeoi"]
 [ext_resource type="Texture2D" uid="uid://c0gnuivhu6d17" path="res://Assets/map outline.PNG" id="5_v0w8x"]
-[ext_resource type="Texture2D" uid="uid://dkv1jyxtagbt4" path="res://Assets/BG/BG_1.png" id="6_wkjxa"]
 [ext_resource type="Texture2D" uid="uid://xycccs31qkp3" path="res://Assets/Tilesets/Terrain_and_Props.png" id="7_tqpnm"]
 [ext_resource type="Texture2D" uid="uid://dopufd88dl2a4" path="res://Assets/Characters/Free Chicken Sprites.png" id="8_frunv"]
 [ext_resource type="Script" path="res://Character.gd" id="9_xagyh"]
@@ -21,7 +18,11 @@
 [ext_resource type="Script" path="res://Wisp.gd" id="18_yby3r"]
 [ext_resource type="Script" path="res://job_board.gd" id="18_yxf6o"]
 [ext_resource type="AudioStream" uid="uid://drdhogvtl0vqo" path="res://Assets/sounds/effects/Horror SFX Free/Monsters & Ghosts/Gore_Ripping_4.wav" id="19_5p51k"]
+[ext_resource type="Texture2D" uid="uid://cm614ek7kosk4" path="res://Assets/Shareef Art/Background_1.png" id="20_j6ekd"]
+[ext_resource type="Texture2D" uid="uid://cjjei5k0kiu4d" path="res://Assets/Shareef Art/Background_2.png" id="21_t1qfr"]
+[ext_resource type="Texture2D" uid="uid://bn1q55ttojijj" path="res://Assets/Shareef Art/Background_3.png" id="22_av86v"]
 [ext_resource type="AudioStream" uid="uid://decl8exp2yftq" path="res://Assets/sounds/effects/woosh_5.wav" id="22_o3up8"]
+[ext_resource type="Texture2D" uid="uid://d2cs0ka0jx6mp" path="res://Assets/Shareef Art/Background_4.png" id="23_mr7yn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lugyo"]
 
@@ -2464,47 +2465,6 @@ energy = 0.2
 range_layer_min = -128
 texture = SubResource("GradientTexture2D_op5kd")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = -128
-offset = Vector2(-800, -7000)
-transform = Transform2D(1, 0, 0, 1, -800, -7000)
-follow_viewport_scale = 1.34
-scroll_limit_begin = Vector2(-10000, 2500)
-scroll_limit_end = Vector2(10000, 0)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-11907, 4272)
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(25000, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(-2660, -889)
-scale = Vector2(15.83, 15.83)
-texture = ExtResource("4_l77g2")
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-11907, 4272)
-motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(25000, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(-2661, -947)
-scale = Vector2(17.8663, 15.88)
-texture = ExtResource("5_fmeoi")
-centered = false
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-11907, 4272)
-motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(25000, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-11119, -951)
-scale = Vector2(16.7652, 15.68)
-texture = ExtResource("6_wkjxa")
-centered = false
-
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_gv42l")
 volume_db = -13.619
@@ -2589,6 +2549,26 @@ shape = SubResource("RectangleShape2D_xb2st")
 stream = ExtResource("22_o3up8")
 volume_db = 2.029
 pitch_scale = 0.67
+
+[node name="bg1" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(-16601, -892)
+texture = ExtResource("20_j6ekd")
+
+[node name="bg2" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(-7839, -1143)
+texture = ExtResource("21_t1qfr")
+
+[node name="bg3" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(928, -1128)
+texture = ExtResource("22_av86v")
+
+[node name="bg4" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(9685, -1175)
+texture = ExtResource("23_mr7yn")
 
 [connection signal="character_touched" from="Pairs/CharPair/QuestGiver" to="." method="_on_quest_giver_character_touched"]
 [connection signal="body_entered" from="Pairs/CharPair/QuestGiver/Area2D" to="Pairs/CharPair/QuestGiver" method="_on_area_2d_body_entered"]
