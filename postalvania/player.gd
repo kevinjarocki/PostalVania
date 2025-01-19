@@ -513,27 +513,35 @@ func enableAbility(abilityName):
 			hookIsReady = true
 			hookProgBar.visible = true
 			hookEnabled = true
-			main._dBox("You just got the HOOK ability! Point and click to swing on a terrain while in the air!")
+			main._dBox("You've metamorphosed and can create webs like me! CLICK and HOLD to swing off of things while in the air! 
+			Click far in front of you, clicking right above your head wont give you much of a swing.
+			You can gain momentum like a child on a swing, just let go between changing direction and let gravity turn you around")
 			$AnimatedSprite2D/hook.visible = true
 		elif abilityName == "yeet" && !yeetEnabled:
 			morph()
 			yeetEnabled = true
 			yeetIsReady = true
 			yeetProgBar.visible = true
-			main._dBox("You just got the YEET ability! While swinging right click!")
+			main._dBox("You've metamorphosed and can pull in your tongue,or webs I guess!
+			While swinging hold right click and launch yourself towards your target!
+			Use it sparingly, it takes a while to recover")
 		elif abilityName == "dash" && !dashEnabled:
 			morph()
 			dashEnabled = true
 			dashIsReady = true
 			dashProgBar.visible = true
-			main._dBox("You just got the DASH ability! Press Shift for a quick speed boost!")
+			main._dBox("You've metamorphosed and can charge ahead like me!
+			Press Shift for a quick speed boost!
+			Dashing is great for chaining together with other abilities")
 			$AnimatedSprite2D/dash.visible = true
 		elif abilityName == "slide" && !slideEnabled:
 			morph()
 			slideEnabled = true
 			slideIsReady = true
 			slideProgBar.visible = true
-			main._dBox("You just got the SLIDE ability! Press ctrl just before landing to keep up your speed!")
+			main._dBox("You've metamorphosed and can slide along the ground like me!
+			Press ctrl just before landing to multiply your speed!
+			The faster you are going into a slide the faster you leave")
 			$AnimatedSprite2D/slide.visible = true
 		elif abilityName == "glide" && !glideEnabled:
 			morph()
@@ -541,7 +549,10 @@ func enableAbility(abilityName):
 			glideIsReady = true
 			glideProgBar.visible = true
 			$AnimatedSprite2D/glider.visible = true
-			main._dBox("You just got the GLIDE ability! Hold space while in the air to traverse horizontally!")
+			main._dBox("You've metamorphosed and can glide like me!
+			Hold space while in the air to traverse horizontally!
+			Gliding converts falling speed into lateral speed
+			Just make sure you have enough speed or youll stall")
 		else:
 			print("no ability name match found")
 			

@@ -9,7 +9,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	rotate(direction*delta)
-	print(rotation)
 	if rotation > PI/2:
 		direction = -1
 		

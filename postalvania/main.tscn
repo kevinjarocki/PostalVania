@@ -2192,7 +2192,7 @@ texture = SubResource("GradientTexture2D_vvs6g")
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
 position = Vector2(-590, -2281)
 color = Color(0.749856, 0.679318, 0.598889, 1)
-energy = 0.3
+energy = 0.1
 blend_mode = 1
 range_layer_min = -140
 shadow_item_cull_mask = 3
@@ -2220,7 +2220,6 @@ texture = SubResource("GradientTexture2D_3588u")
 position = Vector2(-11721, -1294)
 scale = Vector2(76.0625, 35.7188)
 color = Color(1, 1, 0.454902, 1)
-energy = 2.0
 texture = SubResource("GradientTexture2D_3588u")
 
 [node name="Respawn Point" type="Sprite2D" parent="."]
