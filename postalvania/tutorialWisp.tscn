@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp3wp0tn3b3tu"]
+
+[ext_resource type="Script" path="res://TutorialWisp.gd" id="1_gv0rd"]
+
+[sub_resource type="Curve2D" id="Curve2D_orxon"]
+_data = {
+"points": PackedVector2Array(-14.0573, 121.218, 14.0573, -121.218, 7644.4, -5282.88, -23.2192, 0, 23.2192, 0, 7729.63, -5442.78, -3.09589, -60.7298, 3.09589, 60.7298, 7858.35, -5317, -117.644, -7.14468, 117.644, 7.14468, 7989.97, -5444.12, 0, 0, 0, 0, 8073.47, -5282.88, -65.0136, -3.57234, 65.0136, 3.57234, 8184.21, -5379.22, 0, 0, 0, 0, 8274.09, -5314.33, -34.0548, 0, 34.0548, 0, 8291.48, -5436.09, 0, 0, 0, 0, 8325.11, -5379.22, -41.7945, 0, 41.7945, 0, 8372.08, -5536.45, 0, 0, 0, 0, 8392.95, -5472.22, -74.3013, -64.3021, 74.3013, 64.3021, 8587.19, -5511.7, 0, 0, 0, 0, 8721.71, -5289.57, -27.863, -89.3085, 27.863, 89.3085, 8877.68, -5475.57, -32.5068, -30.3649, 32.5068, 30.3649, 9015.68, -5242.07, -52.6301, 48.2266, 52.6301, -48.2266, 9280.66, -5213.3, -4.64383, 107.17, 4.64383, -107.17, 9427.94, -5436.09, 54.1196, -18.9238, -54.1196, 18.9238, 9604.78, -5250.76, 45.9197, -34.0629, -45.9197, 34.0629, 9429.67, -5170.48, 157.439, -20.8162, -157.439, 20.8162, 9176.29, -4955.71, 168.919, 17.0314, -168.919, -17.0314, 7956.34, -5021.95, -273.363, -32.924, 273.363, 32.924, 7644.4, -5282.88)
+}
+point_count = 22
+
+[sub_resource type="Gradient" id="Gradient_u2y7e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_op5kd"]
+gradient = SubResource("Gradient_u2y7e")
+fill = 1
+fill_from = Vector2(0.490826, 0.490826)
+fill_to = Vector2(0.165138, 0.12844)
+
+[node name="WispPath2" type="Path2D"]
+position = Vector2(-12063, 4414)
+curve = SubResource("Curve2D_orxon")
+
+[node name="Wisp" type="PathFollow2D" parent="."]
+position = Vector2(7946, -5693)
+rotation = 2.04329
+script = ExtResource("1_gv0rd")
+
+[node name="PointLight2D" type="PointLight2D" parent="Wisp"]
+position = Vector2(1.80066, 1.32586)
+scale = Vector2(0.553299, 0.520476)
+color = Color(0.811765, 0.831373, 0, 1)
+energy = 3.0
+range_layer_min = -128
+texture = SubResource("GradientTexture2D_op5kd")
