@@ -135,6 +135,36 @@ vertical_icon_alignment = 0
 layout_mode = 2
 text = "How to Play"
 
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Brightness"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -16.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 50.0
+
 [node name="Options" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
@@ -207,6 +237,16 @@ size_flags_vertical = 3
 stream = ExtResource("3_lv17t")
 autoplay = true
 parameters/looping = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-590, -2281)
+color = Color(0.749856, 0.679318, 0.598889, 1)
+energy = 0.6
+blend_mode = 1
+range_z_max = 0
+range_layer_min = -140
+range_layer_max = 140
+shadow_item_cull_mask = 3
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]

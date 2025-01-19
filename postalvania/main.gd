@@ -26,14 +26,15 @@ var receiverArrayFix = [Vector2(-9997, 621), Vector2(-2849, 759), Vector2(-174, 
 Vector2(-3490, -1399), Vector2(12365, 307), Vector2(-11818, 319), Vector2(116, 4156)]
 
 #Text to display in dbox from chickens
-var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist the villagers by delivering parcels they give you. You can also touch cows to unlock great abilities",
-	"Here is the second text box for the second chicken delivery",
-	"Here is the third text box for the third chicken delivery",
-	"Here is the fourth text box for the fourth chicken delivery",
-	"Here is the fifth text box for the fifth chicken delivery",
-	"Here is the sixth text box for the sixth chicken delivery",
-	"Here is the seventh text box for the seventh chicken delivery",
-	"Here is the eigth text box for the 8 chicken delivery"]
+var giverFirstTouchDBox = ["Welcome to the wonderful world of ParcelVania. Here you assist the villagers by delivering parcels they give you. You can also touch cows to unlock great abilities. Can you please bring this cookie for my brother wearing blue?",
+	"Hi there, my brother loves cheese. He is wearing a red outfit like mine. Can you please deliver this cheese to him?",
+	"Hi there! My husband is an alcoholic and I support his drinking habits, can you please deliver this aged booze for to him? He wears a pink shirt like mine!",
+	"Mmmmmm I love pretzels mmmmm. I bought an extra pretzel for my sick brother. He should be wearing the same shirt as me. Can you deliver it to him?",
+	"Help! My brother is very sick, he needs this special red medicince or he will die. He is wearing a mustard shirt. Please hurry and bring this to him!",
+	"Hehehe I just bought this scary mask for my brother. It's perfect for halloween. He is wearing a vintage yellow shirt and wings. Can you help me deliver this to him?",
+	"I found this apple with a nasty work living inside it. It would be funny if my brother ate it. He is wearing cyan. Can you give this to him?",
+	"Hey! I love beer, you love beer, we all love beer! My son especially loves beer. He loves wearing purple to match his wings. Can you get him this drink on me?"]
+	
 var giverNextTouchDBox = ["I already gave you my package, please deliver it! They're in the moss",
 	"I already gave you my package, please deliver it! They're in the tree",
 	"I already gave you my package, please deliver it! They're in the desert",
@@ -81,6 +82,8 @@ func _ready():
 		charPairChildren[1].frame = charPairChildren[1].char_id
 	giverNPCArray = get_tree().get_nodes_in_group("Giver")
 	receiverNPCArray = get_tree().get_nodes_in_group("Receiver")
+	
+	$Lighting/DirectionalLight2D.energy -= (Singleton.brightnessSelected)/100 - .5
 	
 	#var counter = 0
 	#for x in giverNPCArray:
@@ -159,8 +162,11 @@ func _on_quest_giver_character_touched(first_touch, char_id, charPosition):
 				var temp = get_tree().get_nodes_in_group("GiverObj")
 				temp[0].queue_free()
 	
-	else:
+	elif (stageStep[char_id] == 1):
 		_dBox(giverNextTouchDBox[char_id])
+	
+	elif (stageStep[char_id] == 2):
+		_dBox("Thanks for delivering my package! I appreciate it!")
 		
 func _on_quest_delivery_character_touched(first_touch, char_id, charPosition):
 	
