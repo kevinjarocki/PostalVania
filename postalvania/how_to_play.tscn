@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cilt07hdlh01r"]
+[gd_scene load_steps=9 format=3 uid="uid://cilt07hdlh01r"]
 
 [ext_resource type="Script" path="res://how_to_play.gd" id="1_bt4mg"]
 [ext_resource type="Texture2D" uid="uid://gv7ruo4dgoy7" path="res://Assets/menu/ui/Textbox1_Leaf&Branchsmaller.png" id="1_nbpxl"]
 [ext_resource type="AudioStream" uid="uid://ddl606gdj0f0v" path="res://Assets/music/bg/One Man Symphony - A New Day's Hurry (Free) - 01 A New Day Begins (General Background Music).mp3" id="2_1a3ps"]
+[ext_resource type="FontFile" uid="uid://b6nas1lanoebc" path="res://Assets/Daydream.ttf" id="3_2pelw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0otdp"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -19,8 +20,15 @@ corner_radius_bottom_left = 3
 [sub_resource type="Theme" id="Theme_70xfe"]
 Panel/styles/panel = SubResource("StyleBoxFlat_0otdp")
 
+[sub_resource type="LabelSettings" id="LabelSettings_oq34y"]
+font = ExtResource("3_2pelw")
+font_size = 26
+font_color = Color(0.580392, 0.705882, 0.188235, 1)
+outline_size = 3
+
 [sub_resource type="LabelSettings" id="LabelSettings_338uu"]
-font_size = 24
+font = ExtResource("3_2pelw")
+font_size = 20
 font_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
 outline_size = 3
 
@@ -57,8 +65,29 @@ texture = ExtResource("1_nbpxl")
 layout_mode = 2
 size_flags_vertical = 4
 
+[node name="Panel2" type="Panel" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = SubResource("Theme_70xfe")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -16.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cozy Courier Co."
+label_settings = SubResource("LabelSettings_oq34y")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 440)
 layout_mode = 2
 theme = SubResource("Theme_70xfe")
 
@@ -72,10 +101,13 @@ offset_top = -146.5
 offset_bottom = 146.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "In the game you will help the forest owls by delivering their packages to the fairies. Each owl will have a package that is specific to the same color of fairy. 
-Use various movement abilities that are unlocked by touching the  woodland creatures to help traverse the terrain. The initial power you receive is the swing ability, which is critical in helping you traverse the environment and deliver the owl's packages.
-There are job boards located around the map that can help you find the location of the next pick up.
-Can you help the eight owls with their delivery requests?"
+text = " Help the  owls deliver their packages to the forest fairies!
+
+ Each owl has a package for their matching fairy. Metamorphasize  along your journey to unlock new movement abilities by meeting woodland creatures . 
+There are job boards located around the map to help you find the location of the next delivery.
+
+
+Can you help the eight owls with their requests?"
 label_settings = SubResource("LabelSettings_338uu")
 horizontal_alignment = 1
 vertical_alignment = 1
